@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RauxaGames — AntDefender</title>
+<meta name="description" content="RauxaGames és un petit estudi independent d'Andorra. AntDefender és el seu primer joc: un tower defense per a Android on defenses el teu niu.">
+<meta name="color-scheme" content="light dark">
+<style>
+  :root {
+    --bg: #f6f3ea;
+    --surface: #ffffff;
+    --text: #23201a;
+    --muted: #6b655a;
+    --accent: #b8541c;
+    --accent-text: #ffffff;
+    --border: #e2dccd;
+    --shadow: 0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17150f;
+      --surface: #201d16;
+      --text: #efe9dc;
+      --muted: #a39b8b;
+      --accent: #e5813e;
+      --accent-text: #17150f;
+      --border: #332e24;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17150f;
+    --surface: #201d16;
+    --text: #efe9dc;
+    --muted: #a39b8b;
+    --accent: #e5813e;
+    --accent-text: #17150f;
+    --border: #332e24;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  a { color: var(--accent); }
+  a:hover { text-decoration-thickness: 2px; }
+  .wrap { width: 100%; max-width: 720px; margin: 0 auto; padding: 0 16px; }
+  header { padding: 28px 0 8px; }
+  .brand { font-weight: 700; letter-spacing: .02em; text-decoration: none; color: var(--text); }
+  main { flex: 1; padding: 24px 0 48px; }
+  .hero {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 28px;
+    box-shadow: var(--shadow);
+  }
+  .eyebrow { color: var(--muted); text-transform: uppercase; font-size: .8rem; letter-spacing: .12em; margin: 0 0 8px; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; margin: 0 0 16px; }
+  .lead { font-size: 1.15rem; margin: 0 0 24px; color: var(--text); }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid var(--accent);
+  }
+  .btn-primary { background: var(--accent); color: var(--accent-text); }
+  .btn-ghost { color: var(--accent); background: transparent; }
+  .facts { list-style: none; margin: 32px 0 0; padding: 0; display: grid; gap: 12px; }
+  .facts li { padding: 14px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+  .facts strong { display: block; font-size: .85rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
+  .placeholder {
+    background: #fff3b0; color: #4a3b00; padding: 0 6px; border-radius: 4px; font-weight: 600;
+    outline: 2px dashed #d9a800;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .placeholder { background: #5b4b00; color: #ffe9a3; outline-color: #c9a227; }
+  }
+  footer { border-top: 1px solid var(--border); padding: 20px 0 32px; color: var(--muted); font-size: .9rem; }
+  footer nav a { margin-right: 16px; }
+</style>
+</head>
+<body>
+<header class="wrap">
+  <a class="brand" href="./">RauxaGames</a>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">RauxaGames · Andorra</p>
+    <h1>AntDefender</h1>
+    <p class="lead">Un tower defense per a Android: reforça el teu niu, recluta soldats i campions, i atura onada rere onada. Gratuït, sense compres integrades i sense compte.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="privacy.html">Política de privadesa</a>
+      <a class="btn btn-ghost" href="privacy.html#en">Privacy policy (EN)</a>
+      <a class="btn btn-ghost" href="privacy.html#es">Política de privacidad (ES)</a>
+    </div>
+  </section>
+
+  <ul class="facts">
+    <li><strong>Estudi</strong> RauxaGames (Marc Riu), Andorra. Desenvolupament independent.</li>
+    <li><strong>Joc</strong> AntDefender per a Android — paquet <code>com.rauxagames.antdefender</code>. Disponible a Google Play.</li>
+    <li><strong>Contacte</strong> <span class="placeholder">[correu de contacte]</span></li>
+  </ul>
+</main>
+
+<footer class="wrap">
+  <nav>
+    <a href="./">Inici</a>
+    <a href="privacy.html">Política de privadesa</a>
+  </nav>
+  <p>© 2026 RauxaGames. Tots els drets reservats.</p>
+</footer>
+</body>
+</html>

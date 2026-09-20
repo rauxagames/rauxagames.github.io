@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Política de privadesa — AntDefender</title>
+<meta name="description" content="Política de privadesa del joc AntDefender (RauxaGames): quines dades es tracten, per què, amb qui es comparteixen i com exercir els teus drets. Català, English, Español.">
+<meta name="color-scheme" content="light dark">
+<style>
+  :root {
+    --bg: #f6f3ea;
+    --surface: #ffffff;
+    --text: #23201a;
+    --muted: #6b655a;
+    --accent: #b8541c;
+    --accent-text: #ffffff;
+    --border: #e2dccd;
+    --note-bg: #fbf7ea;
+    --shadow: 0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17150f;
+      --surface: #201d16;
+      --text: #efe9dc;
+      --muted: #a39b8b;
+      --accent: #e5813e;
+      --accent-text: #17150f;
+      --border: #332e24;
+      --note-bg: #262219;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17150f;
+    --surface: #201d16;
+    --text: #efe9dc;
+    --muted: #a39b8b;
+    --accent: #e5813e;
+    --accent-text: #17150f;
+    --border: #332e24;
+    --note-bg: #262219;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  a { color: var(--accent); }
+  code { font-size: .92em; background: var(--note-bg); padding: 1px 5px; border-radius: 4px; }
+  .wrap { width: 100%; max-width: 760px; margin: 0 auto; padding: 0 16px; }
+  header { padding: 24px 0 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+  .brand { font-weight: 700; letter-spacing: .02em; text-decoration: none; color: var(--text); }
+  .langbar { display: flex; gap: 6px; flex-wrap: wrap; }
+  .langbar button {
+    font: inherit; font-size: .9rem; font-weight: 600;
+    padding: 6px 12px; border-radius: 999px; cursor: pointer;
+    border: 1px solid var(--border); background: var(--surface); color: var(--text);
+  }
+  .langbar button[aria-pressed="true"] { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+  .langbar button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  main { padding: 16px 0 48px; }
+  article {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px 32px;
+    box-shadow: var(--shadow);
+  }
+  @media (min-width: 600px) { article { padding: 36px 40px 40px; } }
+  .lang-block { display: none; }
+  .lang-block.active { display: block; }
+  h1 { font-size: clamp(1.7rem, 5vw, 2.4rem); line-height: 1.15; margin: 0 0 6px; }
+  .updated { color: var(--muted); margin: 0 0 24px; font-size: .95rem; }
+  h2 { font-size: 1.3rem; margin: 36px 0 10px; padding-top: 8px; border-top: 1px solid var(--border); }
+  h3 { font-size: 1.05rem; margin: 22px 0 6px; }
+  p, li { margin: 0 0 10px; }
+  ul { padding-left: 22px; }
+  .note { background: var(--note-bg); border-left: 4px solid var(--accent); padding: 12px 16px; border-radius: 8px; margin: 16px 0; }
+  .placeholder {
+    background: #fff3b0; color: #4a3b00; padding: 0 6px; border-radius: 4px; font-weight: 600;
+    outline: 2px dashed #d9a800;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .placeholder { background: #5b4b00; color: #ffe9a3; outline-color: #c9a227; }
+  }
+  table { border-collapse: collapse; width: 100%; margin: 8px 0 14px; font-size: .95rem; }
+  th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+  th { color: var(--muted); font-weight: 600; font-size: .85rem; text-transform: uppercase; letter-spacing: .06em; }
+  footer { border-top: 1px solid var(--border); padding: 20px 0 32px; color: var(--muted); font-size: .9rem; }
+  footer nav a { margin-right: 16px; }
+</style>
+<noscript><style>.lang-block { display: block; } .lang-block + .lang-block { margin-top: 48px; border-top: 3px double var(--border); padding-top: 24px; } .langbar { display: none; }</style></noscript>
+</head>
+<body>
+<header class="wrap">
+  <a class="brand" href="../">RauxaGames</a>
+  <nav class="langbar" aria-label="Idioma / Language / Idioma">
+    <button type="button" data-lang="ca" lang="ca" aria-pressed="true">Català</button>
+    <button type="button" data-lang="en" lang="en" aria-pressed="false">English</button>
+    <button type="button" data-lang="es" lang="es" aria-pressed="false">Español</button>
+  </nav>
+</header>
+
+<main class="wrap">
+<article>
+
+<!-- ═══════════════════════════════ CATALÀ ═══════════════════════════════ -->
+<section class="lang-block active" id="ca" lang="ca" data-title="Política de privadesa — AntDefender">
+  <h1>Política de privadesa d'AntDefender</h1>
+  <p class="updated">Última actualització: 20 de setembre de 2026</p>
+
+  <h2>1. Qui som</h2>
+  <p><strong>AntDefender</strong> és un joc per a Android desenvolupat i publicat per <strong>RauxaGames</strong> (Marc Riu), amb seu a Andorra. RauxaGames és el responsable del tractament de les dades que es descriuen en aquesta política.</p>
+  <ul>
+    <li>Contacte: <span class="placeholder">[correu de contacte]</span></li>
+    <li>Identificador de l'aplicació a Google Play: <code>com.rauxagames.antdefender</code></li>
+  </ul>
+
+  <h2>2. En dues paraules</h2>
+  <ul>
+    <li>Per jugar no cal crear cap compte ni donar-nos el nom, el correu ni el telèfon.</li>
+    <li>El joc és gratuït i, a la versió actual, no té compres integrades. Es finança amb anuncis recompensats: tu tries si els mires.</li>
+    <li>Guardem el teu progrés al núvol lligat a un identificador anònim, perquè no el perdis si reinstal·les el joc.</li>
+    <li>A la classificació es veu el sobrenom que tries, el teu país (codi de dues lletres) i els trofeus.</li>
+    <li>Recollim estadístiques de partida (nivell, victòria, durada…) per equilibrar el joc, en servidors de la Unió Europea.</li>
+    <li>No venem dades a ningú.</li>
+  </ul>
+
+  <h2>3. Quines dades tractem i per què</h2>
+
+  <h3>3.1 Identificador anònim de jugador (Unity Authentication)</h3>
+  <p>En obrir el joc s'inicia una sessió anònima a Unity Authentication, un servei d'Unity Gaming Services. Unity assigna al dispositiu un <strong>codi de jugador aleatori</strong>; no hi ha cap compte, contrasenya, correu ni nom associat. Aquest codi és el fil que lliga el teu progrés al núvol, la teva posició a la classificació i les estadístiques de partida. Si esborres les dades de l'aplicació o reinicies el progrés des dels Ajustos, el dispositiu rep un codi nou.</p>
+
+  <h3>3.2 Progrés del joc al núvol (Unity Cloud Save)</h3>
+  <p>Per poder recuperar la partida si reinstal·les el joc o canvies de dispositiu, desem una còpia del progrés a Unity Cloud Save, associada al codi anònim: nivell assolit i estrelles per nivell, monedes, gemmes i gelea reial, distribució i nivell dels edificis de la teva base, millores i herois desbloquejats, avisos del tutorial ja vistos, i les preferències del joc (volum, idioma, vibració). El sobrenom del punt 3.3 també hi viatja. La còpia es puja automàticament quan poses el joc en segon pla o canvies de pantalla.</p>
+
+  <h3>3.3 Classificació (Unity Leaderboards)</h3>
+  <p>Quan guanyes nivells, els teus trofeus s'envien a la classificació mundial i a la del teu país. Juntament amb la puntuació es publica:</p>
+  <ul>
+    <li>El <strong>sobrenom</strong> que has triat a Ajustos → Perfil (de 3 a 15 caràcters). Si no n'has triat cap, es fa servir un nom automàtic del tipus «Heroi-XXXXXX», derivat del codi de jugador.</li>
+    <li>El <strong>país</strong>, com a codi ISO de dues lletres (per exemple «AD» o «ES»). Es dedueix <strong>una sola vegada</strong> de la configuració regional del dispositiu —no de la ubicació GPS ni de l'adreça IP— i després queda fixat. Si no es pot determinar, es fa servir «ZZ».</li>
+    <li>Els <strong>trofeus</strong> (suma de nivell × estrelles dels nivells superats).</li>
+  </ul>
+  <p>Aquesta informació és <strong>visible per a la resta de jugadors</strong> dins del joc. Des de la classificació, altres jugadors també poden veure com tens distribuïda la base (edificis i nivells), igual que tu pots veure la seva. No hi apareix cap dada que t'identifiqui personalment, tret del que decideixis escriure al sobrenom: et recomanem no fer servir el teu nom real.</p>
+
+  <h3>3.4 Registre d'esdeveniments de joc</h3>
+  <p>El joc anota al dispositiu un registre d'accions (fi de partida, construccions i millores, recollides al dipòsit, recompenses de missions, gelea reial gastada per accelerar obres, objectes obtinguts) amb el saldo de monedes, gemmes i gelea, i el nivell en aquell moment. Serveix per detectar trampes i incoherències en l'economia del joc. A Unity Cloud Save se'n puja només un <strong>resum</strong> (comptadors totals i les darreres ~60 entrades), associat al codi anònim. No conté text lliure ni dades personals.</p>
+
+  <h3>3.5 Estadístiques de partida (Supabase, Irlanda)</h3>
+  <p>En acabar cada partida —victòria o derrota— el joc envia una fila a una base de dades pròpia de RauxaGames allotjada a Supabase, a Irlanda (Unió Europea), amb exactament aquests camps:</p>
+  <table>
+    <tr><th>Camp</th><th>Contingut</th></tr>
+    <tr><td>Codi de jugador</td><td>L'identificador anònim del punt 3.1</td></tr>
+    <tr><td>Sobrenom</td><td>El del punt 3.3</td></tr>
+    <tr><td>Nivell</td><td>Nivell jugat</td></tr>
+    <tr><td>Victòria</td><td>Sí / no</td></tr>
+    <tr><td>Onades</td><td>Onada assolida</td></tr>
+    <tr><td>Monedes</td><td>Monedes recollides durant la partida</td></tr>
+    <tr><td>Durada</td><td>Segons de partida</td></tr>
+    <tr><td>Versió</td><td>Versió de l'aplicació</td></tr>
+    <tr><td>Plataforma</td><td>Per exemple «Android»</td></tr>
+  </table>
+  <p>El servidor hi afegeix la data i l'hora. Fem servir aquestes dades per veure quins nivells són massa difícils o massa fàcils i millorar el joc. No hi ha cap SDK d'analítica de tercers ni identificador publicitari.</p>
+
+  <h3>3.6 Anuncis (Google AdMob)</h3>
+  <p>El joc mostra <strong>anuncis recompensats</strong> de Google AdMob: tu decideixes si els mires a canvi d'una recompensa dins del joc. Per servir-los, Google pot tractar l'<strong>identificador publicitari</strong> del dispositiu, l'adreça IP i informació tècnica del dispositiu i de l'aplicació, d'acord amb la seva pròpia política de privadesa.</p>
+  <p>A l'Espai Econòmic Europeu, el Regne Unit i Suïssa, abans del primer anunci apareix el <strong>formulari de consentiment de Google (UMP)</strong>, on pots acceptar o rebutjar els anuncis personalitzats. Pots canviar la decisió en qualsevol moment des dels Ajustos del joc. Si rebutges la personalització, seguiràs veient anuncis, però no basats en el teu perfil.</p>
+  <p>Més informació: <a href="https://policies.google.com/privacy" rel="noopener" target="_blank">Política de privadesa de Google</a> · <a href="https://policies.google.com/technologies/partner-sites" rel="noopener" target="_blank">Com fa servir Google la informació dels llocs i aplicacions que utilitzen els seus serveis</a>.</p>
+
+  <h3>3.7 Connexions tècniques</h3>
+  <p>Per evitar que canviar l'hora del dispositiu avanci les obres de la base, el joc consulta l'hora d'un servidor: fa una petició sense contingut a Google o Cloudflare i només llegeix la capçalera amb la data. Com en qualsevol connexió a Internet, aquests servidors veuen l'adreça IP del dispositiu; el joc no hi envia cap altra dada.</p>
+  <p>El joc no demana cap permís especial del sistema: no accedeix a la ubicació, els contactes, la càmera, el micròfon ni els fitxers.</p>
+
+  <h2>4. Base jurídica (RGPD)</h2>
+  <ul>
+    <li><strong>Progrés al núvol, classificació, registre d'esdeveniments i estadístiques de partida:</strong> execució del servei que ens demanes en jugar (art. 6.1.b RGPD) i el nostre interès legítim a mantenir el joc funcional, just i equilibrat (art. 6.1.f).</li>
+    <li><strong>Anuncis personalitzats:</strong> el teu consentiment (art. 6.1.a), que dones o retires al formulari de Google.</li>
+    <li><strong>Anuncis no personalitzats:</strong> interès legítim a finançar un joc gratuït.</li>
+  </ul>
+
+  <h2>5. Quant de temps conservem les dades</h2>
+  <ul>
+    <li><strong>Progrés al núvol, classificació i resum d'esdeveniments:</strong> mentre el teu codi de jugador segueixi actiu, és a dir, mentre tinguis el joc instal·lat i no ens demanis l'esborrat. Un codi que deixa de fer-se servir queda inert: no s'hi pot accedir des de cap dispositiu.</li>
+    <li><strong>Estadístiques de partida:</strong> es conserven per a l'anàlisi agregada. Quan rebem una sol·licitud d'esborrat, eliminem les files vinculades al teu codi.</li>
+    <li><strong>Dades d'anuncis:</strong> segons els terminis de Google.</li>
+  </ul>
+
+  <h2>6. Amb qui compartim les dades</h2>
+  <p>Només amb els proveïdors que fan funcionar el joc, i únicament per a aquesta finalitat:</p>
+  <ul>
+    <li><strong>Unity Technologies</strong> (Unity Gaming Services: Authentication, Cloud Save, Leaderboards, Cloud Code) — identitat anònima, progrés, classificació.</li>
+    <li><strong>Supabase, Inc.</strong> (base de dades allotjada a Irlanda, UE) — estadístiques de partida.</li>
+    <li><strong>Google</strong> (AdMob i UMP) — anuncis i consentiment.</li>
+  </ul>
+  <p><strong>No venem dades</strong> ni les cedim a tercers amb finalitats de màrqueting. Només revelaríem informació si una llei o una autoritat competent ens hi obligués.</p>
+
+  <h2>7. Transferències internacionals</h2>
+  <p>Les estadístiques de partida es guarden a Irlanda. Unity i Google poden tractar dades en servidors fora de la Unió Europea (per exemple, als Estats Units); en aquests casos s'emparen en les <strong>clàusules contractuals tipus</strong> aprovades per la Comissió Europea i en les altres garanties que preveu el RGPD.</p>
+
+  <h2>8. Els teus drets</h2>
+  <p>Tens dret a accedir a les teves dades, rectificar-les, demanar-ne la supressió, oposar-te al tractament o limitar-lo, i a rebre-les en un format portable. També pots presentar una reclamació davant l'<a href="https://www.apda.ad" rel="noopener" target="_blank">Agència Andorrana de Protecció de Dades</a> o l'autoritat de control del teu país.</p>
+  <div class="note">
+    <p>Per exercir-los, escriu a <span class="placeholder">[correu de contacte]</span> indicant el <strong>sobrenom</strong> que fas servir a la classificació (Ajustos → Perfil) i, si el tens a mà, el codi de jugador. El sobrenom automàtic «Heroi-XXXXXX» ja en conté els primers caràcters. Sense aquesta referència no podem localitzar les teves dades, perquè no tenim cap altra manera d'identificar-te. Respondrem en el termini d'un mes.</p>
+  </div>
+  <p>Des del propi joc, a Ajustos → <strong>«Reiniciar progrés»</strong> pots esborrar totes les dades locals del dispositiu: el joc torna a començar de zero amb un codi de jugador nou. Si vols que també s'eliminin la còpia al núvol, la posició a la classificació i les estadístiques associades al codi antic, demana-ho per correu.</p>
+
+  <h2>9. Menors</h2>
+  <p>AntDefender és apte per a tots els públics. No demanem l'edat ni recollim dades per identificar menors, i el joc no té compres. Els anuncis es mostren mitjançant Google AdMob respectant les seves polítiques de contingut apte per a famílies. Si ets pare, mare o tutor i creus que un menor ens ha facilitat dades personals (per exemple, al sobrenom), escriu-nos i les eliminarem.</p>
+
+  <h2>10. Canvis en aquesta política</h2>
+  <p>Si canviem com tractem les dades, actualitzarem aquesta pàgina i la data que hi ha a dalt. Quan el canvi sigui rellevant, també ho indicarem dins del joc.</p>
+</section>
+
+<!-- ═══════════════════════════════ ENGLISH ══════════════════════════════ -->
+<section class="lang-block" id="en" lang="en" data-title="Privacy Policy — AntDefender">
+  <h1>AntDefender Privacy Policy</h1>
+  <p class="updated">Last updated: 20 September 2026</p>
+
+  <h2>1. Who we are</h2>
+  <p><strong>AntDefender</strong> is an Android game developed and published by <strong>RauxaGames</strong> (Marc Riu), based in Andorra. RauxaGames is the data controller for the processing described in this policy.</p>
+  <ul>
+    <li>Contact: <span class="placeholder">[correu de contacte]</span></li>
+    <li>Application ID on Google Play: <code>com.rauxagames.antdefender</code></li>
+  </ul>
+
+  <h2>2. In short</h2>
+  <ul>
+    <li>You don't need an account, and we never ask for your name, email or phone number.</li>
+    <li>The game is free and, in its current version, has no in-app purchases. It is funded by rewarded ads: you choose whether to watch them.</li>
+    <li>Your progress is backed up to the cloud under an anonymous identifier, so you don't lose it if you reinstall.</li>
+    <li>The leaderboard shows the nickname you pick, your country (two-letter code) and your trophies.</li>
+    <li>We collect match statistics (level, win/loss, duration…) to balance the game, on servers in the European Union.</li>
+    <li>We never sell your data.</li>
+  </ul>
+
+  <h2>3. What data we process and why</h2>
+
+  <h3>3.1 Anonymous player identifier (Unity Authentication)</h3>
+  <p>When you open the game, an anonymous session is started with Unity Authentication, part of Unity Gaming Services. Unity assigns your device a <strong>random player ID</strong>; there is no account, password, email or name attached to it. That ID is the thread that links your cloud progress, your leaderboard position and your match statistics. If you clear the app's data or reset your progress from Settings, the device gets a new ID.</p>
+
+  <h3>3.2 Game progress in the cloud (Unity Cloud Save)</h3>
+  <p>So that you can recover your game after reinstalling or switching devices, we store a copy of your progress in Unity Cloud Save, tied to the anonymous ID: level reached and stars per level; coins, gems and royal jelly; the layout and level of the buildings in your base; upgrades and unlocked heroes; tutorial tips already seen; and your game preferences (volume, language, vibration). The nickname from section 3.3 travels with it. The copy is uploaded automatically when you send the game to the background or change screens.</p>
+
+  <h3>3.3 Leaderboard (Unity Leaderboards)</h3>
+  <p>When you beat levels, your trophies are submitted to the global leaderboard and to your country's leaderboard. Alongside the score, the following is published:</p>
+  <ul>
+    <li>The <strong>nickname</strong> you chose in Settings → Profile (3 to 15 characters). If you haven't chosen one, an automatic name like "Heroi-XXXXXX", derived from the player ID, is used.</li>
+    <li>Your <strong>country</strong>, as a two-letter ISO code (for example "AD" or "ES"). It is inferred <strong>once</strong> from the device's regional settings — not from GPS or your IP address — and then frozen. If it cannot be determined, "ZZ" is used.</li>
+    <li>Your <strong>trophies</strong> (sum of level × stars over the levels you have cleared).</li>
+  </ul>
+  <p>This information is <strong>visible to other players</strong> inside the game. From the leaderboard, other players can also view how your base is laid out (buildings and their levels), just as you can view theirs. Nothing that personally identifies you is shown, apart from whatever you decide to type as your nickname — we recommend not using your real name.</p>
+
+  <h3>3.4 Game event log</h3>
+  <p>The game keeps a log on your device of in-game actions (end of match, constructions and upgrades, depot collections, mission rewards, royal jelly spent to speed up works, items obtained), together with your coin, gem and jelly balance and your level at that moment. It is used to detect cheating and inconsistencies in the game economy. Only a <strong>summary</strong> (total counters and the last ~60 entries) is uploaded to Unity Cloud Save, tied to the anonymous ID. It contains no free text and no personal data.</p>
+
+  <h3>3.5 Match statistics (Supabase, Ireland)</h3>
+  <p>At the end of every match — win or loss — the game sends one row to a RauxaGames-owned database hosted on Supabase in Ireland (European Union), with exactly these fields:</p>
+  <table>
+    <tr><th>Field</th><th>Content</th></tr>
+    <tr><td>Player ID</td><td>The anonymous identifier from 3.1</td></tr>
+    <tr><td>Nickname</td><td>As in 3.3</td></tr>
+    <tr><td>Level</td><td>Level played</td></tr>
+    <tr><td>Victory</td><td>Yes / no</td></tr>
+    <tr><td>Waves</td><td>Wave reached</td></tr>
+    <tr><td>Coins</td><td>Coins collected during the match</td></tr>
+    <tr><td>Duration</td><td>Match length in seconds</td></tr>
+    <tr><td>Version</td><td>App version</td></tr>
+    <tr><td>Platform</td><td>For example "Android"</td></tr>
+  </table>
+  <p>The server adds the date and time. We use this to see which levels are too hard or too easy and improve the game. There is no third-party analytics SDK and no advertising identifier involved.</p>
+
+  <h3>3.6 Ads (Google AdMob)</h3>
+  <p>The game shows <strong>rewarded ads</strong> from Google AdMob: you decide whether to watch them in exchange for an in-game reward. To serve them, Google may process your device's <strong>advertising identifier</strong>, IP address and technical information about the device and the app, in accordance with its own privacy policy.</p>
+  <p>In the European Economic Area, the United Kingdom and Switzerland, <strong>Google's consent form (UMP)</strong> is shown before the first ad, where you can accept or decline personalised ads. You can change your choice at any time from the game's Settings. If you decline personalisation you will still see ads, just not ones based on your profile.</p>
+  <p>Learn more: <a href="https://policies.google.com/privacy" rel="noopener" target="_blank">Google Privacy Policy</a> · <a href="https://policies.google.com/technologies/partner-sites" rel="noopener" target="_blank">How Google uses information from sites or apps that use its services</a>.</p>
+
+  <h3>3.7 Technical connections</h3>
+  <p>To stop players from speeding up base construction by changing the device clock, the game asks a server for the time: it makes an empty request to Google or Cloudflare and reads only the date header of the reply. As with any Internet connection, those servers see the device's IP address; the game sends them nothing else.</p>
+  <p>The game requests no special system permissions: it does not access your location, contacts, camera, microphone or files.</p>
+
+  <h2>4. Legal basis (GDPR)</h2>
+  <ul>
+    <li><strong>Cloud progress, leaderboard, event log and match statistics:</strong> performance of the service you request by playing (Art. 6(1)(b) GDPR) and our legitimate interest in keeping the game working, fair and balanced (Art. 6(1)(f)).</li>
+    <li><strong>Personalised ads:</strong> your consent (Art. 6(1)(a)), given or withdrawn through Google's form.</li>
+    <li><strong>Non-personalised ads:</strong> legitimate interest in funding a free game.</li>
+  </ul>
+
+  <h2>5. How long we keep your data</h2>
+  <ul>
+    <li><strong>Cloud progress, leaderboard and event summary:</strong> for as long as your player ID remains active — that is, while you have the game installed and haven't asked us to delete it. An ID that is no longer used becomes inert: no device can access it any more.</li>
+    <li><strong>Match statistics:</strong> kept for aggregate analysis. When we receive a deletion request, we remove the rows linked to your ID.</li>
+    <li><strong>Ad data:</strong> according to Google's retention periods.</li>
+  </ul>
+
+  <h2>6. Who we share data with</h2>
+  <p>Only with the providers that make the game work, and only for that purpose:</p>
+  <ul>
+    <li><strong>Unity Technologies</strong> (Unity Gaming Services: Authentication, Cloud Save, Leaderboards, Cloud Code) — anonymous identity, progress, leaderboard.</li>
+    <li><strong>Supabase, Inc.</strong> (database hosted in Ireland, EU) — match statistics.</li>
+    <li><strong>Google</strong> (AdMob and UMP) — ads and consent.</li>
+  </ul>
+  <p><strong>We do not sell your data</strong> or hand it to third parties for marketing. We would only disclose information if required to by law or by a competent authority.</p>
+
+  <h2>7. International transfers</h2>
+  <p>Match statistics are stored in Ireland. Unity and Google may process data on servers outside the European Union (for example, in the United States); in those cases they rely on the <strong>Standard Contractual Clauses</strong> approved by the European Commission and the other safeguards provided for in the GDPR.</p>
+
+  <h2>8. Your rights</h2>
+  <p>You have the right to access your data, correct it, have it erased, object to or restrict its processing, and receive it in a portable format. You can also lodge a complaint with the <a href="https://www.apda.ad" rel="noopener" target="_blank">Andorran Data Protection Agency</a> or the supervisory authority in your country.</p>
+  <div class="note">
+    <p>To exercise them, write to <span class="placeholder">[correu de contacte]</span> stating the <strong>nickname</strong> you use on the leaderboard (Settings → Profile) and, if you have it handy, your player ID. The automatic nickname "Heroi-XXXXXX" already contains its first characters. Without this reference we cannot locate your data, because we have no other way of telling who you are. We will reply within one month.</p>
+  </div>
+  <p>From within the game, Settings → <strong>"Reset progress"</strong> erases all local data on the device: the game starts over with a new player ID. If you also want the cloud copy, your leaderboard entry and the statistics tied to the old ID removed, ask us by email.</p>
+
+  <h2>9. Children</h2>
+  <p>AntDefender is suitable for all ages. We do not ask for your age or collect data to identify children, and the game has no purchases. Ads are served through Google AdMob under its family-friendly content policies. If you are a parent or guardian and believe a child has given us personal data (for example, in a nickname), write to us and we will delete it.</p>
+
+  <h2>10. Changes to this policy</h2>
+  <p>If we change how we handle data, we will update this page and the date at the top. For significant changes we will also let you know inside the game.</p>
+</section>
+
+<!-- ═══════════════════════════════ ESPAÑOL ══════════════════════════════ -->
+<section class="lang-block" id="es" lang="es" data-title="Política de privacidad — AntDefender">
+  <h1>Política de privacidad de AntDefender</h1>
+  <p class="updated">Última actualización: 20 de septiembre de 2026</p>
+
+  <h2>1. Quiénes somos</h2>
+  <p><strong>AntDefender</strong> es un juego para Android desarrollado y publicado por <strong>RauxaGames</strong> (Marc Riu), con sede en Andorra. RauxaGames es el responsable del tratamiento de los datos descritos en esta política.</p>
+  <ul>
+    <li>Contacto: <span class="placeholder">[correu de contacte]</span></li>
+    <li>Identificador de la aplicación en Google Play: <code>com.rauxagames.antdefender</code></li>
+  </ul>
+
+  <h2>2. En dos palabras</h2>
+  <ul>
+    <li>Para jugar no hace falta crear ninguna cuenta ni darnos el nombre, el correo ni el teléfono.</li>
+    <li>El juego es gratuito y, en la versión actual, no tiene compras integradas. Se financia con anuncios recompensados: tú eliges si los ves.</li>
+    <li>Guardamos tu progreso en la nube ligado a un identificador anónimo, para que no lo pierdas si reinstalas el juego.</li>
+    <li>En la clasificación se ve el apodo que eliges, tu país (código de dos letras) y los trofeos.</li>
+    <li>Recogemos estadísticas de partida (nivel, victoria, duración…) para equilibrar el juego, en servidores de la Unión Europea.</li>
+    <li>No vendemos datos a nadie.</li>
+  </ul>
+
+  <h2>3. Qué datos tratamos y por qué</h2>
+
+  <h3>3.1 Identificador anónimo de jugador (Unity Authentication)</h3>
+  <p>Al abrir el juego se inicia una sesión anónima en Unity Authentication, un servicio de Unity Gaming Services. Unity asigna al dispositivo un <strong>código de jugador aleatorio</strong>; no hay ninguna cuenta, contraseña, correo ni nombre asociado. Ese código es el hilo que une tu progreso en la nube, tu posición en la clasificación y las estadísticas de partida. Si borras los datos de la aplicación o reinicias el progreso desde los Ajustes, el dispositivo recibe un código nuevo.</p>
+
+  <h3>3.2 Progreso del juego en la nube (Unity Cloud Save)</h3>
+  <p>Para que puedas recuperar la partida si reinstalas el juego o cambias de dispositivo, guardamos una copia del progreso en Unity Cloud Save, asociada al código anónimo: nivel alcanzado y estrellas por nivel, monedas, gemas y jalea real, distribución y nivel de los edificios de tu base, mejoras y héroes desbloqueados, avisos del tutorial ya vistos, y las preferencias del juego (volumen, idioma, vibración). El apodo del punto 3.3 también viaja con ella. La copia se sube automáticamente cuando pones el juego en segundo plano o cambias de pantalla.</p>
+
+  <h3>3.3 Clasificación (Unity Leaderboards)</h3>
+  <p>Cuando superas niveles, tus trofeos se envían a la clasificación mundial y a la de tu país. Junto con la puntuación se publica:</p>
+  <ul>
+    <li>El <strong>apodo</strong> que has elegido en Ajustes → Perfil (de 3 a 15 caracteres). Si no has elegido ninguno, se usa un nombre automático del tipo «Heroi-XXXXXX», derivado del código de jugador.</li>
+    <li>El <strong>país</strong>, como código ISO de dos letras (por ejemplo «AD» o «ES»). Se deduce <strong>una sola vez</strong> de la configuración regional del dispositivo —no de la ubicación GPS ni de la dirección IP— y después queda fijado. Si no se puede determinar, se usa «ZZ».</li>
+    <li>Los <strong>trofeos</strong> (suma de nivel × estrellas de los niveles superados).</li>
+  </ul>
+  <p>Esta información es <strong>visible para el resto de jugadores</strong> dentro del juego. Desde la clasificación, otros jugadores también pueden ver cómo tienes distribuida la base (edificios y niveles), igual que tú puedes ver la suya. No aparece ningún dato que te identifique personalmente, salvo lo que decidas escribir en el apodo: te recomendamos no usar tu nombre real.</p>
+
+  <h3>3.4 Registro de eventos de juego</h3>
+  <p>El juego anota en el dispositivo un registro de acciones (fin de partida, construcciones y mejoras, recogidas en el depósito, recompensas de misiones, jalea real gastada para acelerar obras, objetos obtenidos) junto con el saldo de monedas, gemas y jalea, y el nivel en ese momento. Sirve para detectar trampas e incoherencias en la economía del juego. A Unity Cloud Save se sube solo un <strong>resumen</strong> (contadores totales y las últimas ~60 entradas), asociado al código anónimo. No contiene texto libre ni datos personales.</p>
+
+  <h3>3.5 Estadísticas de partida (Supabase, Irlanda)</h3>
+  <p>Al terminar cada partida —victoria o derrota— el juego envía una fila a una base de datos propia de RauxaGames alojada en Supabase, en Irlanda (Unión Europea), con exactamente estos campos:</p>
+  <table>
+    <tr><th>Campo</th><th>Contenido</th></tr>
+    <tr><td>Código de jugador</td><td>El identificador anónimo del punto 3.1</td></tr>
+    <tr><td>Apodo</td><td>El del punto 3.3</td></tr>
+    <tr><td>Nivel</td><td>Nivel jugado</td></tr>
+    <tr><td>Victoria</td><td>Sí / no</td></tr>
+    <tr><td>Oleadas</td><td>Oleada alcanzada</td></tr>
+    <tr><td>Monedas</td><td>Monedas recogidas durante la partida</td></tr>
+    <tr><td>Duración</td><td>Segundos de partida</td></tr>
+    <tr><td>Versión</td><td>Versión de la aplicación</td></tr>
+    <tr><td>Plataforma</td><td>Por ejemplo «Android»</td></tr>
+  </table>
+  <p>El servidor añade la fecha y la hora. Usamos estos datos para ver qué niveles son demasiado difíciles o demasiado fáciles y mejorar el juego. No hay ningún SDK de analítica de terceros ni identificador publicitario.</p>
+
+  <h3>3.6 Anuncios (Google AdMob)</h3>
+  <p>El juego muestra <strong>anuncios recompensados</strong> de Google AdMob: tú decides si los ves a cambio de una recompensa dentro del juego. Para servirlos, Google puede tratar el <strong>identificador publicitario</strong> del dispositivo, la dirección IP e información técnica del dispositivo y de la aplicación, conforme a su propia política de privacidad.</p>
+  <p>En el Espacio Económico Europeo, el Reino Unido y Suiza, antes del primer anuncio aparece el <strong>formulario de consentimiento de Google (UMP)</strong>, donde puedes aceptar o rechazar los anuncios personalizados. Puedes cambiar la decisión en cualquier momento desde los Ajustes del juego. Si rechazas la personalización, seguirás viendo anuncios, pero no basados en tu perfil.</p>
+  <p>Más información: <a href="https://policies.google.com/privacy" rel="noopener" target="_blank">Política de privacidad de Google</a> · <a href="https://policies.google.com/technologies/partner-sites" rel="noopener" target="_blank">Cómo usa Google la información de los sitios y aplicaciones que utilizan sus servicios</a>.</p>
+
+  <h3>3.7 Conexiones técnicas</h3>
+  <p>Para evitar que cambiar la hora del dispositivo adelante las obras de la base, el juego consulta la hora de un servidor: hace una petición sin contenido a Google o Cloudflare y solo lee la cabecera con la fecha. Como en cualquier conexión a Internet, esos servidores ven la dirección IP del dispositivo; el juego no les envía ningún otro dato.</p>
+  <p>El juego no pide ningún permiso especial del sistema: no accede a la ubicación, los contactos, la cámara, el micrófono ni los archivos.</p>
+
+  <h2>4. Base jurídica (RGPD)</h2>
+  <ul>
+    <li><strong>Progreso en la nube, clasificación, registro de eventos y estadísticas de partida:</strong> ejecución del servicio que nos pides al jugar (art. 6.1.b RGPD) y nuestro interés legítimo en mantener el juego funcional, justo y equilibrado (art. 6.1.f).</li>
+    <li><strong>Anuncios personalizados:</strong> tu consentimiento (art. 6.1.a), que das o retiras en el formulario de Google.</li>
+    <li><strong>Anuncios no personalizados:</strong> interés legítimo en financiar un juego gratuito.</li>
+  </ul>
+
+  <h2>5. Cuánto tiempo conservamos los datos</h2>
+  <ul>
+    <li><strong>Progreso en la nube, clasificación y resumen de eventos:</strong> mientras tu código de jugador siga activo, es decir, mientras tengas el juego instalado y no nos pidas el borrado. Un código que deja de usarse queda inerte: no se puede acceder a él desde ningún dispositivo.</li>
+    <li><strong>Estadísticas de partida:</strong> se conservan para el análisis agregado. Cuando recibimos una solicitud de borrado, eliminamos las filas vinculadas a tu código.</li>
+    <li><strong>Datos de anuncios:</strong> según los plazos de Google.</li>
+  </ul>
+
+  <h2>6. Con quién compartimos los datos</h2>
+  <p>Solo con los proveedores que hacen funcionar el juego, y únicamente para ese fin:</p>
+  <ul>
+    <li><strong>Unity Technologies</strong> (Unity Gaming Services: Authentication, Cloud Save, Leaderboards, Cloud Code) — identidad anónima, progreso, clasificación.</li>
+    <li><strong>Supabase, Inc.</strong> (base de datos alojada en Irlanda, UE) — estadísticas de partida.</li>
+    <li><strong>Google</strong> (AdMob y UMP) — anuncios y consentimiento.</li>
+  </ul>
+  <p><strong>No vendemos datos</strong> ni los cedemos a terceros con fines de marketing. Solo revelaríamos información si una ley o una autoridad competente nos obligara.</p>
+
+  <h2>7. Transferencias internacionales</h2>
+  <p>Las estadísticas de partida se guardan en Irlanda. Unity y Google pueden tratar datos en servidores fuera de la Unión Europea (por ejemplo, en Estados Unidos); en esos casos se amparan en las <strong>cláusulas contractuales tipo</strong> aprobadas por la Comisión Europea y en las demás garantías previstas en el RGPD.</p>
+
+  <h2>8. Tus derechos</h2>
+  <p>Tienes derecho a acceder a tus datos, rectificarlos, pedir su supresión, oponerte al tratamiento o limitarlo, y a recibirlos en un formato portable. También puedes presentar una reclamación ante la <a href="https://www.apda.ad" rel="noopener" target="_blank">Agencia Andorrana de Protección de Datos</a> o la autoridad de control de tu país.</p>
+  <div class="note">
+    <p>Para ejercerlos, escribe a <span class="placeholder">[correu de contacte]</span> indicando el <strong>apodo</strong> que usas en la clasificación (Ajustes → Perfil) y, si lo tienes a mano, el código de jugador. El apodo automático «Heroi-XXXXXX» ya contiene sus primeros caracteres. Sin esa referencia no podemos localizar tus datos, porque no tenemos ninguna otra forma de identificarte. Responderemos en el plazo de un mes.</p>
+  </div>
+  <p>Desde el propio juego, en Ajustes → <strong>«Reiniciar progreso»</strong> puedes borrar todos los datos locales del dispositivo: el juego vuelve a empezar de cero con un código de jugador nuevo. Si quieres que también se eliminen la copia en la nube, la posición en la clasificación y las estadísticas asociadas al código antiguo, pídelo por correo.</p>
+
+  <h2>9. Menores</h2>
+  <p>AntDefender es apto para todos los públicos. No pedimos la edad ni recogemos datos para identificar a menores, y el juego no tiene compras. Los anuncios se muestran mediante Google AdMob respetando sus políticas de contenido apto para familias. Si eres padre, madre o tutor y crees que un menor nos ha facilitado datos personales (por ejemplo, en el apodo), escríbenos y los eliminaremos.</p>
+
+  <h2>10. Cambios en esta política</h2>
+  <p>Si cambiamos la forma en que tratamos los datos, actualizaremos esta página y la fecha de arriba. Cuando el cambio sea relevante, también lo indicaremos dentro del juego.</p>
+</section>
+
+</article>
+</main>
+
+<footer class="wrap">
+  <nav>
+    <a href="../">RauxaGames</a>
+    <a href="../privacy.html">privacy.html</a>
+  </nav>
+  <p>© 2026 RauxaGames.</p>
+</footer>
+
+<script>
+(function () {
+  var LANGS = ['ca', 'en', 'es'];
+  var KEY = 'rauxagames.lang';
+  var buttons = document.querySelectorAll('.langbar button');
+  var blocks = document.querySelectorAll('.lang-block');
+
+  function readStored() {
+    try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+  }
+  function store(lang) {
+    try { window.localStorage.setItem(KEY, lang); } catch (e) { /* mode privat o bloquejat: ignorem */ }
+  }
+  function fromHash() {
+    var h = (window.location.hash || '').replace('#', '').toLowerCase();
+    return LANGS.indexOf(h) >= 0 ? h : null;
+  }
+  function apply(lang, updateHash) {
+    if (LANGS.indexOf(lang) < 0) lang = 'ca';
+    var i;
+    for (i = 0; i < blocks.length; i++) {
+      var on = blocks[i].id === lang;
+      blocks[i].classList.toggle('active', on);
+      if (on) document.title = blocks[i].getAttribute('data-title') || document.title;
+    }
+    for (i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute('aria-pressed', buttons[i].getAttribute('data-lang') === lang ? 'true' : 'false');
+    }
+    document.documentElement.setAttribute('lang', lang);
+    if (updateHash && window.history && window.history.replaceState) {
+      try { window.history.replaceState(null, '', '#' + lang); } catch (e) { /* res */ }
+    }
+  }
+
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function () {
+      var lang = this.getAttribute('data-lang');
+      store(lang);
+      apply(lang, true);
+    });
+  }
+  window.addEventListener('hashchange', function () {
+    var h = fromHash();
+    if (h) { store(h); apply(h, false); }
+  });
+
+  // Prioritat: #hash a l'URL (enllaç directe) → idioma desat → català.
+  apply(fromHash() || readStored() || 'ca', false);
+})();
+</script>
+</body>
+</html>
