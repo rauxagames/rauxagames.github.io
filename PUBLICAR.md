@@ -70,7 +70,7 @@ Passos:
 ## Abans de fer push: el correu de contacte
 
 A `index.html`, `privacy.html` i `privacy/index.html` hi ha el text
-**`[correu de contacte]`** (marcat en groc a la web) en tots els llocs on ha d'anar
+**`rauxa.antdefender@gmail.com`** (marcat en groc a la web) en tots els llocs on ha d'anar
 l'adreça real. Substitueix-lo amb un cerca-i-reemplaça a tots tres fitxers.
 El correu que hi posis és el que sortirà a la fitxa de Play com a contacte del
 desenvolupador, així que millor una adreça que llegeixis de debò.
