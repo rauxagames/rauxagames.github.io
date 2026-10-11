@@ -1,21 +1,31 @@
 # Manté viu el projecte Supabase «antdefender» (free tier): Supabase pausa els projectes
-# després de 7 dies sense cap petició, i llavors el joc perd l'analítica en silenci.
-# Cada 2 dies fa una petició REST amb la clau publicable (és pública per disseny).
+# després de 7 dies sense activitat, i llavors el joc perd l'analítica en silenci.
+#
+# 11-oct-2026: la versió anterior (lectura de `matches` cada 2 dies, que la RLS denega a anon)
+# s'executava bé però Supabase NO ho comptava com a activitat i el projecte es va pausar igual.
+# Ara, CADA DIA, crida la funció `keepalive_ping()` (security definer, executable per anon),
+# que fa una ESCRIPTURA real: actualitza la data de la fila única de `public.keepalive`.
+# Només dona per bona una resposta 200: si falla, GitHub envia un correu.
 name: Supabase keep-alive
 on:
   schedule:
-    - cron: "17 6 */2 * *"
+    - cron: "17 6 * * *"
   workflow_dispatch:
 jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Ping REST de Supabase
+      - name: Escriptura de keep-alive a Supabase
         run: |
-          code=$(curl -s -o /dev/null -w "%{http_code}" \
+          body=$(mktemp)
+          code=$(curl -s -o "$body" -w "%{http_code}" -X POST \
             -H "apikey: sb_publishable_Fbej14CUtjIHL6n0tehZaw____YKdjd" \
             -H "Authorization: Bearer sb_publishable_Fbej14CUtjIHL6n0tehZaw____YKdjd" \
-            "https://ltsuvyyjekxdrxptyyrg.supabase.co/rest/v1/matches?select=id&limit=1")
-          echo "HTTP $code"
-          # 200/401/403 = projecte viu (RLS pot denegar el SELECT a anon); 000/5xx = pausat o caigut
-          case "$code" in 200|401|403|404) exit 0;; *) echo "Supabase no respon (projecte pausat?)"; exit 1;; esac
+            -H "Content-Type: application/json" \
+            -d '{}' \
+            "https://ltsuvyyjekxdrxptyyrg.supabase.co/rest/v1/rpc/keepalive_ping")
+          echo "HTTP $code"; cat "$body"; echo
+          if [ "$code" != "200" ]; then
+            echo "::error::Supabase no ha acceptat el keep-alive (HTTP $code). Projecte pausat o funció keepalive_ping() inexistent?"
+            exit 1
+          fi
