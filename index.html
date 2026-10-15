@@ -6,6 +6,11 @@
 <title>Rauxa Games — AntDefender</title>
 <meta name="description" content="Rauxa Games és un petit estudi independent d'Andorra. AntDefender és el seu primer joc: un tower defense per a Android on defenses el teu niu.">
 <meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="img/favicon-32.png">
+<link rel="apple-touch-icon" href="img/icon-192.png">
+<meta property="og:title" content="AntDefender — Rauxa Games">
+<meta property="og:description" content="Defend your nest! A tower defense game for Android.">
+<meta property="og:image" content="https://rauxagames.github.io/img/banner.webp">
 <style>
   :root {
     --bg: #f6f3ea;
@@ -86,6 +91,22 @@
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) .placeholder { background: #5b4b00; color: #ffe9a3; outline-color: #c9a227; }
   }
+  .banner { display: block; width: 100%; height: auto; border-radius: 16px; margin: 0 0 20px; box-shadow: var(--shadow); }
+  .title-row { display: flex; align-items: center; gap: 16px; margin: 0 0 16px; }
+  .title-row img { width: 72px; height: 72px; border-radius: 16px; flex: none; }
+  .title-row h1 { margin: 0; }
+  .btn-play { font-size: 1.05rem; padding: 12px 22px; }
+  .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 32px 0 0; }
+  .shots img { width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--border); display: block; }
+  .en { margin: 32px 0 0; padding: 20px 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+  .en h2 { font-size: 1.2rem; margin: 0 0 8px; }
+  .en p { margin: 0 0 12px; }
+  .policy-links { margin: 16px 0 0; font-size: .95rem; color: var(--muted); }
+  .policy-links a { margin-right: 12px; }
+  @media (max-width: 520px) {
+    .hero { padding: 24px 18px; }
+    .shots { gap: 8px; }
+  }
   footer { border-top: 1px solid var(--border); padding: 20px 0 32px; color: var(--muted); font-size: .9rem; }
   footer nav a { margin-right: 16px; }
 </style>
@@ -96,20 +117,40 @@
 </header>
 
 <main class="wrap">
+  <img class="banner" src="img/banner.webp" width="1024" height="500" alt="AntDefender: campions defensant el niu de les onades d'enemics">
+
   <section class="hero">
     <p class="eyebrow">Rauxa Games · Andorra</p>
-    <h1>AntDefender</h1>
+    <div class="title-row">
+      <img src="img/icon-192.png" width="72" height="72" alt="">
+      <h1>AntDefender</h1>
+    </div>
     <p class="lead">Un tower defense per a Android: reforça el teu niu, recluta soldats i campions, i atura onada rere onada. Gratuït, sense compres integrades i sense compte.</p>
     <div class="actions">
-      <a class="btn btn-primary" href="privacy.html">Política de privadesa</a>
-      <a class="btn btn-ghost" href="privacy.html#en">Privacy policy (EN)</a>
-      <a class="btn btn-ghost" href="privacy.html#es">Política de privacidad (ES)</a>
+      <a class="btn btn-primary btn-play" href="https://play.google.com/store/apps/details?id=com.rauxagames.antdefender">▶ Descarrega-la a Google Play</a>
     </div>
+    <p class="policy-links">
+      <a href="privacy.html">Política de privadesa</a>
+      <a href="privacy.html#en">Privacy policy (EN)</a>
+      <a href="privacy.html#es">Política de privacidad (ES)</a>
+    </p>
+  </section>
+
+  <div class="shots">
+    <img src="img/shot-combat.webp" width="540" height="960" loading="lazy" alt="Combat: el niu atacat per una onada d'enemics">
+    <img src="img/shot-base.webp" width="540" height="960" loading="lazy" alt="La base: construeix i millora els edificis del niu">
+    <img src="img/shot-heroes.webp" width="540" height="960" loading="lazy" alt="Selecció de campió">
+  </div>
+
+  <section class="en" lang="en">
+    <h2>In English</h2>
+    <p>AntDefender is a tower defense game for Android: fortify your nest, recruit soldiers and champions, and hold back wave after wave of enemies. Free to play, no in-app purchases and no account needed.</p>
+    <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.rauxagames.antdefender">Get it on Google Play</a>
   </section>
 
   <ul class="facts">
     <li><strong>Estudi</strong> Rauxa Games, Andorra. Desenvolupament independent.</li>
-    <li><strong>Joc</strong> AntDefender per a Android — paquet <code>com.rauxagames.antdefender</code>. Disponible a Google Play.</li>
+    <li><strong>Joc</strong> AntDefender per a Android — paquet <code>com.rauxagames.antdefender</code>. <a href="https://play.google.com/store/apps/details?id=com.rauxagames.antdefender">Disponible a Google Play</a>.</li>
     <li><strong>Contacte</strong> <a href="mailto:rauxa.antdefender@gmail.com">rauxa.antdefender@gmail.com</a></li>
   </ul>
 </main>
