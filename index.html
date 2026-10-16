@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ca">
+<html lang="ca" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rauxa Games — AntDefender</title>
-<meta name="description" content="Rauxa Games és un petit estudi independent d'Andorra. AntDefender és el seu primer joc: un tower defense per a Android on defenses el teu niu.">
+<title>AntDefender: defensa la llar · Rauxa Games</title>
+<meta name="description" content="Rauxa Games és un petit estudi independent d'Andorra. AntDefender és el seu primer joc: un tower defense d'acció per a Android on defenses el teu niu.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="img/favicon-32.png">
 <link rel="apple-touch-icon" href="img/icon-192.png">
@@ -56,9 +56,17 @@
   }
   a { color: var(--accent); }
   a:hover { text-decoration-thickness: 2px; }
-  .wrap { width: 100%; max-width: 720px; margin: 0 auto; padding: 0 16px; }
-  header { padding: 28px 0 8px; }
+  .wrap { width: 100%; max-width: 960px; margin: 0 auto; padding: 0 16px; }
+  header { padding: 28px 0 8px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
   .brand { font-weight: 700; letter-spacing: .02em; text-decoration: none; color: var(--text); }
+  .lang-pick select {
+    font: inherit; font-size: .9rem;
+    color: var(--text); background: var(--surface);
+    border: 1px solid var(--border); border-radius: 999px;
+    padding: 4px 12px; max-width: 160px; cursor: pointer;
+  }
+  .lang-pick select:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
   main { flex: 1; padding: 24px 0 48px; }
   .hero {
     background: var(--surface);
@@ -69,7 +77,8 @@
   }
   .eyebrow { color: var(--muted); text-transform: uppercase; font-size: .8rem; letter-spacing: .12em; margin: 0 0 8px; }
   h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; margin: 0 0 16px; }
-  .lead { font-size: 1.15rem; margin: 0 0 24px; color: var(--text); }
+  h2 { font-size: 1.4rem; line-height: 1.25; margin: 0 0 8px; }
+  .lead { font-size: 1.15rem; margin: 0 0 24px; color: var(--text); max-width: 62ch; }
   .actions { display: flex; flex-wrap: wrap; gap: 12px; }
   .btn {
     display: inline-block;
@@ -80,87 +89,974 @@
     border: 1px solid var(--accent);
   }
   .btn-primary { background: var(--accent); color: var(--accent-text); }
-  .btn-ghost { color: var(--accent); background: transparent; }
   .facts { list-style: none; margin: 32px 0 0; padding: 0; display: grid; gap: 12px; }
   .facts li { padding: 14px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
   .facts strong { display: block; font-size: .85rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
-  .placeholder {
-    background: #fff3b0; color: #4a3b00; padding: 0 6px; border-radius: 4px; font-weight: 600;
-    outline: 2px dashed #d9a800;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .placeholder { background: #5b4b00; color: #ffe9a3; outline-color: #c9a227; }
-  }
   .banner { display: block; width: 100%; height: auto; border-radius: 16px; margin: 0 0 20px; box-shadow: var(--shadow); }
   .title-row { display: flex; align-items: center; gap: 16px; margin: 0 0 16px; }
   .title-row img { width: 72px; height: 72px; border-radius: 16px; flex: none; }
   .title-row h1 { margin: 0; }
   .btn-play { font-size: 1.05rem; padding: 12px 22px; }
-  .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 32px 0 0; }
+  .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 32px auto 0; max-width: 720px; }
   .shots img { width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--border); display: block; }
-  .en { margin: 32px 0 0; padding: 20px 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
-  .en h2 { font-size: 1.2rem; margin: 0 0 8px; }
-  .en p { margin: 0 0 12px; }
   .policy-links { margin: 16px 0 0; font-size: .95rem; color: var(--muted); }
-  .policy-links a { margin-right: 12px; }
+
+  /* Com es juga */
+  .features { margin: 32px 0 0; }
+  .features ul { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 10px; grid-template-columns: 1fr; }
+  .features li {
+    position: relative;
+    padding: 12px 16px; padding-inline-start: 38px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  }
+  .features li::before {
+    content: ""; position: absolute; inset-inline-start: 16px; top: 1.15em;
+    width: 10px; height: 10px; border-radius: 3px; background: var(--accent); transform: rotate(45deg);
+  }
+  @media (min-width: 760px) { .features ul { grid-template-columns: 1fr 1fr; } }
+
+  /* Els mons (les imatges img/themes/tNN_*.webp poden no existir: el JS amaga el que falla) */
+  .worlds { margin: 40px 0 0; }
+  .worlds-intro { color: var(--muted); margin: 0 0 16px; max-width: 62ch; }
+  .world-grid { display: grid; gap: 16px; grid-template-columns: 1fr; align-items: start; }
+  @media (min-width: 760px) { .world-grid { grid-template-columns: 1fr 1fr; } }
+  .world {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    padding: 16px; box-shadow: var(--shadow); margin: 0;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .world-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .world h3 { font-size: 1.15rem; margin: 0; }
+  .world-levels { color: var(--muted); font-size: .85rem; white-space: nowrap; }
+  .world-lore { margin: 0; color: var(--muted); font-size: .95rem; font-style: italic; }
+  .world-shots { display: grid; grid-template-columns: 2fr 1fr; gap: 8px; align-items: start; }
+  .world-shots img {
+    display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover;
+    border-radius: 10px; border: 1px solid var(--border); background: var(--bg);
+  }
+  .world-shots.single { grid-template-columns: 1fr; }
+  .is-hidden { display: none !important; }
+
+  /* Escriptures on l'espaiat de lletres i les majúscules no tenen sentit */
+  html:is([lang="ar"], [lang="hi"], [lang="ja"], [lang="zh"]) :is(.eyebrow, .facts strong) { letter-spacing: 0; }
+
   @media (max-width: 520px) {
     .hero { padding: 24px 18px; }
     .shots { gap: 8px; }
+    .world { padding: 12px; }
   }
   footer { border-top: 1px solid var(--border); padding: 20px 0 32px; color: var(--muted); font-size: .9rem; }
-  footer nav a { margin-right: 16px; }
+  footer nav a { margin-inline-end: 16px; }
 </style>
+<noscript><style>.worlds { display: none; } .lang-pick { display: none; }</style></noscript>
 </head>
 <body>
 <header class="wrap">
   <a class="brand" href="./">Rauxa Games</a>
+  <label class="lang-pick">
+    <span class="sr-only" data-i18n="langLabel">Idioma</span>
+    <select id="lang-select">
+      <option value="ca" lang="ca">Català</option>
+      <option value="en" lang="en">English</option>
+      <option value="es" lang="es">Español</option>
+      <option value="fr" lang="fr">Français</option>
+      <option value="de" lang="de">Deutsch</option>
+      <option value="pt" lang="pt">Português</option>
+      <option value="ru" lang="ru">Русский</option>
+      <option value="ja" lang="ja">日本語</option>
+      <option value="zh" lang="zh">简体中文</option>
+      <option value="hi" lang="hi">हिन्दी</option>
+      <option value="ar" lang="ar" dir="rtl">العربية</option>
+    </select>
+  </label>
 </header>
 
 <main class="wrap">
-  <img class="banner" src="img/banner.webp" width="1024" height="500" alt="AntDefender: campions defensant el niu de les onades d'enemics">
+  <img class="banner" src="img/banner.webp" width="1024" height="500" alt="AntDefender: campiones defensant el niu de les onades d'enemics" data-i18n-alt="bannerAlt">
 
   <section class="hero">
-    <p class="eyebrow">Rauxa Games · Andorra</p>
+    <p class="eyebrow" data-i18n="eyebrow">Rauxa Games · Andorra</p>
     <div class="title-row">
       <img src="img/icon-192.png" width="72" height="72" alt="">
       <h1>AntDefender</h1>
     </div>
-    <p class="lead">Un tower defense per a Android: reforça el teu niu, recluta soldats i campions, i atura onada rere onada. Gratuït, sense compres integrades i sense compte.</p>
+    <p class="lead" data-i18n="lead">El niu està en perill i la colònia només té una esperança: tu. Un tower defense d'acció per a Android: corre, recull monedes, recluta soldats i campiones, i atura onada rere onada. Gratuït i sense compres integrades.</p>
     <div class="actions">
-      <a class="btn btn-primary btn-play" href="https://play.google.com/store/apps/details?id=com.rauxagames.antdefender">▶ Descarrega-la a Google Play</a>
+      <a class="btn btn-primary btn-play" href="https://play.google.com/store/apps/details?id=com.rauxagames.antdefender" data-i18n="play">▶ Descarrega-la a Google Play</a>
     </div>
     <p class="policy-links">
-      <a href="privacy.html">Política de privadesa</a>
-      <a href="privacy.html#en">Privacy policy (EN)</a>
-      <a href="privacy.html#es">Política de privacidad (ES)</a>
+      <a href="privacy.html#ca" data-privacy-link><span data-i18n="privacy">Política de privadesa</span><span data-i18n="privacyNote"></span></a>
     </p>
   </section>
 
   <div class="shots">
-    <img src="img/shot-combat.webp" width="540" height="960" loading="lazy" alt="Combat: el niu atacat per una onada d'enemics">
-    <img src="img/shot-base.webp" width="540" height="960" loading="lazy" alt="La base: construeix i millora els edificis del niu">
-    <img src="img/shot-heroes.webp" width="540" height="960" loading="lazy" alt="Selecció de campió">
+    <img src="img/shot-combat.webp" width="540" height="960" loading="lazy" alt="Combat: el niu atacat per una onada d'enemics" data-i18n-alt="shotCombatAlt">
+    <img src="img/shot-base.webp" width="540" height="960" loading="lazy" alt="La base: construeix i millora els edificis del niu" data-i18n-alt="shotBaseAlt">
+    <img src="img/shot-heroes.webp" width="540" height="960" loading="lazy" alt="Selecció de campiona" data-i18n-alt="shotHeroesAlt">
   </div>
 
-  <section class="en" lang="en">
-    <h2>In English</h2>
-    <p>AntDefender is a tower defense game for Android: fortify your nest, recruit soldiers and champions, and hold back wave after wave of enemies. Free to play, no in-app purchases and no account needed.</p>
-    <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.rauxagames.antdefender">Get it on Google Play</a>
+  <section class="features">
+    <h2 data-i18n="featuresTitle">Com es juga</h2>
+    <ul>
+      <li data-i18n="f1">No col·loques torres des d'un menú: les construeixes corrent. Cada partida dura un parell de minuts i es juga amb un sol dit.</li>
+      <li data-i18n="f2">Recull les monedes que deixen anar els enemics, alça ballestes i torres, i recluta soldats que guarneixen les torres.</li>
+      <li data-i18n="f3">Quatre campiones amb atac especial: tria la que encaixi amb la teva manera de jugar i fes-la créixer.</li>
+      <li data-i18n="f4">200 nivells en 10 mons, de 4 a 7 onades per nivell i bosses que et barren el pas.</li>
+      <li data-i18n="f5">Entre partides, millora el niu, la ballesta, la torre de soldats i les estàtues de les teves campiones.</li>
+      <li data-i18n="f6">Gratuït i sense compres integrades. Classificació mundial i per país. 11 idiomes.</li>
+    </ul>
+  </section>
+
+  <section class="worlds" id="worlds">
+    <h2 data-i18n="worldsTitle">Els mons</h2>
+    <p class="worlds-intro" data-i18n="worldsIntro">200 nivells repartits en 10 mons. Cada món canvia el paisatge, el disseny del niu i els enemics que hi apareixen.</p>
+    <div class="world-grid">
+      <article class="world">
+        <div class="world-head">
+          <h3 data-i18n="w1">Bosc</h3>
+          <span class="world-levels" data-i18n="levels" data-a="1" data-b="20">Nivells 1–20</span>
+        </div>
+        <p class="world-lore" data-i18n="l1">El jardí on va néixer la colònia. Sota les fulles, els primers enemics ja ensumen la mel del niu.</p>
+        <div class="world-shots">
+          <img src="img/themes/t01_game.webp" width="960" height="540" loading="lazy" alt="Partida al món Bosc" data-i18n-alt="gameAlt" data-w="w1">
+          <img src="img/themes/t01_map.webp" width="960" height="540" loading="lazy" alt="Mapa de nivells del món Bosc" data-i18n-alt="mapAlt" data-w="w1">
+        </div>
+      </article>
+      <article class="world">
+        <div class="world-head">
+          <h3 data-i18n="w2">Fantasia</h3>
+          <span class="world-levels" data-i18n="levels" data-a="21" data-b="40">Nivells 21–40</span>
+        </div>
+        <p class="world-lore" data-i18n="l2">Un poblet de contes on les llanternes no s'apaguen mai. Els seus habitants van fugir d'alguna cosa que encara hi ronda.</p>
+        <div class="world-shots">
+          <img src="img/themes/t02_game.webp" width="960" height="540" loading="lazy" alt="Partida al món Fantasia" data-i18n-alt="gameAlt" data-w="w2">
+          <img src="img/themes/t02_map.webp" width="960" height="540" loading="lazy" alt="Mapa de nivells del món Fantasia" data-i18n-alt="mapAlt" data-w="w2">
+        </div>
+      </article>
+      <article class="world">
+        <div class="world-head">
+          <h3 data-i18n="w3">Desert</h3>
+          <span class="world-levels" data-i18n="levels" data-a="41" data-b="60">Nivells 41–60</span>
+        </div>
+        <p class="world-lore" data-i18n="l3">Sorra fins a l'horitzó. De dia crema, de nit glaça, i els enemics hi arriben sense fer soroll.</p>
+        <div class="world-shots">
+          <img src="img/themes/t03_game.webp" width="960" height="540" loading="lazy" alt="Partida al món Desert" data-i18n-alt="gameAlt" data-w="w3">
+          <img src="img/themes/t03_map.webp" width="960" height="540" loading="lazy" alt="Mapa de nivells del món Desert" data-i18n-alt="mapAlt" data-w="w3">
+        </div>
+      </article>
+      <article class="world">
+        <div class="world-head">
+          <h3 data-i18n="w4">Medieval</h3>
+          <span class="world-levels" data-i18n="levels" data-a="61" data-b="80">Nivells 61–80</span>
+        </div>
+        <p class="world-lore" data-i18n="l4">Muralles velles i estendards esquinçats. Aquí es va perdre una guerra fa molt de temps; ara toca no perdre'n una altra.</p>
+        <div class="world-shots">
+          <img src="img/themes/t04_game.webp" width="960" height="540" loading="lazy" alt="Partida al món Medieval" data-i18n-alt="gameAlt" data-w="w4">
+          <img src="img/themes/t04_map.webp" width="960" height="540" loading="lazy" alt="Mapa de nivells del món Medieval" data-i18n-alt="mapAlt" data-w="w4">
+        </div>
+      </article>
+      <article class="world">
+        <div class="world-head">
+          <h3 data-i18n="w5">Tardor</h3>
+          <span class="world-levels" data-i18n="levels" data-a="81" data-b="100">Nivells 81–100</span>
+        </div>
+        <p class="world-lore" data-i18n="l5">El bosc es despulla i cada fulla que cau amaga un pas enemic. La tardor és bonica, però no perdona.</p>
+        <div class="world-shots">
+          <img src="img/themes/t05_game.webp" width="960" height="540" loading="lazy" alt="Partida al món Tardor" data-i18n-alt="gameAlt" data-w="w5">
+          <img src="img/themes/t05_map.webp" width="960" height="540" loading="lazy" alt="Mapa de nivells del món Tardor" data-i18n-alt="mapAlt" data-w="w5">
+        </div>
+      </article>
+      <article class="world">
+        <div class="world-head">
+          <h3 data-i18n="w6">Camp</h3>
+          <span class="world-levels" data-i18n="levels" data-a="101" data-b="120">Nivells 101–120</span>
+        </div>
+        <p class="world-lore" data-i18n="l6">Camps, graners i camins de terra. La gent d'aquí va marxar de pressa: van deixar la porta oberta.</p>
+        <div class="world-shots">
+          <img src="img/themes/t06_game.webp" width="960" height="540" loading="lazy" alt="Partida al món Camp" data-i18n-alt="gameAlt" data-w="w6">
+          <img src="img/themes/t06_map.webp" width="960" height="540" loading="lazy" alt="Mapa de nivells del món Camp" data-i18n-alt="mapAlt" data-w="w6">
+        </div>
+      </article>
+      <article class="world">
+        <div class="world-head">
+          <h3 data-i18n="w7">Hivern</h3>
+          <span class="world-levels" data-i18n="levels" data-a="121" data-b="140">Nivells 121–140</span>
+        </div>
+        <p class="world-lore" data-i18n="l7">El gel ho cobreix tot i la colònia tremola. Els enemics d'aquí no tenen fred: tenen gana.</p>
+        <div class="world-shots">
+          <img src="img/themes/t07_game.webp" width="960" height="540" loading="lazy" alt="Partida al món Hivern" data-i18n-alt="gameAlt" data-w="w7">
+          <img src="img/themes/t07_map.webp" width="960" height="540" loading="lazy" alt="Mapa de nivells del món Hivern" data-i18n-alt="mapAlt" data-w="w7">
+        </div>
+      </article>
+      <article class="world">
+        <div class="world-head">
+          <h3 data-i18n="w8">Japó</h3>
+          <span class="world-levels" data-i18n="levels" data-a="141" data-b="160">Nivells 141–160</span>
+        </div>
+        <p class="world-lore" data-i18n="l8">Cirerers en flor i ponts de fusta. Una terra de silenci on el perill arriba amb la brisa.</p>
+        <div class="world-shots">
+          <img src="img/themes/t08_game.webp" width="960" height="540" loading="lazy" alt="Partida al món Japó" data-i18n-alt="gameAlt" data-w="w8">
+          <img src="img/themes/t08_map.webp" width="960" height="540" loading="lazy" alt="Mapa de nivells del món Japó" data-i18n-alt="mapAlt" data-w="w8">
+        </div>
+      </article>
+      <article class="world">
+        <div class="world-head">
+          <h3 data-i18n="w9">Pirates</h3>
+          <span class="world-levels" data-i18n="levels" data-a="161" data-b="180">Nivells 161–180</span>
+        </div>
+        <p class="world-lore" data-i18n="l9">Vaixells enfonsats i cofres buits. Qui va enterrar el tresor va deixar guardians que encara vetllen.</p>
+        <div class="world-shots">
+          <img src="img/themes/t09_game.webp" width="960" height="540" loading="lazy" alt="Partida al món Pirates" data-i18n-alt="gameAlt" data-w="w9">
+          <img src="img/themes/t09_map.webp" width="960" height="540" loading="lazy" alt="Mapa de nivells del món Pirates" data-i18n-alt="mapAlt" data-w="w9">
+        </div>
+      </article>
+      <article class="world">
+        <div class="world-head">
+          <h3 data-i18n="w10">Ciència-ficció</h3>
+          <span class="world-levels" data-i18n="levels" data-a="181" data-b="200">Nivells 181–200</span>
+        </div>
+        <p class="world-lore" data-i18n="l10">Llums que parpellegen i màquines que zumzegen. Ningú no sap qui les va construir, però encara funcionen.</p>
+        <div class="world-shots">
+          <img src="img/themes/t10_game.webp" width="960" height="540" loading="lazy" alt="Partida al món Ciència-ficció" data-i18n-alt="gameAlt" data-w="w10">
+          <img src="img/themes/t10_map.webp" width="960" height="540" loading="lazy" alt="Mapa de nivells del món Ciència-ficció" data-i18n-alt="mapAlt" data-w="w10">
+        </div>
+      </article>
+    </div>
   </section>
 
   <ul class="facts">
-    <li><strong>Estudi</strong> Rauxa Games, Andorra. Desenvolupament independent.</li>
-    <li><strong>Joc</strong> AntDefender per a Android — paquet <code>com.rauxagames.antdefender</code>. <a href="https://play.google.com/store/apps/details?id=com.rauxagames.antdefender">Disponible a Google Play</a>.</li>
-    <li><strong>Contacte</strong> <a href="mailto:rauxa.antdefender@gmail.com">rauxa.antdefender@gmail.com</a></li>
+    <li><strong data-i18n="factStudioLabel">Estudi</strong> <span data-i18n="factStudio">Rauxa Games, Andorra. Desenvolupament independent.</span></li>
+    <li><strong data-i18n="factGameLabel">Joc</strong> <span data-i18n="factGame">AntDefender per a Android — paquet</span> <code dir="ltr">com.rauxagames.antdefender</code>. <a href="https://play.google.com/store/apps/details?id=com.rauxagames.antdefender" data-i18n="factGameLink">Disponible a Google Play</a>.</li>
+    <li><strong data-i18n="factContactLabel">Contacte</strong> <a href="mailto:rauxa.antdefender@gmail.com" dir="ltr">rauxa.antdefender@gmail.com</a></li>
   </ul>
 </main>
 
 <footer class="wrap">
   <nav>
-    <a href="./">Inici</a>
-    <a href="privacy.html">Política de privadesa</a>
+    <a href="./" data-i18n="navHome">Inici</a>
+    <a href="privacy.html#ca" data-privacy-link data-i18n="privacy">Política de privadesa</a>
   </nav>
-  <p>© 2026 Rauxa Games. Tots els drets reservats.</p>
+  <p>© 2026 Rauxa Games. <span data-i18n="rights">Tots els drets reservats.</span></p>
 </footer>
+
+<script>
+(function () {
+  'use strict';
+
+  // Diccionari de textos. El català també és a l'HTML (contingut per defecte sense JS).
+  // Els noms dels mons segueixen la fitxa de Google Play; el lore (l1..l10) és el text
+  // oficial del joc (LocalizationManager.cs, claus levelpick.lore.1..10).
+  var I18N = {
+    ca: {
+      title: "AntDefender: defensa la llar · Rauxa Games",
+      metaDesc: "Rauxa Games és un petit estudi independent d'Andorra. AntDefender és el seu primer joc: un tower defense d'acció per a Android on defenses el teu niu.",
+      langLabel: "Idioma",
+      bannerAlt: "AntDefender: campiones defensant el niu de les onades d'enemics",
+      eyebrow: "Rauxa Games · Andorra",
+      lead: "El niu està en perill i la colònia només té una esperança: tu. Un tower defense d'acció per a Android: corre, recull monedes, recluta soldats i campiones, i atura onada rere onada. Gratuït i sense compres integrades.",
+      play: "▶ Descarrega-la a Google Play",
+      privacy: "Política de privadesa",
+      privacyNote: "",
+      shotCombatAlt: "Combat: el niu atacat per una onada d'enemics",
+      shotBaseAlt: "La base: construeix i millora els edificis del niu",
+      shotHeroesAlt: "Selecció de campiona",
+      featuresTitle: "Com es juga",
+      f1: "No col·loques torres des d'un menú: les construeixes corrent. Cada partida dura un parell de minuts i es juga amb un sol dit.",
+      f2: "Recull les monedes que deixen anar els enemics, alça ballestes i torres, i recluta soldats que guarneixen les torres.",
+      f3: "Quatre campiones amb atac especial: tria la que encaixi amb la teva manera de jugar i fes-la créixer.",
+      f4: "200 nivells en 10 mons, de 4 a 7 onades per nivell i bosses que et barren el pas.",
+      f5: "Entre partides, millora el niu, la ballesta, la torre de soldats i les estàtues de les teves campiones.",
+      f6: "Gratuït i sense compres integrades. Classificació mundial i per país. 11 idiomes.",
+      worldsTitle: "Els mons",
+      worldsIntro: "200 nivells repartits en 10 mons. Cada món canvia el paisatge, el disseny del niu i els enemics que hi apareixen.",
+      levels: "Nivells {a}–{b}",
+      gameAlt: "Partida al món {w}",
+      mapAlt: "Mapa de nivells del món {w}",
+      w1: "Bosc",
+      w2: "Fantasia",
+      w3: "Desert",
+      w4: "Medieval",
+      w5: "Tardor",
+      w6: "Camp",
+      w7: "Hivern",
+      w8: "Japó",
+      w9: "Pirates",
+      w10: "Ciència-ficció",
+      factStudioLabel: "Estudi",
+      factStudio: "Rauxa Games, Andorra. Desenvolupament independent.",
+      factGameLabel: "Joc",
+      factGame: "AntDefender per a Android — paquet",
+      factGameLink: "Disponible a Google Play",
+      factContactLabel: "Contacte",
+      navHome: "Inici",
+      rights: "Tots els drets reservats.",
+      l1: "El jardí on va néixer la colònia. Sota les fulles, els primers enemics ja ensumen la mel del niu.",
+      l2: "Un poblet de contes on les llanternes no s'apaguen mai. Els seus habitants van fugir d'alguna cosa que encara hi ronda.",
+      l3: "Sorra fins a l'horitzó. De dia crema, de nit glaça, i els enemics hi arriben sense fer soroll.",
+      l4: "Muralles velles i estendards esquinçats. Aquí es va perdre una guerra fa molt de temps; ara toca no perdre'n una altra.",
+      l5: "El bosc es despulla i cada fulla que cau amaga un pas enemic. La tardor és bonica, però no perdona.",
+      l6: "Camps, graners i camins de terra. La gent d'aquí va marxar de pressa: van deixar la porta oberta.",
+      l7: "El gel ho cobreix tot i la colònia tremola. Els enemics d'aquí no tenen fred: tenen gana.",
+      l8: "Cirerers en flor i ponts de fusta. Una terra de silenci on el perill arriba amb la brisa.",
+      l9: "Vaixells enfonsats i cofres buits. Qui va enterrar el tresor va deixar guardians que encara vetllen.",
+      l10: "Llums que parpellegen i màquines que zumzegen. Ningú no sap qui les va construir, però encara funcionen."
+    },
+    en: {
+      title: "AntDefender: defend your home · Rauxa Games",
+      metaDesc: "Rauxa Games is a small independent studio from Andorra. AntDefender is its first game: an action tower defense for Android where you defend your nest.",
+      langLabel: "Language",
+      bannerAlt: "AntDefender: champions defending the nest from waves of enemies",
+      eyebrow: "Rauxa Games · Andorra",
+      lead: "The nest is in danger and the colony has one hope left: you. An action tower defense for Android: run, gather coins, recruit soldiers and champions, and hold back wave after wave. Free, with no in-app purchases.",
+      play: "▶ Get it on Google Play",
+      privacy: "Privacy policy",
+      privacyNote: "",
+      shotCombatAlt: "Combat: the nest under attack by a wave of enemies",
+      shotBaseAlt: "The base: build and upgrade the nest's buildings",
+      shotHeroesAlt: "Champion selection",
+      featuresTitle: "How it plays",
+      f1: "You don't place towers from a menu, you build them on the run. Each match lasts a couple of minutes and plays with a single finger.",
+      f2: "Gather the coins enemies drop, raise ballistas and towers, and recruit soldiers who garrison your towers.",
+      f3: "Four champions with special attacks: pick the one that fits how you play and make her grow.",
+      f4: "200 levels across 10 worlds, 4 to 7 waves per level and bosses standing in your way.",
+      f5: "Between matches, upgrade the nest, the ballista, the soldier tower and your champions' statues.",
+      f6: "Free, with no in-app purchases. World and per-country leaderboards. 11 languages.",
+      worldsTitle: "The worlds",
+      worldsIntro: "200 levels across 10 worlds. Each world changes the scenery, the nest layout and the enemies you face.",
+      levels: "Levels {a}–{b}",
+      gameAlt: "Gameplay in the {w} world",
+      mapAlt: "Level map of the {w} world",
+      w1: "Forest",
+      w2: "Fantasy",
+      w3: "Desert",
+      w4: "Medieval",
+      w5: "Autumn",
+      w6: "Countryside",
+      w7: "Winter",
+      w8: "Japan",
+      w9: "Pirates",
+      w10: "Sci-fi",
+      factStudioLabel: "Studio",
+      factStudio: "Rauxa Games, Andorra. Independent development.",
+      factGameLabel: "Game",
+      factGame: "AntDefender for Android — package",
+      factGameLink: "Available on Google Play",
+      factContactLabel: "Contact",
+      navHome: "Home",
+      rights: "All rights reserved.",
+      l1: "The garden where the colony was born. Under the leaves, the first enemies already smell the nest's honey.",
+      l2: "A storybook village where the lanterns never go out. Its people fled from something that still roams here.",
+      l3: "Sand all the way to the horizon. It burns by day, freezes by night, and the enemies arrive without a sound.",
+      l4: "Old walls and torn banners. A war was lost here long ago; now the task is not to lose another.",
+      l5: "The forest sheds its leaves, and every falling leaf hides an enemy's step. Autumn is beautiful, but it shows no mercy.",
+      l6: "Fields, barns and dirt roads. The people here left in a hurry: they left the door open.",
+      l7: "Ice covers everything and the colony shivers. The enemies here aren't cold: they're hungry.",
+      l8: "Cherry blossoms and wooden bridges. A land of silence where danger arrives with the breeze.",
+      l9: "Sunken ships and empty chests. Whoever buried the treasure left guardians who still keep watch.",
+      l10: "Blinking lights and humming machines. Nobody knows who built them, but they still work."
+    },
+    es: {
+      title: "AntDefender: defiende tu hogar · Rauxa Games",
+      metaDesc: "Rauxa Games es un pequeño estudio independiente de Andorra. AntDefender es su primer juego: un tower defense de acción para Android en el que defiendes tu nido.",
+      langLabel: "Idioma",
+      bannerAlt: "AntDefender: campeonas defendiendo el nido de las oleadas de enemigos",
+      eyebrow: "Rauxa Games · Andorra",
+      lead: "El nido está en peligro y la colonia solo tiene una esperanza: tú. Un tower defense de acción para Android: corre, recoge monedas, recluta soldados y campeonas, y frena oleada tras oleada. Gratuito y sin compras integradas.",
+      play: "▶ Descárgalo en Google Play",
+      privacy: "Política de privacidad",
+      privacyNote: "",
+      shotCombatAlt: "Combate: el nido atacado por una oleada de enemigos",
+      shotBaseAlt: "La base: construye y mejora los edificios del nido",
+      shotHeroesAlt: "Selección de campeona",
+      featuresTitle: "Cómo se juega",
+      f1: "No colocas torres desde un menú: las construyes corriendo. Cada partida dura un par de minutos y se juega con un solo dedo.",
+      f2: "Recoge las monedas que sueltan los enemigos, levanta ballestas y torres, y recluta soldados que guarnecen las torres.",
+      f3: "Cuatro campeonas con ataque especial: elige la que encaje con tu forma de jugar y hazla crecer.",
+      f4: "200 niveles en 10 mundos, de 4 a 7 oleadas por nivel y jefes que te cierran el paso.",
+      f5: "Entre partidas, mejora el nido, la ballesta, la torre de soldados y las estatuas de tus campeonas.",
+      f6: "Gratuito y sin compras integradas. Clasificaciones mundial y por país. 11 idiomas.",
+      worldsTitle: "Los mundos",
+      worldsIntro: "200 niveles repartidos en 10 mundos. Cada mundo cambia el paisaje, el diseño del nido y los enemigos que aparecen.",
+      levels: "Niveles {a}–{b}",
+      gameAlt: "Partida en el mundo {w}",
+      mapAlt: "Mapa de niveles del mundo {w}",
+      w1: "Bosque",
+      w2: "Fantasía",
+      w3: "Desierto",
+      w4: "Medieval",
+      w5: "Otoño",
+      w6: "Campo",
+      w7: "Invierno",
+      w8: "Japón",
+      w9: "Piratas",
+      w10: "Ciencia ficción",
+      factStudioLabel: "Estudio",
+      factStudio: "Rauxa Games, Andorra. Desarrollo independiente.",
+      factGameLabel: "Juego",
+      factGame: "AntDefender para Android — paquete",
+      factGameLink: "Disponible en Google Play",
+      factContactLabel: "Contacto",
+      navHome: "Inicio",
+      rights: "Todos los derechos reservados.",
+      l1: "El jardín donde nació la colonia. Bajo las hojas, los primeros enemigos ya huelen la miel del nido.",
+      l2: "Un pueblecito de cuento donde los faroles nunca se apagan. Sus habitantes huyeron de algo que aún ronda por aquí.",
+      l3: "Arena hasta el horizonte. De día quema, de noche hiela, y los enemigos llegan sin hacer ruido.",
+      l4: "Murallas viejas y estandartes rasgados. Aquí se perdió una guerra hace mucho; ahora toca no perder otra.",
+      l5: "El bosque se desnuda y cada hoja que cae esconde un paso enemigo. El otoño es bonito, pero no perdona.",
+      l6: "Campos, graneros y caminos de tierra. La gente de aquí se fue deprisa: dejaron la puerta abierta.",
+      l7: "El hielo lo cubre todo y la colonia tiembla. Los enemigos de aquí no tienen frío: tienen hambre.",
+      l8: "Cerezos en flor y puentes de madera. Una tierra de silencio donde el peligro llega con la brisa.",
+      l9: "Barcos hundidos y cofres vacíos. Quien enterró el tesoro dejó guardianes que aún vigilan.",
+      l10: "Luces que parpadean y máquinas que zumban. Nadie sabe quién las construyó, pero aún funcionan."
+    },
+    fr: {
+      title: "AntDefender : défends le foyer · Rauxa Games",
+      metaDesc: "Rauxa Games est un petit studio indépendant d'Andorre. AntDefender est son premier jeu : un tower defense d'action pour Android où tu défends ton nid.",
+      langLabel: "Langue",
+      bannerAlt: "AntDefender : des championnes défendent le nid contre les vagues d'ennemis",
+      eyebrow: "Rauxa Games · Andorre",
+      lead: "Le nid est en danger et la colonie n'a plus qu'un espoir : toi. Un tower defense d'action pour Android : cours, ramasse des pièces, recrute des soldats et des championnes, et repousse vague après vague. Gratuit et sans achats intégrés.",
+      play: "▶ Disponible sur Google Play",
+      privacy: "Politique de confidentialité",
+      privacyNote: " (en anglais)",
+      shotCombatAlt: "Combat : le nid attaqué par une vague d'ennemis",
+      shotBaseAlt: "La base : construis et améliore les bâtiments du nid",
+      shotHeroesAlt: "Choix de la championne",
+      featuresTitle: "Comment on joue",
+      f1: "Tu ne places pas tes tours depuis un menu, tu les construis en courant. Chaque partie dure quelques minutes et se joue d'un seul doigt.",
+      f2: "Ramasse les pièces lâchées par les ennemis, dresse balistes et tours, et recrute des soldats qui garnissent tes tours.",
+      f3: "Quatre championnes avec attaque spéciale : choisis celle qui correspond à ta façon de jouer et fais-la progresser.",
+      f4: "200 niveaux répartis en 10 mondes, de 4 à 7 vagues par niveau et des boss qui te barrent la route.",
+      f5: "Entre les parties, améliore le nid, la baliste, la tour des soldats et les statues de tes championnes.",
+      f6: "Gratuit et sans achats intégrés. Classements mondial et par pays. 11 langues.",
+      worldsTitle: "Les mondes",
+      worldsIntro: "200 niveaux répartis en 10 mondes. Chaque monde change le décor, l'agencement du nid et les ennemis que tu affrontes.",
+      levels: "Niveaux {a} à {b}",
+      gameAlt: "Partie dans le monde {w}",
+      mapAlt: "Carte des niveaux du monde {w}",
+      w1: "Forêt",
+      w2: "Fantasy",
+      w3: "Désert",
+      w4: "Médiéval",
+      w5: "Automne",
+      w6: "Campagne",
+      w7: "Hiver",
+      w8: "Japon",
+      w9: "Pirates",
+      w10: "Science-fiction",
+      factStudioLabel: "Studio",
+      factStudio: "Rauxa Games, Andorre. Développement indépendant.",
+      factGameLabel: "Jeu",
+      factGame: "AntDefender pour Android — paquet",
+      factGameLink: "Disponible sur Google Play",
+      factContactLabel: "Contact",
+      navHome: "Accueil",
+      rights: "Tous droits réservés.",
+      l1: "Le jardin où la colonie est née. Sous les feuilles, les premiers ennemis sentent déjà le miel du nid.",
+      l2: "Un village de conte où les lanternes ne s'éteignent jamais. Ses habitants ont fui quelque chose qui rôde encore ici.",
+      l3: "Du sable jusqu'à l'horizon. Le jour brûle, la nuit gèle, et les ennemis arrivent sans bruit.",
+      l4: "De vieux remparts et des bannières déchirées. Une guerre s'est perdue ici il y a longtemps ; il ne faut pas en perdre une autre.",
+      l5: "La forêt se dénude et chaque feuille qui tombe cache un pas ennemi. L'automne est beau, mais il ne pardonne pas.",
+      l6: "Des champs, des granges et des chemins de terre. Les gens d'ici sont partis vite : ils ont laissé la porte ouverte.",
+      l7: "La glace recouvre tout et la colonie frissonne. Les ennemis d'ici n'ont pas froid : ils ont faim.",
+      l8: "Des cerisiers en fleurs et des ponts de bois. Une terre de silence où le danger arrive avec la brise.",
+      l9: "Des navires coulés et des coffres vides. Celui qui a enterré le trésor a laissé des gardiens qui veillent encore.",
+      l10: "Des lumières qui clignotent et des machines qui bourdonnent. Personne ne sait qui les a construites, mais elles fonctionnent encore."
+    },
+    de: {
+      title: "AntDefender: Zuhause schützen · Rauxa Games",
+      metaDesc: "Rauxa Games ist ein kleines unabhängiges Studio aus Andorra. AntDefender ist sein erstes Spiel: ein Action-Tower-Defense für Android, in dem du dein Nest verteidigst.",
+      langLabel: "Sprache",
+      bannerAlt: "AntDefender: Championinnen verteidigen das Nest gegen Gegnerwellen",
+      eyebrow: "Rauxa Games · Andorra",
+      lead: "Das Nest ist in Gefahr und die Kolonie hat nur noch eine Hoffnung: dich. Ein Action-Tower-Defense für Android: Renn los, sammle Münzen, rekrutiere Soldaten und Championinnen und halte Welle um Welle stand. Kostenlos und ohne In-App-Käufe.",
+      play: "▶ Jetzt bei Google Play",
+      privacy: "Datenschutzerklärung",
+      privacyNote: " (auf Englisch)",
+      shotCombatAlt: "Kampf: Eine Gegnerwelle greift das Nest an",
+      shotBaseAlt: "Die Basis: Gebäude des Nests bauen und verbessern",
+      shotHeroesAlt: "Auswahl der Championin",
+      featuresTitle: "So wird gespielt",
+      f1: "Du setzt Türme nicht aus einem Menü, du baust sie im Laufen. Jede Partie dauert ein paar Minuten und lässt sich mit einem Finger spielen.",
+      f2: "Sammle die Münzen, die Gegner fallen lassen, errichte Ballisten und Türme und rekrutiere Soldaten, die deine Türme besetzen.",
+      f3: "Vier Championinnen mit Spezialangriff: Wähl die, die zu deinem Spielstil passt, und lass sie wachsen.",
+      f4: "200 Level in 10 Welten, 4 bis 7 Wellen pro Level und Bosse, die dir den Weg versperren.",
+      f5: "Zwischen den Partien verbesserst du Nest, Balliste, Soldatenturm und die Statuen deiner Championinnen.",
+      f6: "Kostenlos und ohne In-App-Käufe. Weltweite und Länder-Ranglisten. 11 Sprachen.",
+      worldsTitle: "Die Welten",
+      worldsIntro: "200 Level in 10 Welten. Jede Welt verändert die Landschaft, den Aufbau des Nests und die Gegner, die dort auftauchen.",
+      levels: "Level {a}–{b}",
+      gameAlt: "Spielszene in der Welt {w}",
+      mapAlt: "Levelkarte der Welt {w}",
+      w1: "Wald",
+      w2: "Fantasy",
+      w3: "Wüste",
+      w4: "Mittelalter",
+      w5: "Herbst",
+      w6: "Land",
+      w7: "Winter",
+      w8: "Japan",
+      w9: "Piraten",
+      w10: "Science-Fiction",
+      factStudioLabel: "Studio",
+      factStudio: "Rauxa Games, Andorra. Unabhängige Entwicklung.",
+      factGameLabel: "Spiel",
+      factGame: "AntDefender für Android — Paket",
+      factGameLink: "Erhältlich bei Google Play",
+      factContactLabel: "Kontakt",
+      navHome: "Startseite",
+      rights: "Alle Rechte vorbehalten.",
+      l1: "Der Garten, in dem die Kolonie geboren wurde. Unter den Blättern riechen die ersten Feinde schon den Honig des Nests.",
+      l2: "Ein Märchendorf, in dem die Laternen nie erlöschen. Seine Bewohner flohen vor etwas, das hier noch umherstreift.",
+      l3: "Sand bis zum Horizont. Tags brennt es, nachts friert es, und die Feinde kommen ohne einen Laut.",
+      l4: "Alte Mauern und zerrissene Banner. Hier ging vor langer Zeit ein Krieg verloren; jetzt gilt es, keinen weiteren zu verlieren.",
+      l5: "Der Wald entblättert sich, und jedes fallende Blatt verbirgt einen feindlichen Schritt. Der Herbst ist schön, aber gnadenlos.",
+      l6: "Felder, Scheunen und Feldwege. Die Leute hier sind in Eile gegangen: Sie ließen die Tür offen.",
+      l7: "Eis bedeckt alles und die Kolonie zittert. Die Feinde hier frieren nicht: Sie sind hungrig.",
+      l8: "Kirschblüten und Holzbrücken. Ein Land der Stille, in dem die Gefahr mit der Brise kommt.",
+      l9: "Gesunkene Schiffe und leere Truhen. Wer den Schatz vergrub, ließ Wächter zurück, die noch immer wachen.",
+      l10: "Blinkende Lichter und summende Maschinen. Niemand weiß, wer sie gebaut hat, aber sie laufen noch."
+    },
+    pt: {
+      title: "AntDefender: defende o teu lar · Rauxa Games",
+      metaDesc: "A Rauxa Games é um pequeno estúdio independente de Andorra. AntDefender é o seu primeiro jogo: um tower defense de ação para Android em que defendes o teu ninho.",
+      langLabel: "Idioma",
+      bannerAlt: "AntDefender: campeãs a defender o ninho das vagas de inimigos",
+      eyebrow: "Rauxa Games · Andorra",
+      lead: "O ninho está em perigo e a colónia só tem uma esperança: tu. Um tower defense de ação para Android: corre, apanha moedas, recruta soldados e campeãs, e trava vaga após vaga. Gratuito e sem compras integradas.",
+      play: "▶ Disponível no Google Play",
+      privacy: "Política de privacidade",
+      privacyNote: " (em inglês)",
+      shotCombatAlt: "Combate: o ninho atacado por uma vaga de inimigos",
+      shotBaseAlt: "A base: constrói e melhora os edifícios do ninho",
+      shotHeroesAlt: "Escolha da campeã",
+      featuresTitle: "Como se joga",
+      f1: "Não colocas torres a partir de um menu: constrói-las a correr. Cada partida dura uns minutos e joga-se com um só dedo.",
+      f2: "Apanha as moedas que os inimigos deixam cair, ergue balistas e torres, e recruta soldados que guarnecem as torres.",
+      f3: "Quatro campeãs com ataque especial: escolhe a que encaixa na tua forma de jogar e faz com que cresça.",
+      f4: "200 níveis distribuídos por 10 mundos, 4 a 7 vagas por nível e chefes que te barram o caminho.",
+      f5: "Entre partidas, melhora o ninho, a balista, a torre de soldados e as estátuas das tuas campeãs.",
+      f6: "Gratuito e sem compras integradas. Classificações mundial e por país. 11 idiomas.",
+      worldsTitle: "Os mundos",
+      worldsIntro: "200 níveis distribuídos por 10 mundos. Cada mundo muda a paisagem, o desenho do ninho e os inimigos que aparecem.",
+      levels: "Níveis {a}–{b}",
+      gameAlt: "Partida no mundo {w}",
+      mapAlt: "Mapa de níveis do mundo {w}",
+      w1: "Floresta",
+      w2: "Fantasia",
+      w3: "Deserto",
+      w4: "Medieval",
+      w5: "Outono",
+      w6: "Campo",
+      w7: "Inverno",
+      w8: "Japão",
+      w9: "Piratas",
+      w10: "Ficção científica",
+      factStudioLabel: "Estúdio",
+      factStudio: "Rauxa Games, Andorra. Desenvolvimento independente.",
+      factGameLabel: "Jogo",
+      factGame: "AntDefender para Android — pacote",
+      factGameLink: "Disponível no Google Play",
+      factContactLabel: "Contacto",
+      navHome: "Início",
+      rights: "Todos os direitos reservados.",
+      l1: "O jardim onde a colónia nasceu. Sob as folhas, os primeiros inimigos já sentem o cheiro do mel do ninho.",
+      l2: "Uma aldeia de contos onde as lanternas nunca se apagam. Os seus habitantes fugiram de algo que ainda anda por aqui.",
+      l3: "Areia até ao horizonte. De dia queima, de noite gela, e os inimigos chegam sem fazer barulho.",
+      l4: "Muralhas velhas e estandartes rasgados. Aqui perdeu-se uma guerra há muito tempo; agora é preciso não perder outra.",
+      l5: "A floresta despe-se e cada folha que cai esconde um passo inimigo. O outono é bonito, mas não perdoa.",
+      l6: "Campos, celeiros e caminhos de terra. As pessoas daqui partiram à pressa: deixaram a porta aberta.",
+      l7: "O gelo cobre tudo e a colónia treme. Os inimigos daqui não têm frio: têm fome.",
+      l8: "Cerejeiras em flor e pontes de madeira. Uma terra de silêncio onde o perigo chega com a brisa.",
+      l9: "Navios afundados e arcas vazias. Quem enterrou o tesouro deixou guardiões que ainda vigiam.",
+      l10: "Luzes que piscam e máquinas que zumbem. Ninguém sabe quem as construiu, mas ainda funcionam."
+    },
+    ru: {
+      title: "AntDefender: защити свой дом · Rauxa Games",
+      metaDesc: "Rauxa Games — небольшая независимая студия из Андорры. AntDefender — её первая игра: экшен tower defense для Android, в котором ты защищаешь своё гнездо.",
+      langLabel: "Язык",
+      bannerAlt: "AntDefender: чемпионки защищают гнездо от волн врагов",
+      eyebrow: "Rauxa Games · Андорра",
+      lead: "Гнездо в опасности, и у колонии осталась одна надежда: ты. Экшен tower defense для Android: беги, собирай монеты, нанимай солдат и чемпионок и отражай волну за волной. Бесплатно и без внутриигровых покупок.",
+      play: "▶ Скачать в Google Play",
+      privacy: "Политика конфиденциальности",
+      privacyNote: " (на английском)",
+      shotCombatAlt: "Бой: волна врагов атакует гнездо",
+      shotBaseAlt: "База: строй и улучшай здания гнезда",
+      shotHeroesAlt: "Выбор чемпионки",
+      featuresTitle: "Как играть",
+      f1: "Башни не расставляются из меню — ты строишь их на бегу. Каждый матч длится пару минут и играется одним пальцем.",
+      f2: "Собирай монеты, которые выпадают из врагов, возводи баллисты и башни и нанимай солдат, которые занимают башни.",
+      f3: "Четыре чемпионки с особой атакой: выбери ту, что подходит твоему стилю, и развивай её.",
+      f4: "200 уровней в 10 мирах, от 4 до 7 волн на уровень и боссы, которые встанут у тебя на пути.",
+      f5: "Между матчами улучшай гнездо, баллисту, башню солдат и статуи своих чемпионок.",
+      f6: "Бесплатно и без внутриигровых покупок. Мировой рейтинг и рейтинги по странам. 11 языков.",
+      worldsTitle: "Миры",
+      worldsIntro: "200 уровней в 10 мирах. Каждый мир меняет пейзаж, устройство гнезда и врагов, которые в нём появляются.",
+      levels: "Уровни {a}–{b}",
+      gameAlt: "Матч в мире «{w}»",
+      mapAlt: "Карта уровней мира «{w}»",
+      w1: "Лес",
+      w2: "Фэнтези",
+      w3: "Пустыня",
+      w4: "Средневековье",
+      w5: "Осень",
+      w6: "Деревня",
+      w7: "Зима",
+      w8: "Япония",
+      w9: "Пираты",
+      w10: "Научная фантастика",
+      factStudioLabel: "Студия",
+      factStudio: "Rauxa Games, Андорра. Независимая разработка.",
+      factGameLabel: "Игра",
+      factGame: "AntDefender для Android — пакет",
+      factGameLink: "Доступно в Google Play",
+      factContactLabel: "Контакты",
+      navHome: "Главная",
+      rights: "Все права защищены.",
+      l1: "Сад, где родилась колония. Под листвой первые враги уже чуют мёд гнезда.",
+      l2: "Сказочная деревня, где фонари никогда не гаснут. Её жители бежали от чего-то, что всё ещё бродит здесь.",
+      l3: "Песок до самого горизонта. Днём он жжёт, ночью леденит, а враги приходят бесшумно.",
+      l4: "Старые стены и рваные знамёна. Давным-давно здесь проиграли войну; теперь нельзя проиграть ещё одну.",
+      l5: "Лес сбрасывает листву, и каждый падающий лист скрывает шаг врага. Осень красива, но не прощает.",
+      l6: "Поля, амбары и грунтовые дороги. Местные ушли в спешке: дверь осталась открытой.",
+      l7: "Лёд покрывает всё, и колония дрожит. Здешним врагам не холодно — они голодны.",
+      l8: "Цветущая сакура и деревянные мосты. Земля тишины, где опасность приходит с ветерком.",
+      l9: "Затонувшие корабли и пустые сундуки. Тот, кто закопал сокровище, оставил стражей, что всё ещё несут дозор.",
+      l10: "Мигающие огни и гудящие машины. Никто не знает, кто их построил, но они всё ещё работают."
+    },
+    ja: {
+      title: "AntDefender：家を守れ · Rauxa Games",
+      metaDesc: "Rauxa Gamesはアンドラの小さなインディースタジオ。AntDefenderはその最初のゲームで、巣を守るAndroid向けアクション・タワーディフェンスです。",
+      langLabel: "言語",
+      bannerAlt: "AntDefender：敵のウェーブから巣を守るチャンピオンたち",
+      eyebrow: "Rauxa Games · アンドラ",
+      lead: "巣が危ない。コロニーに残された希望は、あなただけ。Android向けのアクション・タワーディフェンス。走ってコインを集め、兵士とチャンピオンを率いて、次々に押し寄せるウェーブを食い止めよう。無料、アプリ内課金なし。",
+      play: "▶ Google Play で手に入れよう",
+      privacy: "プライバシーポリシー",
+      privacyNote: "（英語）",
+      shotCombatAlt: "バトル：敵のウェーブに襲われる巣",
+      shotBaseAlt: "拠点：巣の建物を建てて強化する",
+      shotHeroesAlt: "チャンピオン選択",
+      featuresTitle: "遊び方",
+      f1: "メニューからタワーを置くのではなく、走りながら建てていく。1プレイは数分、指1本で遊べる。",
+      f2: "敵が落とすコインを集めてバリスタやタワーを建て、兵士を雇ってタワーに配置する。",
+      f3: "特殊攻撃を持つ4人のチャンピオン。自分のプレイスタイルに合う一人を選び、育てていこう。",
+      f4: "10のワールドに200ステージ。1ステージ4〜7ウェーブ、行く手を阻むボスたち。",
+      f5: "バトルの合間には、巣・バリスタ・兵士のタワー・チャンピオンの像を強化しよう。",
+      f6: "無料、アプリ内課金なし。世界ランキングと国別ランキング。11言語に対応。",
+      worldsTitle: "ワールド",
+      worldsIntro: "10のワールドに200ステージ。ワールドごとに景色、巣の構造、出現する敵が変わる。",
+      levels: "ステージ {a}–{b}",
+      gameAlt: "{w}ワールドのバトル",
+      mapAlt: "{w}ワールドのステージマップ",
+      w1: "森",
+      w2: "ファンタジー",
+      w3: "砂漠",
+      w4: "中世",
+      w5: "秋",
+      w6: "田園",
+      w7: "冬",
+      w8: "和風",
+      w9: "海賊",
+      w10: "SF",
+      factStudioLabel: "スタジオ",
+      factStudio: "Rauxa Games（アンドラ）。インディー開発。",
+      factGameLabel: "ゲーム",
+      factGame: "Android版 AntDefender — パッケージ",
+      factGameLink: "Google Play で配信中",
+      factContactLabel: "お問い合わせ",
+      navHome: "ホーム",
+      rights: "無断転載を禁じます。",
+      l1: "コロニーが生まれた庭。葉の下では、最初の敵たちがもう巣の蜜の匂いを嗅ぎつけている。",
+      l2: "ランタンが決して消えない、おとぎ話のような村。住人たちは今もここに潜む何かから逃げ出した。",
+      l3: "地平線まで続く砂。昼は焼け、夜は凍え、敵は音もなくやって来る。",
+      l4: "古い城壁と裂けた旗。ここではずっと昔、戦に敗れた。今度は負けてはならない。",
+      l5: "森は葉を落とし、落ち葉の一枚一枚が敵の足音を隠す。秋は美しいが、容赦はない。",
+      l6: "畑と納屋と土の道。ここの人々は急いで去った。扉は開いたままだ。",
+      l7: "氷がすべてを覆い、コロニーは震える。ここの敵は寒くない。腹を空かせているのだ。",
+      l8: "桜の花と木の橋。静寂の地では、危険はそよ風とともに訪れる。",
+      l9: "沈んだ船と空の宝箱。宝を埋めた者は、今も見張り続ける番人を残していった。",
+      l10: "点滅する光と、うなりを上げる機械。誰が造ったのか知る者はいないが、今も動いている。"
+    },
+    zh: {
+      title: "AntDefender：守护家园 · Rauxa Games",
+      metaDesc: "Rauxa Games 是来自安道尔的小型独立工作室。AntDefender 是它的第一款游戏：一款守护巢穴的 Android 动作塔防游戏。",
+      langLabel: "语言",
+      bannerAlt: "AntDefender：勇士们抵御一波波敌人，守护巢穴",
+      eyebrow: "Rauxa Games · 安道尔",
+      lead: "巢穴危在旦夕，整个群落只剩一个希望：你。一款 Android 动作塔防游戏：奔跑、捡金币、招募士兵和勇士，挡住一波又一波的敌人。免费，无内购。",
+      play: "▶ 在 Google Play 下载",
+      privacy: "隐私政策",
+      privacyNote: "（英文）",
+      shotCombatAlt: "战斗：一波敌人正在进攻巢穴",
+      shotBaseAlt: "基地：建造并升级巢穴的建筑",
+      shotHeroesAlt: "选择勇士",
+      featuresTitle: "玩法",
+      f1: "塔不是在菜单里点出来的，而是你边跑边建的。每局只需几分钟，单指即可上手。",
+      f2: "捡起敌人掉落的金币，竖起弩炮和塔楼，再招募士兵驻守塔楼。",
+      f3: "四位勇士，各有特殊攻击：选一位契合你玩法的勇士，陪她一起成长。",
+      f4: "10 个世界，200 个关卡，每关 4 到 7 波敌人，还有挡在你路上的首领。",
+      f5: "两局之间，升级巢穴、弩炮、士兵塔和勇士雕像。",
+      f6: "免费，无内购。全球排行榜和国家排行榜。支持 11 种语言。",
+      worldsTitle: "世界",
+      worldsIntro: "10 个世界，200 个关卡。每个世界都有不同的景色、巢穴布局和敌人。",
+      levels: "第 {a}–{b} 关",
+      gameAlt: "{w}世界的对局画面",
+      mapAlt: "{w}世界的关卡地图",
+      w1: "森林",
+      w2: "奇幻",
+      w3: "沙漠",
+      w4: "中世纪",
+      w5: "秋日",
+      w6: "乡村",
+      w7: "寒冬",
+      w8: "和风",
+      w9: "海盗",
+      w10: "科幻",
+      factStudioLabel: "工作室",
+      factStudio: "Rauxa Games，安道尔。独立开发。",
+      factGameLabel: "游戏",
+      factGame: "AntDefender（Android 版）— 包名",
+      factGameLink: "已在 Google Play 上架",
+      factContactLabel: "联系方式",
+      navHome: "首页",
+      rights: "版权所有。",
+      l1: "殖民地诞生的花园。树叶之下，第一批敌人已经闻到了巢穴蜂蜜的气味。",
+      l2: "一座灯笼永不熄灭的童话小村。村民们逃离了某种至今仍在此游荡的东西。",
+      l3: "黄沙直到天边。白天灼热，夜里冰冷，敌人悄无声息地到来。",
+      l4: "古老的城墙和破碎的旗帜。很久以前这里输掉了一场战争；这次不能再输。",
+      l5: "森林褪去树叶，每一片落叶都藏着敌人的脚步。秋天很美，却毫不留情。",
+      l6: "田野、谷仓和土路。这里的人走得匆忙：门还敞开着。",
+      l7: "冰雪覆盖一切，殖民地在颤抖。这里的敌人不怕冷：它们饿了。",
+      l8: "樱花与木桥。一片寂静之地，危险随微风而至。",
+      l9: "沉船与空箱。埋下宝藏的人留下了至今仍在守望的守卫。",
+      l10: "闪烁的灯光和嗡嗡作响的机器。没人知道是谁造的，但它们仍在运转。"
+    },
+    hi: {
+      title: "AntDefender: अपना घर बचाओ · Rauxa Games",
+      metaDesc: "Rauxa Games अंडोरा का एक छोटा स्वतंत्र स्टूडियो है। AntDefender उसका पहला गेम है: Android के लिए एक एक्शन टावर डिफेंस, जिसमें तुम अपने घोंसले की रक्षा करते हो।",
+      langLabel: "भाषा",
+      bannerAlt: "AntDefender: दुश्मनों की लहरों से घोंसले की रक्षा करती चैंपियन",
+      eyebrow: "Rauxa Games · अंडोरा",
+      lead: "घोंसला ख़तरे में है और कॉलोनी की आख़िरी उम्मीद हो तुम। Android के लिए एक एक्शन टावर डिफेंस गेम: दौड़ो, सिक्के जमा करो, सैनिक और चैंपियन भर्ती करो, और लहर-दर-लहर दुश्मनों को रोको। मुफ़्त और बिना इन-ऐप खरीदारी के।",
+      play: "▶ Google Play पर पाएँ",
+      privacy: "गोपनीयता नीति",
+      privacyNote: " (अंग्रेज़ी में)",
+      shotCombatAlt: "लड़ाई: दुश्मनों की लहर घोंसले पर हमला कर रही है",
+      shotBaseAlt: "बेस: घोंसले की इमारतें बनाओ और अपग्रेड करो",
+      shotHeroesAlt: "चैंपियन चुनना",
+      featuresTitle: "कैसे खेलें",
+      f1: "यहाँ टावर मेन्यू से नहीं रखे जाते, तुम उन्हें दौड़ते-दौड़ते बनाते हो। हर मैच कुछ मिनट का होता है और एक उँगली से खेला जाता है।",
+      f2: "दुश्मनों से गिरे सिक्के उठाओ, बलिस्टा और टावर खड़े करो, और सैनिक भर्ती करो जो टावरों पर तैनात हों।",
+      f3: "विशेष हमले वाली चार चैंपियन: अपने खेलने के अंदाज़ से मेल खाती चैंपियन चुनो और उसे आगे बढ़ाओ।",
+      f4: "10 दुनियाओं में 200 लेवल, हर लेवल में 4 से 7 लहरें और रास्ता रोकने वाले बॉस।",
+      f5: "मैचों के बीच घोंसला, बलिस्टा, सैनिक टावर और अपनी चैंपियनों की मूर्तियाँ अपग्रेड करो।",
+      f6: "मुफ़्त और कोई इन-ऐप खरीदारी नहीं। विश्व और देश के अनुसार लीडरबोर्ड। 11 भाषाएँ।",
+      worldsTitle: "दुनियाएँ",
+      worldsIntro: "10 दुनियाओं में 200 लेवल। हर दुनिया में नज़ारा, घोंसले की बनावट और दुश्मन बदल जाते हैं।",
+      levels: "लेवल {a}–{b}",
+      gameAlt: "{w} दुनिया में मैच",
+      mapAlt: "{w} दुनिया का लेवल मैप",
+      w1: "जंगल",
+      w2: "फ़ैंटेसी",
+      w3: "रेगिस्तान",
+      w4: "मध्यकालीन",
+      w5: "शरद",
+      w6: "गाँव",
+      w7: "सर्दी",
+      w8: "जापान",
+      w9: "समुद्री डाकू",
+      w10: "साइंस-फ़िक्शन",
+      factStudioLabel: "स्टूडियो",
+      factStudio: "Rauxa Games, अंडोरा। स्वतंत्र विकास।",
+      factGameLabel: "गेम",
+      factGame: "Android के लिए AntDefender — पैकेज",
+      factGameLink: "Google Play पर उपलब्ध",
+      factContactLabel: "संपर्क",
+      navHome: "होम",
+      rights: "सर्वाधिकार सुरक्षित।",
+      l1: "वह बगीचा जहाँ कॉलोनी का जन्म हुआ। पत्तों के नीचे, पहले दुश्मन घोंसले के शहद की गंध सूँघ चुके हैं।",
+      l2: "एक परीकथा जैसा गाँव जहाँ लालटेनें कभी नहीं बुझतीं। यहाँ के लोग किसी ऐसी चीज़ से भाग गए जो अब भी यहाँ घूमती है।",
+      l3: "क्षितिज तक फैली रेत। दिन में जलती है, रात में जमती है, और दुश्मन बिना आवाज़ आते हैं।",
+      l4: "पुरानी दीवारें और फटे हुए ध्वज। बहुत पहले यहाँ एक युद्ध हारा गया था; अब दूसरा नहीं हारना है।",
+      l5: "जंगल अपने पत्ते गिरा रहा है, और हर गिरता पत्ता दुश्मन के कदम छुपाता है। शरद सुंदर है, पर दया नहीं करता।",
+      l6: "खेत, खलिहान और कच्ची सड़कें। यहाँ के लोग जल्दी में चले गए: दरवाज़ा खुला छोड़ गए।",
+      l7: "बर्फ़ सब कुछ ढक लेती है और कॉलोनी काँपती है। यहाँ के दुश्मनों को ठंड नहीं लगती: उन्हें भूख लगी है।",
+      l8: "खिले चेरी के पेड़ और लकड़ी के पुल। मौन की भूमि, जहाँ ख़तरा हवा के साथ आता है।",
+      l9: "डूबे जहाज़ और खाली संदूक। जिसने ख़ज़ाना दबाया, वह ऐसे रक्षक छोड़ गया जो अब भी पहरा देते हैं।",
+      l10: "टिमटिमाती रोशनियाँ और गुनगुनाती मशीनें। कोई नहीं जानता इन्हें किसने बनाया, पर ये अब भी चलती हैं।"
+    },
+    ar: {
+      title: "AntDefender: دافع عن بيتك · Rauxa Games",
+      metaDesc: "Rauxa Games استوديو مستقل صغير من أندورا. AntDefender هي لعبته الأولى: لعبة دفاع عن الأبراج بأسلوب أكشن لأندرويد تدافع فيها عن عشك.",
+      langLabel: "اللغة",
+      bannerAlt: "AntDefender: بطلات يدافعن عن العش في وجه موجات الأعداء",
+      eyebrow: "Rauxa Games · أندورا",
+      lead: "العش في خطر، ولم يبقَ للمستعمرة سوى أمل واحد: أنت. لعبة دفاع عن الأبراج بأسلوب أكشن لأندرويد: اركض، اجمع العملات، جنّد الجنود والبطلات، واصمد أمام موجة تلو الأخرى. مجانية وبدون مشتريات داخل التطبيق.",
+      play: "▶ احصل عليها من Google Play",
+      privacy: "سياسة الخصوصية",
+      privacyNote: " (بالإنجليزية)",
+      shotCombatAlt: "القتال: موجة من الأعداء تهاجم العش",
+      shotBaseAlt: "القاعدة: ابنِ مباني العش وطوّرها",
+      shotHeroesAlt: "اختيار البطلة",
+      featuresTitle: "طريقة اللعب",
+      f1: "لا تضع الأبراج من قائمة، بل تبنيها وأنت تركض. كل جولة تدوم بضع دقائق وتُلعب بإصبع واحد.",
+      f2: "اجمع العملات التي يسقطها الأعداء، شيّد المقاليع والأبراج، وجنّد جنودًا يحرسون أبراجك.",
+      f3: "أربع بطلات بهجوم خاص: اختر من تناسب أسلوبك في اللعب وطوّرها.",
+      f4: "200 مستوى في 10 عوالم، من 4 إلى 7 موجات في كل مستوى، وزعماء يعترضون طريقك.",
+      f5: "بين الجولات، طوّر العش والمقلاع وبرج الجنود وتماثيل بطلاتك.",
+      f6: "مجانية وبدون مشتريات داخل التطبيق. ترتيب عالمي وترتيب حسب البلد. 11 لغة.",
+      worldsTitle: "العوالم",
+      worldsIntro: "200 مستوى في 10 عوالم. كل عالم يغيّر المشهد وتصميم العش والأعداء الذين يظهرون فيه.",
+      levels: "المستويات {a}–{b}",
+      gameAlt: "جولة في عالم {w}",
+      mapAlt: "خريطة مستويات عالم {w}",
+      w1: "غابة",
+      w2: "فانتازيا",
+      w3: "صحراء",
+      w4: "عصور وسطى",
+      w5: "خريف",
+      w6: "ريف",
+      w7: "شتاء",
+      w8: "اليابان",
+      w9: "قراصنة",
+      w10: "خيال علمي",
+      factStudioLabel: "الاستوديو",
+      factStudio: "Rauxa Games، أندورا. تطوير مستقل.",
+      factGameLabel: "اللعبة",
+      factGame: "AntDefender لأندرويد — الحزمة",
+      factGameLink: "متوفرة على Google Play",
+      factContactLabel: "التواصل",
+      navHome: "الرئيسية",
+      rights: "جميع الحقوق محفوظة.",
+      l1: "الحديقة التي وُلدت فيها المستعمرة. تحت الأوراق، بدأ أول الأعداء يشمّون عسل العش.",
+      l2: "قرية من الحكايات لا تنطفئ فيها الفوانيس أبداً. هرب سكانها من شيء ما زال يجول هنا.",
+      l3: "رمال حتى الأفق. تحرق في النهار وتجمّد في الليل، والأعداء يصلون بلا صوت.",
+      l4: "أسوار قديمة وبيارق ممزّقة. هنا خُسرت حرب منذ زمن بعيد؛ والآن يجب ألّا نخسر أخرى.",
+      l5: "تتعرّى الغابة، وكل ورقة تسقط تخفي خطوة عدو. الخريف جميل، لكنه لا يرحم.",
+      l6: "حقول ومخازن وطرق ترابية. غادر أهل هذا المكان على عجل: تركوا الباب مفتوحاً.",
+      l7: "الجليد يغطي كل شيء والمستعمرة ترتجف. أعداء هذا المكان لا يشعرون بالبرد: بل بالجوع.",
+      l8: "أزهار الكرز وجسور خشبية. أرض من الصمت يأتي فيها الخطر مع النسيم.",
+      l9: "سفن غارقة وصناديق فارغة. من دفن الكنز ترك حرّاساً ما زالوا يراقبون.",
+      l10: "أضواء تومض وآلات تهمهم. لا أحد يعرف من بناها، لكنها ما زالت تعمل."
+    }
+  };
+
+  var LANGS = ['ca', 'en', 'es', 'fr', 'de', 'pt', 'ru', 'ja', 'zh', 'hi', 'ar'];
+  var PRIVACY_LANGS = ['ca', 'en', 'es'];   // idiomes amb versió pròpia de la política
+  var KEY = 'rauxagames.lang';              // mateixa clau que privacy.html
+  var select = document.getElementById('lang-select');
+
+  function readStored() {
+    try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+  }
+  function store(lang) {
+    try { window.localStorage.setItem(KEY, lang); } catch (e) { /* mode privat o bloquejat */ }
+  }
+  function valid(lang) { return LANGS.indexOf(lang) >= 0 ? lang : null; }
+  function fromHash() {
+    return valid((window.location.hash || '').replace('#', '').toLowerCase());
+  }
+  function fromBrowser() {
+    var list = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || ''];
+    for (var i = 0; i < list.length; i++) {
+      var base = String(list[i] || '').toLowerCase().split(/[-_]/)[0];   // pt-BR → pt, zh-TW → zh, ca-ES-valencia → ca
+      if (valid(base)) return base;
+    }
+    return null;
+  }
+
+  function fmt(str, el, dict) {
+    return str
+      .replace('{w}', el.getAttribute('data-w') ? dict[el.getAttribute('data-w')] : '')
+      .replace('{a}', el.getAttribute('data-a') || '')
+      .replace('{b}', el.getAttribute('data-b') || '');
+  }
+
+  function apply(lang, updateHash) {
+    lang = valid(lang) || 'en';
+    var dict = I18N[lang];
+    var root = document.documentElement;
+    root.setAttribute('lang', lang);
+    root.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+    var nodes = document.querySelectorAll('[data-i18n]');
+    for (var i = 0; i < nodes.length; i++) {
+      var k = nodes[i].getAttribute('data-i18n');
+      if (dict[k] !== undefined) nodes[i].textContent = fmt(dict[k], nodes[i], dict);
+    }
+    nodes = document.querySelectorAll('[data-i18n-alt]');
+    for (i = 0; i < nodes.length; i++) {
+      var ka = nodes[i].getAttribute('data-i18n-alt');
+      if (dict[ka] !== undefined) nodes[i].setAttribute('alt', fmt(dict[ka], nodes[i], dict));
+    }
+
+    document.title = dict.title;
+    var desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute('content', dict.metaDesc);
+    select.setAttribute('aria-label', dict.langLabel);
+    select.value = lang;
+
+    var privacyHref = 'privacy.html#' + (PRIVACY_LANGS.indexOf(lang) >= 0 ? lang : 'en');
+    var links = document.querySelectorAll('[data-privacy-link]');
+    for (i = 0; i < links.length; i++) links[i].setAttribute('href', privacyHref);
+    // Peu de pàgina: el text de l'enllaç també avisa quan la política és en anglès.
+    var footLink = document.querySelector('footer [data-privacy-link]');
+    if (footLink) footLink.textContent = dict.privacy + dict.privacyNote;
+
+    if (updateHash && window.history && window.history.replaceState) {
+      try { window.history.replaceState(null, '', '#' + lang); } catch (e) { /* res */ }
+    }
+  }
+
+  select.addEventListener('change', function () {
+    store(select.value);
+    apply(select.value, true);
+  });
+  window.addEventListener('hashchange', function () {
+    var h = fromHash();
+    if (h) { store(h); apply(h, false); }
+  });
+
+  // Prioritat: #hash → idioma desat → idioma del navegador → anglès.
+  apply(fromHash() || valid(readStored()) || fromBrowser() || 'en', false);
+
+  // ---- Galeria dels mons: amaga imatges que fallen, targetes buides i, si cal, la secció ----
+  var section = document.getElementById('worlds');
+  var cards = section.querySelectorAll('.world');
+
+  function refresh() {
+    var anyCard = false;
+    for (var c = 0; c < cards.length; c++) {
+      var imgs = cards[c].querySelectorAll('img');
+      var failed = 0;
+      for (var j = 0; j < imgs.length; j++) if (imgs[j].getAttribute('data-state') === 'fail') failed++;
+      var cardOn = failed < imgs.length;
+      cards[c].classList.toggle('is-hidden', !cardOn);
+      cards[c].querySelector('.world-shots').classList.toggle('single', imgs.length - failed === 1);
+      if (cardOn) anyCard = true;
+    }
+    section.classList.toggle('is-hidden', !anyCard);
+  }
+  function mark(img, ok) {
+    img.setAttribute('data-state', ok ? 'ok' : 'fail');
+    img.classList.toggle('is-hidden', !ok);
+    refresh();
+  }
+  var worldImgs = section.querySelectorAll('img');
+  for (var n = 0; n < worldImgs.length; n++) {
+    (function (img) {
+      if (img.complete) {
+        // Ja resolta abans d'arribar aquí (naturalWidth 0 = trencada).
+        mark(img, img.naturalWidth > 0);
+      } else {
+        img.addEventListener('load', function () { mark(img, true); });
+        img.addEventListener('error', function () { mark(img, false); });
+      }
+    })(worldImgs[n]);
+  }
+})();
+</script>
 </body>
 </html>

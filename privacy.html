@@ -457,8 +457,23 @@
     var h = (window.location.hash || '').replace('#', '').toLowerCase();
     return LANGS.indexOf(h) >= 0 ? h : null;
   }
+  // Qualsevol codi d'idioma (també els 11 de la landing, que comparteix la clau) → ca / es / en.
+  function normalize(code) {
+    if (!code) return null;
+    var base = String(code).toLowerCase().split(/[-_]/)[0];
+    if (base === 'ca' || base === 'es') return base;
+    return 'en';
+  }
+  function fromBrowser() {
+    var list = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || ''];
+    for (var i = 0; i < list.length; i++) {
+      var base = String(list[i] || '').toLowerCase().split(/[-_]/)[0];
+      if (base === 'ca' || base === 'es' || base === 'en') return base;   // primer idioma conegut de la llista
+    }
+    return 'en';
+  }
   function apply(lang, updateHash) {
-    if (LANGS.indexOf(lang) < 0) lang = 'ca';
+    lang = normalize(lang) || 'en';
     var i;
     for (i = 0; i < blocks.length; i++) {
       var on = blocks[i].id === lang;
@@ -486,8 +501,8 @@
     if (h) { store(h); apply(h, false); }
   });
 
-  // Prioritat: #hash a l'URL (enllaç directe) → idioma desat → català.
-  apply(fromHash() || readStored() || 'ca', false);
+  // Prioritat: #hash a l'URL (enllaç directe) → idioma desat → idioma del navegador (ca/es; la resta → en).
+  apply(fromHash() || normalize(readStored()) || fromBrowser(), false);
 })();
 </script>
 </body>
