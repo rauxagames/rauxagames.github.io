@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- SEO:BEGIN (generat per tools/build_i18n.py: no editar a mà) -->
+<!-- SEO:END -->
+<meta name="color-scheme" content="light dark">
+<style>
+  :root {
+    --bg: #f6f3ea;
+    --surface: #ffffff;
+    --text: #23201a;
+    --muted: #6b655a;
+    --accent: #b8541c;
+    --accent-text: #ffffff;
+    --border: #e2dccd;
+    --shadow: 0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17150f;
+      --surface: #201d16;
+      --text: #efe9dc;
+      --muted: #a39b8b;
+      --accent: #e5813e;
+      --accent-text: #17150f;
+      --border: #332e24;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17150f;
+    --surface: #201d16;
+    --text: #efe9dc;
+    --muted: #a39b8b;
+    --accent: #e5813e;
+    --accent-text: #17150f;
+    --border: #332e24;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  a { color: var(--accent); }
+  a:hover { text-decoration-thickness: 2px; }
+  .wrap { width: 100%; max-width: 960px; margin: 0 auto; padding: 0 16px; }
+  header { padding: 28px 0 8px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .brand { font-weight: 700; letter-spacing: .02em; text-decoration: none; color: var(--text); }
+  .lang-pick select {
+    font: inherit; font-size: .9rem;
+    color: var(--text); background: var(--surface);
+    border: 1px solid var(--border); border-radius: 999px;
+    padding: 4px 12px; max-width: 160px; cursor: pointer;
+  }
+  .lang-pick select:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  main { flex: 1; padding: 24px 0 48px; }
+  .hero {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 28px;
+    box-shadow: var(--shadow);
+  }
+  .eyebrow { color: var(--muted); text-transform: uppercase; font-size: .8rem; letter-spacing: .12em; margin: 0 0 8px; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; margin: 0 0 16px; }
+  h2 { font-size: 1.4rem; line-height: 1.25; margin: 0 0 8px; }
+  .lead { font-size: 1.15rem; margin: 0 0 24px; color: var(--text); max-width: 62ch; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid var(--accent);
+  }
+  .btn-primary { background: var(--accent); color: var(--accent-text); }
+  .facts { list-style: none; margin: 32px 0 0; padding: 0; display: grid; gap: 12px; }
+  .facts li { padding: 14px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+  .facts strong { display: block; font-size: .85rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
+  .banner { display: block; width: 100%; height: auto; border-radius: 16px; margin: 0 0 20px; box-shadow: var(--shadow); }
+  .title-row { display: flex; align-items: center; gap: 16px; margin: 0 0 16px; }
+  .title-row img { width: 72px; height: 72px; border-radius: 16px; flex: none; }
+  .title-row h1 { margin: 0; }
+  .btn-play { font-size: 1.05rem; padding: 12px 22px; }
+  .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 32px auto 0; max-width: 720px; }
+  .shots img { width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--border); display: block; }
+  .policy-links { margin: 16px 0 0; font-size: .95rem; color: var(--muted); }
+
+  /* Com es juga */
+  .features { margin: 32px 0 0; }
+  .features ul { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 10px; grid-template-columns: 1fr; }
+  .features li {
+    position: relative;
+    padding: 12px 16px; padding-inline-start: 38px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  }
+  .features li::before {
+    content: ""; position: absolute; inset-inline-start: 16px; top: 1.15em;
+    width: 10px; height: 10px; border-radius: 3px; background: var(--accent); transform: rotate(45deg);
+  }
+  @media (min-width: 760px) { .features ul { grid-template-columns: 1fr 1fr; } }
+
+  /* Els mons (les imatges img/themes/tNN_*.webp poden no existir: el JS amaga el que falla) */
+  .worlds { margin: 40px 0 0; }
+  .worlds-intro { color: var(--muted); margin: 0 0 16px; max-width: 62ch; }
+  .world-grid { display: grid; gap: 16px; grid-template-columns: 1fr; align-items: start; }
+  @media (min-width: 760px) { .world-grid { grid-template-columns: 1fr 1fr; } }
+  .world {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    padding: 16px; box-shadow: var(--shadow); margin: 0;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .world-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .world h3 { font-size: 1.15rem; margin: 0; }
+  .world-levels { color: var(--muted); font-size: .85rem; white-space: nowrap; }
+  .world-lore { margin: 0; color: var(--muted); font-size: .95rem; font-style: italic; }
+  .world-shots { display: grid; grid-template-columns: 2fr 1fr; gap: 8px; align-items: start; }
+  .world-shots img {
+    display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover;
+    border-radius: 10px; border: 1px solid var(--border); background: var(--bg);
+  }
+  .world-shots.single { grid-template-columns: 1fr; }
+  .is-hidden { display: none !important; }
+
+  /* Escriptures on l'espaiat de lletres i les majúscules no tenen sentit */
+  html:is([lang="ar"], [lang="hi"], [lang="ja"], [lang="zh"]) :is(.eyebrow, .facts strong) { letter-spacing: 0; }
+
+  @media (max-width: 520px) {
+    .hero { padding: 24px 18px; }
+    .shots { gap: 8px; }
+    .world { padding: 12px; }
+  }
+  footer { border-top: 1px solid var(--border); padding: 20px 0 32px; color: var(--muted); font-size: .9rem; }
+  footer nav a { margin-inline-end: 16px; }
+  .title-row h1 .h1-tag { display: block; font-size: clamp(1rem, 3.4vw, 1.25rem); font-weight: 600; line-height: 1.3; color: var(--muted); margin-top: 6px; }
+  .lang-links { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 12px 0 0; font-size: .85rem; }
+  footer .lang-links a { margin: 0; text-decoration: none; }
+  .lang-links a:hover, .lang-links a[aria-current] { text-decoration: underline; }
+  .lang-links a[aria-current] { color: var(--text); }
+
+  /* Fitxes dels jocs (portada) i galeria de 4 captures */
+  .games { display: grid; gap: 20px; grid-template-columns: 1fr; margin: 12px 0 0; }
+  @media (min-width: 760px) { .games { grid-template-columns: 1fr 1fr; } }
+  .game { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; }
+  .game > a > img { display: block; width: 100%; height: auto; aspect-ratio: 1024 / 500; object-fit: cover; }
+  .game-body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .game-head { display: flex; align-items: center; gap: 12px; }
+  .game-head img { width: 56px; height: 56px; border-radius: 14px; flex: none; }
+  .game-head h3 { margin: 0; font-size: 1.3rem; line-height: 1.2; }
+  .game-head h3 a { color: var(--text); text-decoration: none; }
+  .game-tag { display: block; font-size: .9rem; font-weight: 600; color: var(--muted); }
+  .game p { margin: 0; }
+  .game .actions { margin-top: auto; padding-top: 6px; }
+  .btn-ghost { background: transparent; color: var(--accent); }
+  .badge { display: inline-block; padding: 10px 18px; border-radius: 999px; font-weight: 600; border: 1px dashed var(--border); color: var(--muted); }
+  section.block { margin: 36px 0 0; }
+  .shots.four { grid-template-columns: repeat(2, 1fr); max-width: 560px; }
+  @media (min-width: 760px) { .shots.four { grid-template-columns: repeat(4, 1fr); max-width: 960px; } }
+</style>
+</head>
+<body>
+<header class="wrap">
+  <a class="brand" href="./" data-home-link>Rauxa Games</a>
+  <label class="lang-pick">
+    <span class="sr-only" data-i18n="langLabel">Language</span>
+    <select id="lang-select">
+      <option value="ca" lang="ca">Català</option>
+      <option value="en" selected lang="en">English</option>
+      <option value="es" lang="es">Español</option>
+      <option value="fr" lang="fr">Français</option>
+      <option value="de" lang="de">Deutsch</option>
+      <option value="pt" lang="pt">Português</option>
+      <option value="ru" lang="ru">Русский</option>
+      <option value="ja" lang="ja">日本語</option>
+      <option value="zh" lang="zh">简体中文</option>
+      <option value="hi" lang="hi">हिन्दी</option>
+      <option value="ar" lang="ar" dir="rtl">العربية</option>
+    </select>
+  </label>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow" data-i18n="eyebrow">Rauxa Games · Andorra</p>
+    <div class="title-row">
+      <img src="img/icon-192.png" width="72" height="72" alt="">
+      <h1>Rauxa Games <span class="h1-tag" data-i18n="h1Tag">Independent mobile games, made in Andorra</span></h1>
+    </div>
+    <p class="lead" data-i18n="lead">We make small, carefully crafted games for Android: quick to learn, played with one finger, and free, with no paying to win.</p>
+  </section>
+
+  <section class="block" id="games">
+    <h2 data-i18n="gamesTitle">Our games</h2>
+    <div class="games">
+      <article class="game">
+        <a href="antdefender/" data-game-link="antdefender"><img src="img/banner.webp" width="1024" height="500" loading="lazy" alt="AntDefender"></a>
+        <div class="game-body">
+          <div class="game-head">
+            <img src="img/icon-192.png" width="56" height="56" alt="">
+            <h3><a href="antdefender/" data-game-link="antdefender">AntDefender</a> <span class="game-tag" data-i18n="adTag">Ant tower defense</span></h3>
+          </div>
+          <p data-i18n="adDesc">Defend the nest wave after wave: build ballistas and towers on the run, with champions and 200 levels across 10 worlds.</p>
+          <div class="actions">
+            <a class="btn btn-primary" data-play-link="antdefender" href="#" data-i18n="playShort">▶ Google Play</a>
+            <a class="btn btn-ghost" href="antdefender/" data-game-link="antdefender" data-i18n="more">More about the game</a>
+          </div>
+        </div>
+      </article>
+      <article class="game">
+        <a href="cattower/" data-game-link="cattower"><img src="img/cattower/banner.webp" width="1024" height="500" loading="lazy" alt="Cat Tower"></a>
+        <div class="game-body">
+          <div class="game-head">
+            <img src="img/cattower/icon-192.png" width="56" height="56" alt="">
+            <h3><a href="cattower/" data-game-link="cattower">Cat Tower</a> <span class="game-tag" data-i18n="ctTag">Cat strategy for Android</span></h3>
+          </div>
+          <p data-i18n="ctDesc">Send your cats to conquer towers of cardboard boxes: draw and cut lines, and challenge your friends 1 vs 1.</p>
+          <div class="actions">
+            <span class="badge" data-i18n="soon">Coming soon to Google Play</span>
+            <a class="btn btn-ghost" href="cattower/" data-game-link="cattower" data-i18n="more">More about the game</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2 data-i18n="aboutTitle">About us</h2>
+    <p class="lead" data-i18n="about">Rauxa Games is a small independent studio based in Andorra. Our games are free and don't ask you for an account to play.</p>
+    <ul class="facts">
+      <li><strong data-i18n="factContactLabel">Contact</strong> <a href="mailto:rauxa.antdefender@gmail.com" dir="ltr">rauxa.antdefender@gmail.com</a></li>
+    </ul>
+  </section>
+</main>
+
+<footer class="wrap">
+  <nav>
+    <a href="./" data-home-link data-i18n="navHome">Home</a>
+    <span data-i18n="privacy">Privacy policy</span>:
+    <a href="privacy.html#en" data-privacy-link="antdefender">AntDefender</a>
+    <a href="cattower/privacy/#en" data-privacy-link="cattower">Cat Tower</a>
+  </nav>
+  <!-- LANGLINKS:BEGIN -->
+  <!-- LANGLINKS:END -->
+  <p>© 2026 Rauxa Games. <span data-i18n="rights">All rights reserved.</span></p>
+</footer>
+<script>
+(function () {
+  'use strict';
+
+  // Diccionari de textos (tools/build_i18n.py en fa les pàgines per idioma).
+  var I18N = {
+    ca: {
+      title: "Rauxa Games: jocs independents per a mòbil fets a Andorra",
+      metaDesc: "Rauxa Games és un estudi independent d'Andorra que fa jocs gratuïts per a Android: AntDefender (tower defense de formigues) i Cat Tower (estratègia de gats).",
+      h1Tag: "Jocs independents per a mòbil, fets a Andorra",
+      bannerAlt: "Rauxa Games: AntDefender i Cat Tower",
+      lead: "Fem jocs per a Android petits i ben cuidats: s'aprenen de seguida, es juguen amb un dit i són gratuïts, sense haver de pagar per guanyar.",
+      gamesTitle: "Els nostres jocs",
+      adTag: "Tower defense de formigues",
+      adDesc: "Defensa el niu onada rere onada: construeix ballestes i torres corrent, amb campiones i 200 nivells en 10 mons.",
+      ctTag: "Estratègia de gats per a Android",
+      ctDesc: "Envia els teus gats a conquerir torres de caixes de cartró: dibuixa i talla línies, i repta els teus amics a l'1 contra 1.",
+      playShort: "▶ Google Play",
+      more: "Més informació",
+      aboutTitle: "Qui som",
+      about: "Rauxa Games és un estudi petit i independent d'Andorra. Els nostres jocs són gratuïts i no et demanen cap compte per jugar.",
+      langLabel: "Idioma",
+      privacy: "Política de privadesa",
+      privacyNote: "",
+      factContactLabel: "Contacte",
+      navHome: "Inici",
+      rights: "Tots els drets reservats.",
+      soon: "Aviat a Google Play",
+      eyebrow: "Rauxa Games · Andorra"
+    },
+    en: {
+      title: "Rauxa Games: independent mobile games from Andorra",
+      metaDesc: "Rauxa Games is an independent studio from Andorra making free games for Android: AntDefender (ant tower defense) and Cat Tower (cat strategy).",
+      h1Tag: "Independent mobile games, made in Andorra",
+      bannerAlt: "Rauxa Games: AntDefender and Cat Tower",
+      lead: "We make small, carefully crafted games for Android: quick to learn, played with one finger, and free, with no paying to win.",
+      gamesTitle: "Our games",
+      adTag: "Ant tower defense",
+      adDesc: "Defend the nest wave after wave: build ballistas and towers on the run, with champions and 200 levels across 10 worlds.",
+      ctTag: "Cat strategy for Android",
+      ctDesc: "Send your cats to conquer towers of cardboard boxes: draw and cut lines, and challenge your friends 1 vs 1.",
+      playShort: "▶ Google Play",
+      more: "More about the game",
+      aboutTitle: "About us",
+      about: "Rauxa Games is a small independent studio based in Andorra. Our games are free and don't ask you for an account to play.",
+      langLabel: "Language",
+      privacy: "Privacy policy",
+      privacyNote: "",
+      factContactLabel: "Contact",
+      navHome: "Home",
+      rights: "All rights reserved.",
+      soon: "Coming soon to Google Play",
+      eyebrow: "Rauxa Games · Andorra"
+    },
+    es: {
+      title: "Rauxa Games: juegos independientes para móvil hechos en Andorra",
+      metaDesc: "Rauxa Games es un estudio independiente de Andorra que hace juegos gratuitos para Android: AntDefender (tower defense de hormigas) y Cat Tower (estrategia de gatos).",
+      h1Tag: "Juegos independientes para móvil, hechos en Andorra",
+      bannerAlt: "Rauxa Games: AntDefender y Cat Tower",
+      lead: "Hacemos juegos para Android pequeños y cuidados: se aprenden enseguida, se juegan con un dedo y son gratis, sin tener que pagar para ganar.",
+      gamesTitle: "Nuestros juegos",
+      adTag: "Tower defense de hormigas",
+      adDesc: "Defiende el nido oleada tras oleada: construye ballestas y torres corriendo, con campeonas y 200 niveles en 10 mundos.",
+      ctTag: "Estrategia de gatos para Android",
+      ctDesc: "Envía a tus gatos a conquistar torres de cajas de cartón: dibuja y corta líneas, y reta a tus amigos al 1 contra 1.",
+      playShort: "▶ Google Play",
+      more: "Más información",
+      aboutTitle: "Quiénes somos",
+      about: "Rauxa Games es un estudio pequeño e independiente de Andorra. Nuestros juegos son gratis y no te piden ninguna cuenta para jugar.",
+      langLabel: "Idioma",
+      privacy: "Política de privacidad",
+      privacyNote: "",
+      factContactLabel: "Contacto",
+      navHome: "Inicio",
+      rights: "Todos los derechos reservados.",
+      soon: "Próximamente en Google Play",
+      eyebrow: "Rauxa Games · Andorra"
+    },
+    fr: {
+      title: "Rauxa Games : jeux mobiles indépendants made in Andorre",
+      metaDesc: "Rauxa Games est un studio indépendant d'Andorre qui crée des jeux gratuits pour Android : AntDefender (tower defense de fourmis) et Cat Tower (stratégie avec des chats).",
+      h1Tag: "Jeux mobiles indépendants, créés en Andorre",
+      bannerAlt: "Rauxa Games : AntDefender et Cat Tower",
+      lead: "Nous créons de petits jeux soignés pour Android : vite appris, joués d'un doigt, et gratuits, sans payer pour gagner.",
+      gamesTitle: "Nos jeux",
+      adTag: "Tower defense de fourmis",
+      adDesc: "Défends le nid vague après vague : construis balistes et tours en courant, avec des championnes et 200 niveaux dans 10 mondes.",
+      ctTag: "Stratégie féline pour Android",
+      ctDesc: "Envoie tes chats conquérir des tours de cartons : trace et coupe des lignes, et défie tes amis en 1 contre 1.",
+      playShort: "▶ Google Play",
+      more: "En savoir plus",
+      aboutTitle: "Qui sommes-nous",
+      about: "Rauxa Games est un petit studio indépendant basé en Andorre. Nos jeux sont gratuits et ne te demandent aucun compte pour jouer.",
+      langLabel: "Langue",
+      privacy: "Politique de confidentialité",
+      privacyNote: " (en anglais)",
+      factContactLabel: "Contact",
+      navHome: "Accueil",
+      rights: "Tous droits réservés.",
+      soon: "Bientôt sur Google Play",
+      eyebrow: "Rauxa Games · Andorre"
+    },
+    de: {
+      title: "Rauxa Games: unabhängige Mobile-Games aus Andorra",
+      metaDesc: "Rauxa Games ist ein unabhängiges Studio aus Andorra, das kostenlose Spiele für Android macht: AntDefender (Ameisen-Tower-Defense) und Cat Tower (Katzen-Strategie).",
+      h1Tag: "Unabhängige Mobile-Games, gemacht in Andorra",
+      bannerAlt: "Rauxa Games: AntDefender und Cat Tower",
+      lead: "Wir machen kleine, liebevoll gestaltete Spiele für Android: schnell gelernt, mit einem Finger gespielt und kostenlos, ohne Pay-to-win.",
+      gamesTitle: "Unsere Spiele",
+      adTag: "Ameisen-Tower-Defense",
+      adDesc: "Verteidige das Nest Welle um Welle: Bau im Laufen Ballisten und Türme, mit Heldinnen und 200 Levels in 10 Welten.",
+      ctTag: "Katzen-Strategie für Android",
+      ctDesc: "Schick deine Katzen los, um Türme aus Pappkartons zu erobern: Zieh und schneide Linien und fordere deine Freunde zum 1 gegen 1 heraus.",
+      playShort: "▶ Google Play",
+      more: "Mehr erfahren",
+      aboutTitle: "Über uns",
+      about: "Rauxa Games ist ein kleines unabhängiges Studio in Andorra. Unsere Spiele sind kostenlos und verlangen kein Konto zum Spielen.",
+      langLabel: "Sprache",
+      privacy: "Datenschutzerklärung",
+      privacyNote: " (auf Englisch)",
+      factContactLabel: "Kontakt",
+      navHome: "Startseite",
+      rights: "Alle Rechte vorbehalten.",
+      soon: "Bald bei Google Play",
+      eyebrow: "Rauxa Games · Andorra"
+    },
+    pt: {
+      title: "Rauxa Games: jogos independentes para telemóvel feitos em Andorra",
+      metaDesc: "A Rauxa Games é um estúdio independente de Andorra que faz jogos gratuitos para Android: AntDefender (tower defense de formigas) e Cat Tower (estratégia com gatos).",
+      h1Tag: "Jogos independentes para telemóvel, feitos em Andorra",
+      bannerAlt: "Rauxa Games: AntDefender e Cat Tower",
+      lead: "Fazemos jogos para Android pequenos e cuidados: aprendem-se depressa, jogam-se com um dedo e são grátis, sem pagar para ganhar.",
+      gamesTitle: "Os nossos jogos",
+      adTag: "Tower defense de formigas",
+      adDesc: "Defende o ninho vaga após vaga: constrói balistas e torres a correr, com campeãs e 200 níveis em 10 mundos.",
+      ctTag: "Estratégia com gatos para Android",
+      ctDesc: "Envia os teus gatos para conquistar torres de caixas de cartão: desenha e corta linhas, e desafia os teus amigos para o 1 contra 1.",
+      playShort: "▶ Google Play",
+      more: "Saber mais",
+      aboutTitle: "Quem somos",
+      about: "A Rauxa Games é um pequeno estúdio independente sediado em Andorra. Os nossos jogos são grátis e não te pedem nenhuma conta para jogar.",
+      langLabel: "Idioma",
+      privacy: "Política de privacidade",
+      privacyNote: " (em inglês)",
+      factContactLabel: "Contacto",
+      navHome: "Início",
+      rights: "Todos os direitos reservados.",
+      soon: "Em breve no Google Play",
+      eyebrow: "Rauxa Games · Andorra"
+    },
+    ru: {
+      title: "Rauxa Games: независимые мобильные игры из Андорры",
+      metaDesc: "Rauxa Games — независимая студия из Андорры, которая делает бесплатные игры для Android: AntDefender (tower defense с муравьями) и Cat Tower (стратегия с котами).",
+      h1Tag: "Независимые мобильные игры, сделанные в Андорре",
+      bannerAlt: "Rauxa Games: AntDefender и Cat Tower",
+      lead: "Мы делаем небольшие продуманные игры для Android: их быстро осваиваешь, играешь одним пальцем, и они бесплатные — без платы за победу.",
+      gamesTitle: "Наши игры",
+      adTag: "Tower defense с муравьями",
+      adDesc: "Защищай гнездо волна за волной: строй баллисты и башни на бегу, с чемпионками и 200 уровнями в 10 мирах.",
+      ctTag: "Стратегия с котами для Android",
+      ctDesc: "Отправляй котов захватывать башни из картонных коробок: рисуй и разрезай линии и вызывай друзей на бой 1 на 1.",
+      playShort: "▶ Google Play",
+      more: "Подробнее",
+      aboutTitle: "О нас",
+      about: "Rauxa Games — небольшая независимая студия из Андорры. Наши игры бесплатные и не требуют аккаунта.",
+      langLabel: "Язык",
+      privacy: "Политика конфиденциальности",
+      privacyNote: " (на английском)",
+      factContactLabel: "Контакты",
+      navHome: "Главная",
+      rights: "Все права защищены.",
+      soon: "Скоро в Google Play",
+      eyebrow: "Rauxa Games · Андорра"
+    },
+    ja: {
+      title: "Rauxa Games：アンドラ発のインディーモバイルゲーム",
+      metaDesc: "Rauxa Games はアンドラのインディースタジオ。Android向けの無料ゲーム、AntDefender（アリのタワーディフェンス）と Cat Tower（ねこ戦略ゲーム）を作っています。",
+      h1Tag: "アンドラ生まれのインディーモバイルゲーム",
+      bannerAlt: "Rauxa Games：AntDefender と Cat Tower",
+      lead: "すぐに覚えられて、指一本で遊べる、ていねいに作った小さな Android ゲームを無料でお届けしています。お金を払わないと勝てない、ということはありません。",
+      gamesTitle: "ゲーム一覧",
+      adTag: "アリのタワーディフェンス",
+      adDesc: "押し寄せる敵の波から巣を守れ。走りながらバリスタやタワーを建て、チャンピオンと共に10の世界・200ステージに挑もう。",
+      ctTag: "Android向け ねこ戦略ゲーム",
+      ctDesc: "ねこたちを送り出して段ボール箱のタワーを占領しよう。線を引いて切って、友だちと1対1で対決！",
+      playShort: "▶ Google Play",
+      more: "くわしく見る",
+      aboutTitle: "私たちについて",
+      about: "Rauxa Games はアンドラを拠点とする小さなインディースタジオです。ゲームはすべて無料で、遊ぶのにアカウントは必要ありません。",
+      langLabel: "言語",
+      privacy: "プライバシーポリシー",
+      privacyNote: "（英語）",
+      factContactLabel: "お問い合わせ",
+      navHome: "ホーム",
+      rights: "無断転載を禁じます。",
+      soon: "Google Play で近日公開",
+      eyebrow: "Rauxa Games · アンドラ"
+    },
+    zh: {
+      title: "Rauxa Games：来自安道尔的独立手机游戏",
+      metaDesc: "Rauxa Games 是来自安道尔的独立工作室，为 Android 制作免费游戏：AntDefender（蚂蚁塔防）和 Cat Tower（猫咪策略）。",
+      h1Tag: "在安道尔制作的独立手机游戏",
+      bannerAlt: "Rauxa Games：AntDefender 和 Cat Tower",
+      lead: "我们为 Android 制作小巧而用心的游戏：上手快、一根手指就能玩，而且免费，不用花钱也能赢。",
+      gamesTitle: "我们的游戏",
+      adTag: "蚂蚁塔防",
+      adDesc: "一波又一波地守护蚁巢：边跑边建造弩炮和塔楼，有英雄助阵，10 个世界共 200 个关卡。",
+      ctTag: "Android 猫咪策略游戏",
+      ctDesc: "派猫咪去占领纸箱塔：画线、剪线，还能和好友 1 对 1 对战。",
+      playShort: "▶ Google Play",
+      more: "了解更多",
+      aboutTitle: "关于我们",
+      about: "Rauxa Games 是一家位于安道尔的小型独立工作室。我们的游戏免费，无需注册账号即可游玩。",
+      langLabel: "语言",
+      privacy: "隐私政策",
+      privacyNote: "（英文）",
+      factContactLabel: "联系方式",
+      navHome: "首页",
+      rights: "版权所有。",
+      soon: "即将登陆 Google Play",
+      eyebrow: "Rauxa Games · 安道尔"
+    },
+    hi: {
+      title: "Rauxa Games: अंडोरा से स्वतंत्र मोबाइल गेम",
+      metaDesc: "Rauxa Games अंडोरा का एक स्वतंत्र स्टूडियो है जो Android के लिए मुफ़्त गेम बनाता है: AntDefender (चींटियों वाला टावर डिफ़ेंस) और Cat Tower (बिल्लियों वाली रणनीति)।",
+      h1Tag: "अंडोरा में बने स्वतंत्र मोबाइल गेम",
+      bannerAlt: "Rauxa Games: AntDefender और Cat Tower",
+      lead: "हम Android के लिए छोटे, ध्यान से बनाए गए गेम बनाते हैं: जल्दी सीखे जाते हैं, एक उंगली से खेले जाते हैं, और मुफ़्त हैं — जीतने के लिए पैसे देने की ज़रूरत नहीं।",
+      gamesTitle: "हमारे गेम",
+      adTag: "चींटियों वाला टावर डिफ़ेंस",
+      adDesc: "लहर दर लहर घोंसले की रक्षा करें: दौड़ते हुए बैलिस्टा और टावर बनाएँ, चैंपियनों के साथ, 10 दुनियाओं में 200 लेवल।",
+      ctTag: "Android के लिए बिल्ली रणनीति",
+      ctDesc: "अपनी बिल्लियों को गत्ते के डिब्बों के टावर जीतने भेजें: रेखाएँ खींचें और काटें, और दोस्तों को 1 बनाम 1 की चुनौती दें।",
+      playShort: "▶ Google Play",
+      more: "और जानें",
+      aboutTitle: "हमारे बारे में",
+      about: "Rauxa Games अंडोरा में स्थित एक छोटा स्वतंत्र स्टूडियो है। हमारे गेम मुफ़्त हैं और खेलने के लिए कोई खाता नहीं माँगते।",
+      langLabel: "भाषा",
+      privacy: "गोपनीयता नीति",
+      privacyNote: " (अंग्रेज़ी में)",
+      factContactLabel: "संपर्क",
+      navHome: "होम",
+      rights: "सर्वाधिकार सुरक्षित।",
+      soon: "जल्द ही Google Play पर",
+      eyebrow: "Rauxa Games · अंडोरा"
+    },
+    ar: {
+      title: "Rauxa Games: ألعاب جوال مستقلة من أندورا",
+      metaDesc: "Rauxa Games استوديو مستقل من أندورا يصنع ألعاباً مجانية لأندرويد: AntDefender (دفاع أبراج بالنمل) وCat Tower (استراتيجية بالقطط).",
+      h1Tag: "ألعاب جوال مستقلة صُنعت في أندورا",
+      bannerAlt: "Rauxa Games: AntDefender وCat Tower",
+      lead: "نصنع ألعاباً صغيرة ومتقنة لأندرويد: سهلة التعلّم، تُلعب بإصبع واحد، ومجانية، دون الحاجة إلى الدفع للفوز.",
+      gamesTitle: "ألعابنا",
+      adTag: "دفاع أبراج بالنمل",
+      adDesc: "دافع عن العش موجةً بعد موجة: ابنِ المنجنيقات والأبراج أثناء الجري، مع بطلات و200 مستوى في 10 عوالم.",
+      ctTag: "استراتيجية القطط لأندرويد",
+      ctDesc: "أرسل قططك لاحتلال أبراج صناديق الكرتون: ارسم الخطوط واقطعها، وتحدَّ أصدقاءك في مواجهة 1 ضد 1.",
+      playShort: "▶ Google Play",
+      more: "المزيد عن اللعبة",
+      aboutTitle: "من نحن",
+      about: "Rauxa Games استوديو صغير ومستقل مقره أندورا. ألعابنا مجانية ولا تطلب منك أي حساب للعب.",
+      langLabel: "اللغة",
+      privacy: "سياسة الخصوصية",
+      privacyNote: " (بالإنجليزية)",
+      factContactLabel: "التواصل",
+      navHome: "الرئيسية",
+      rights: "جميع الحقوق محفوظة.",
+      soon: "قريباً على Google Play",
+      eyebrow: "Rauxa Games · أندورا"
+    }
+  };
+
+  var LANGS = ['ca', 'en', 'es', 'fr', 'de', 'pt', 'ru', 'ja', 'zh', 'hi', 'ar'];
+  var KEY = 'rauxagames.lang';              // mateixa clau a totes les pàgines i a les polítiques
+  var select = document.getElementById('lang-select');
+  var FIXED = valid(document.documentElement.getAttribute('data-fixed-lang'));
+  var ROOT = document.documentElement.getAttribute('data-root') || '';   // camí fins a l'arrel del lloc
+  // Els jocs: Google Play (null = encara no hi és) i la política (des de l'arrel; idiomes amb versió pròpia)
+  var GAMES = {
+    antdefender: { play: 'https://play.google.com/store/apps/details?id=com.rauxagames.antdefender', privacy: 'privacy.html', privacyLangs: ['ca', 'en', 'es'] },
+    cattower: { play: null, privacy: 'cattower/privacy/', privacyLangs: ['ca', 'en', 'es'] }
+  };
+  var PAGE = 'estudi';
+  var PLAY_HL = { pt: 'pt-PT', zh: 'zh-CN' };
+  function playUrl(game, lang) {
+    var g = GAMES[game];
+    if (!g || !g.play) return '#';
+    return g.play + '&hl=' + (PLAY_HL[lang] || lang) +
+      '&referrer=' + encodeURIComponent('utm_source=web&utm_medium=site&utm_campaign=' + (game === PAGE ? 'landing_' : PAGE + '_') + lang);
+  }
+  function readStored() { try { return window.localStorage.getItem(KEY); } catch (e) { return null; } }
+  function store(lang) { try { window.localStorage.setItem(KEY, lang); } catch (e) { /* mode privat */ } }
+  function valid(lang) { return LANGS.indexOf(lang) >= 0 ? lang : null; }
+  function fromHash() { return valid((window.location.hash || '').replace('#', '').toLowerCase()); }
+  function fromBrowser() {
+    var list = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || ''];
+    for (var i = 0; i < list.length; i++) {
+      var base = String(list[i] || '').toLowerCase().split(/[-_]/)[0];
+      if (valid(base)) return base;
+    }
+    return null;
+  }
+
+  function apply(lang, updateHash) {
+    lang = valid(lang) || 'en';
+    var dict = I18N[lang], i;
+    var root = document.documentElement;
+    root.setAttribute('lang', lang);
+    root.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+    var nodes = document.querySelectorAll('[data-i18n]');
+    for (i = 0; i < nodes.length; i++) {
+      var k = nodes[i].getAttribute('data-i18n');
+      if (dict[k] !== undefined) nodes[i].textContent = dict[k] + (nodes[i].hasAttribute('data-foot') ? (dict.privacyNote || '') : '');
+    }
+    nodes = document.querySelectorAll('[data-i18n-alt]');
+    for (i = 0; i < nodes.length; i++) {
+      var ka = nodes[i].getAttribute('data-i18n-alt');
+      if (dict[ka] !== undefined) nodes[i].setAttribute('alt', dict[ka]);
+    }
+    document.title = dict.title;
+    var desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute('content', dict.metaDesc);
+    select.setAttribute('aria-label', dict.langLabel);
+    select.value = lang;
+    var links = document.querySelectorAll('[data-play-link]');
+    for (i = 0; i < links.length; i++) links[i].setAttribute('href', playUrl(links[i].getAttribute('data-play-link') || PAGE, lang));
+    links = document.querySelectorAll('[data-privacy-link]');
+    for (i = 0; i < links.length; i++) {
+      var g = GAMES[links[i].getAttribute('data-privacy-link') || PAGE];
+      links[i].setAttribute('href', ROOT + g.privacy + '#' + (g.privacyLangs.indexOf(lang) >= 0 ? lang : 'en'));
+    }
+    // a la pàgina sense idioma, els enllaços als jocs porten a la seva pàgina en aquest idioma
+    if (!FIXED) {
+      links = document.querySelectorAll('[data-game-link]');
+      for (i = 0; i < links.length; i++) links[i].setAttribute('href', ROOT + links[i].getAttribute('data-game-link') + '/' + lang + '/');
+    }
+    if (updateHash && window.history && window.history.replaceState) {
+      try { window.history.replaceState(null, '', '#' + lang); } catch (e) { /* res */ }
+    }
+  }
+
+  select.addEventListener('change', function () {
+    store(select.value);
+    if (FIXED) { window.location.href = '../' + select.value + '/'; return; }
+    apply(select.value, true);
+  });
+  window.addEventListener('hashchange', function () {
+    if (FIXED) return;
+    var h = fromHash();
+    if (h) { store(h); apply(h, false); }
+  });
+  apply(FIXED || fromHash() || valid(readStored()) || fromBrowser() || 'en', false);
+})();
+</script>
+</body>
+</html>

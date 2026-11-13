@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Política de privadesa — Cat Tower</title>
+<meta name="description" content="Política de privadesa del joc Cat Tower (Rauxa Games): quines dades es tracten, per què, amb qui es comparteixen i com exercir els teus drets. Català, English, Español.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://rauxagames.github.io/cattower/privacy/">
+<style>
+  :root {
+    --bg: #f6f3ea;
+    --surface: #ffffff;
+    --text: #23201a;
+    --muted: #6b655a;
+    --accent: #b8541c;
+    --accent-text: #ffffff;
+    --border: #e2dccd;
+    --note-bg: #fbf7ea;
+    --shadow: 0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17150f;
+      --surface: #201d16;
+      --text: #efe9dc;
+      --muted: #a39b8b;
+      --accent: #e5813e;
+      --accent-text: #17150f;
+      --border: #332e24;
+      --note-bg: #262219;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17150f;
+    --surface: #201d16;
+    --text: #efe9dc;
+    --muted: #a39b8b;
+    --accent: #e5813e;
+    --accent-text: #17150f;
+    --border: #332e24;
+    --note-bg: #262219;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  a { color: var(--accent); }
+  code { font-size: .92em; background: var(--note-bg); padding: 1px 5px; border-radius: 4px; }
+  .wrap { width: 100%; max-width: 760px; margin: 0 auto; padding: 0 16px; }
+  header { padding: 24px 0 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+  .brand { font-weight: 700; letter-spacing: .02em; text-decoration: none; color: var(--text); }
+  .langbar { display: flex; gap: 6px; flex-wrap: wrap; }
+  .langbar button {
+    font: inherit; font-size: .9rem; font-weight: 600;
+    padding: 6px 12px; border-radius: 999px; cursor: pointer;
+    border: 1px solid var(--border); background: var(--surface); color: var(--text);
+  }
+  .langbar button[aria-pressed="true"] { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+  .langbar button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  main { padding: 16px 0 48px; }
+  article {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px 32px;
+    box-shadow: var(--shadow);
+  }
+  @media (min-width: 600px) { article { padding: 36px 40px 40px; } }
+  .lang-block { display: none; }
+  .lang-block.active { display: block; }
+  h1 { font-size: clamp(1.7rem, 5vw, 2.4rem); line-height: 1.15; margin: 0 0 6px; }
+  .updated { color: var(--muted); margin: 0 0 24px; font-size: .95rem; }
+  h2 { font-size: 1.3rem; margin: 36px 0 10px; padding-top: 8px; border-top: 1px solid var(--border); }
+  h3 { font-size: 1.05rem; margin: 22px 0 6px; }
+  p, li { margin: 0 0 10px; }
+  ul { padding-left: 22px; }
+  .note { background: var(--note-bg); border-left: 4px solid var(--accent); padding: 12px 16px; border-radius: 8px; margin: 16px 0; }
+  .placeholder {
+    background: #fff3b0; color: #4a3b00; padding: 0 6px; border-radius: 4px; font-weight: 600;
+    outline: 2px dashed #d9a800;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .placeholder { background: #5b4b00; color: #ffe9a3; outline-color: #c9a227; }
+  }
+  table { border-collapse: collapse; width: 100%; margin: 8px 0 14px; font-size: .95rem; }
+  th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+  th { color: var(--muted); font-weight: 600; font-size: .85rem; text-transform: uppercase; letter-spacing: .06em; }
+  footer { border-top: 1px solid var(--border); padding: 20px 0 32px; color: var(--muted); font-size: .9rem; }
+  footer nav a { margin-right: 16px; }
+</style>
+<noscript><style>.lang-block { display: block; } .lang-block + .lang-block { margin-top: 48px; border-top: 3px double var(--border); padding-top: 24px; } .langbar { display: none; }</style></noscript>
+</head>
+<body>
+<header class="wrap">
+  <a class="brand" href="../../">Rauxa Games</a>
+  <nav class="langbar" aria-label="Idioma / Language / Idioma">
+    <button type="button" data-lang="ca" lang="ca" aria-pressed="true">Català</button>
+    <button type="button" data-lang="en" lang="en" aria-pressed="false">English</button>
+    <button type="button" data-lang="es" lang="es" aria-pressed="false">Español</button>
+  </nav>
+</header>
+
+<main class="wrap">
+<article>
+
+<!-- ═══════════════════════════════ CATALÀ ═══════════════════════════════ -->
+<section class="lang-block active" id="ca" lang="ca" data-title="Política de privadesa — Cat Tower">
+  <h1>Política de privadesa de Cat Tower</h1>
+  <p class="updated">Última actualització: 13 de novembre de 2026</p>
+
+  <h2>1. Qui som</h2>
+  <p><strong>Cat Tower</strong> és un joc per a Android desenvolupat i publicat per <strong>Rauxa Games</strong>, amb seu a Andorra. Rauxa Games és el responsable del tractament de les dades que es descriuen en aquesta política.</p>
+  <ul>
+    <li>Contacte: <a href="mailto:rauxa.antdefender@gmail.com">rauxa.antdefender@gmail.com</a></li>
+    <li>Identificador de l'aplicació a Google Play: <code>com.rauxagames.cattower</code></li>
+  </ul>
+
+  <h2>2. En dues paraules</h2>
+  <ul>
+    <li>Per jugar no cal crear cap compte ni donar-nos el nom, el correu ni el telèfon.</li>
+    <li>El joc és gratuït i no té compres integrades. Es finança amb anuncis recompensats: tu tries si els mires.</li>
+    <li>El teu progrés (nivells, cartes, monedes) es desa només al teu mòbil.</li>
+    <li>Per jugar a l'1 contra 1 i sortir a la classificació, fem servir un identificador anònim. A la classificació es veu el sobrenom, el país (codi de dues lletres) i les copes.</li>
+    <li>No venem dades a ningú.</li>
+  </ul>
+
+  <h2>3. Quines dades tractem i per què</h2>
+
+  <h3>3.1 Identificador anònim de jugador (Unity Authentication)</h3>
+  <p>Quan fas servir l'1 contra 1 o la classificació, el joc inicia una sessió anònima a Unity Authentication, un servei d'Unity Gaming Services. Unity assigna al dispositiu un <strong>codi de jugador aleatori</strong>; no hi ha cap compte, contrasenya, correu ni nom associat. Si esborres les dades de l'aplicació, el dispositiu rep un codi nou.</p>
+
+  <h3>3.2 Progrés del joc (només al dispositiu)</h3>
+  <p>Els nivells superats, les cartes, les monedes, els gats i les cases que tens, les missions i les preferències (música, idioma) es desen <strong>només al teu dispositiu</strong>. No en fem cap còpia als nostres servidors. Si desinstal·les el joc o n'esborres les dades, aquest progrés es perd.</p>
+
+  <h3>3.3 1 contra 1 amb amics i competitiu (Unity Lobby, Relay i Cloud Code)</h3>
+  <p>Per jugar contra un altre mòbil, el joc crea una sala amb un <strong>codi</strong> (per jugar amb un amic) o en busca una (competitiu), i la partida passa pels servidors de retransmissió d'Unity. Durant la partida s'intercanvien les jugades i l'estat de la partida; el rival veu el teu sobrenom i el gat amb què jugues. Per establir la connexió, els servidors d'Unity tracten l'adreça IP del dispositiu. Les dades de la partida no es guarden un cop acabada.</p>
+  <p>Al teu dispositiu es desa la llista d'identificadors anònims dels jugadors amb qui has jugat (els «amics»), que serveix per desbloquejar cases al joc.</p>
+
+  <h3>3.4 Classificació (Unity Leaderboards)</h3>
+  <p>A l'1 contra 1 competitiu guanyes o perds <strong>copes</strong>, que calcula el servidor (Unity Cloud Code). Juntament amb la puntuació, a la classificació mundial i a la del teu país es publica:</p>
+  <ul>
+    <li>El <strong>sobrenom</strong>: per defecte «Gat» i quatre xifres a l'atzar, i el pots canviar (de 2 a 16 caràcters).</li>
+    <li>El <strong>país</strong>, com a codi ISO de dues lletres (per exemple «AD» o «ES»). Es dedueix <strong>una sola vegada</strong> de la configuració regional del dispositiu —no de la ubicació GPS ni de l'adreça IP— i després queda fixat. Si no es pot determinar, es fa servir «ZZ».</li>
+    <li>Les <strong>copes</strong>.</li>
+  </ul>
+  <p>Aquesta informació és <strong>visible per a la resta de jugadors</strong> dins del joc. No hi apareix cap dada que t'identifiqui personalment, tret del que decideixis escriure al sobrenom: et recomanem no fer servir el teu nom real.</p>
+
+  <h3>3.5 Anuncis (Google AdMob)</h3>
+  <p>El joc mostra <strong>anuncis recompensats</strong> de Google AdMob: tu decideixes si els mires a canvi d'una recompensa dins del joc (un sobre de cartes o gats de reforç). Per servir-los, Google pot tractar l'<strong>identificador publicitari</strong> del dispositiu, l'adreça IP i informació tècnica del dispositiu i de l'aplicació, d'acord amb la seva pròpia política de privadesa.</p>
+  <p>A l'Espai Econòmic Europeu, el Regne Unit i Suïssa, abans del primer anunci apareix el <strong>formulari de consentiment de Google (UMP)</strong>, on pots acceptar o rebutjar els anuncis personalitzats. Pots canviar la decisió en qualsevol moment des del joc («Com es juga» → «Privadesa dels anuncis»). Si rebutges la personalització, seguiràs veient anuncis, però no basats en el teu perfil.</p>
+  <p>Més informació: <a href="https://policies.google.com/privacy" rel="noopener" target="_blank">Política de privadesa de Google</a> · <a href="https://policies.google.com/technologies/partner-sites" rel="noopener" target="_blank">Com fa servir Google la informació dels llocs i aplicacions que utilitzen els seus serveis</a>.</p>
+
+  <h3>3.6 Convidar amics</h3>
+  <p>El botó «Convida per WhatsApp» obre WhatsApp amb un missatge ja escrit; ets tu qui tria a qui l'envies. El joc no llegeix els teus contactes.</p>
+  <p>El joc no demana cap permís especial del sistema: no accedeix a la ubicació, els contactes, la càmera, el micròfon ni els fitxers.</p>
+
+  <h2>4. Base jurídica (RGPD)</h2>
+  <ul>
+    <li><strong>1 contra 1 i classificació:</strong> execució del servei que ens demanes en jugar (art. 6.1.b RGPD) i el nostre interès legítim a mantenir el joc funcional i just (art. 6.1.f).</li>
+    <li><strong>Anuncis personalitzats:</strong> el teu consentiment (art. 6.1.a), que dones o retires al formulari de Google.</li>
+    <li><strong>Anuncis no personalitzats:</strong> interès legítim a finançar un joc gratuït.</li>
+  </ul>
+
+  <h2>5. Quant de temps conservem les dades</h2>
+  <ul>
+    <li><strong>Classificació (sobrenom, país i copes):</strong> mentre el teu codi de jugador segueixi actiu i no ens demanis l'esborrat.</li>
+    <li><strong>Partides de l'1 contra 1:</strong> no es conserven un cop acabades.</li>
+    <li><strong>Dades d'anuncis:</strong> segons els terminis de Google.</li>
+  </ul>
+
+  <h2>6. Amb qui compartim les dades</h2>
+  <p>Només amb els proveïdors que fan funcionar el joc, i únicament per a aquesta finalitat:</p>
+  <ul>
+    <li><strong>Unity Technologies</strong> (Unity Gaming Services: Authentication, Lobby, Relay, Leaderboards, Cloud Code) — identitat anònima, 1 contra 1, classificació.</li>
+    <li><strong>Google</strong> (AdMob i UMP) — anuncis i consentiment.</li>
+  </ul>
+  <p><strong>No venem dades</strong> ni les cedim a tercers amb finalitats de màrqueting. Només revelaríem informació si una llei o una autoritat competent ens hi obligués.</p>
+
+  <h2>7. Transferències internacionals</h2>
+  <p>Unity i Google poden tractar dades en servidors fora de la Unió Europea (per exemple, als Estats Units); en aquests casos s'emparen en les <strong>clàusules contractuals tipus</strong> aprovades per la Comissió Europea i en les altres garanties que preveu el RGPD.</p>
+
+  <h2>8. Els teus drets</h2>
+  <p>Tens dret a accedir a les teves dades, rectificar-les, demanar-ne la supressió, oposar-te al tractament o limitar-lo, i a rebre-les en un format portable. També pots presentar una reclamació davant l'<a href="https://www.apda.ad" rel="noopener" target="_blank">Agència Andorrana de Protecció de Dades</a> o l'autoritat de control del teu país.</p>
+  <div class="note">
+    <p>Per exercir-los, escriu a <a href="mailto:rauxa.antdefender@gmail.com">rauxa.antdefender@gmail.com</a> indicant el <strong>sobrenom</strong> que fas servir a la classificació. Sense aquesta referència no podem localitzar les teves dades, perquè no tenim cap altra manera d'identificar-te. Respondrem en el termini d'un mes.</p>
+  </div>
+  <p>Si desinstal·les el joc o n'esborres les dades des dels ajustos d'Android, s'eliminen totes les dades del dispositiu. Si vols que també s'elimini la teva posició a la classificació, demana-ho per correu i ho farem en el termini d'un mes.</p>
+
+  <h2>9. Menors</h2>
+  <p>Cat Tower és apte per a tots els públics. No demanem l'edat ni recollim dades per identificar menors, i el joc no té compres. Els anuncis es mostren mitjançant Google AdMob respectant les seves polítiques de contingut. Si ets pare, mare o tutor i creus que un menor ens ha facilitat dades personals (per exemple, al sobrenom), escriu-nos i les eliminarem.</p>
+
+  <h2>10. Canvis en aquesta política</h2>
+  <p>Si canviem com tractem les dades, actualitzarem aquesta pàgina i la data que hi ha a dalt. Quan el canvi sigui rellevant, també ho indicarem dins del joc.</p>
+</section>
+
+<!-- ═══════════════════════════════ ENGLISH ══════════════════════════════ -->
+<section class="lang-block" id="en" lang="en" data-title="Privacy Policy — Cat Tower">
+  <h1>Cat Tower Privacy Policy</h1>
+  <p class="updated">Last updated: 13 November 2026</p>
+
+  <h2>1. Who we are</h2>
+  <p><strong>Cat Tower</strong> is an Android game developed and published by <strong>Rauxa Games</strong>, based in Andorra. Rauxa Games is the controller of the data described in this policy.</p>
+  <ul>
+    <li>Contact: <a href="mailto:rauxa.antdefender@gmail.com">rauxa.antdefender@gmail.com</a></li>
+    <li>App ID on Google Play: <code>com.rauxagames.cattower</code></li>
+  </ul>
+
+  <h2>2. In short</h2>
+  <ul>
+    <li>You don't need an account to play, and we don't ask for your name, email or phone number.</li>
+    <li>The game is free and has no in-app purchases. It is funded by rewarded ads: you choose whether to watch them.</li>
+    <li>Your progress (levels, cards, coins) is stored only on your phone.</li>
+    <li>To play 1 vs 1 and appear on the leaderboard, we use an anonymous identifier. The leaderboard shows your nickname, your country (two-letter code) and your trophies.</li>
+    <li>We don't sell data to anyone.</li>
+  </ul>
+
+  <h2>3. What data we process and why</h2>
+
+  <h3>3.1 Anonymous player ID (Unity Authentication)</h3>
+  <p>When you use 1 vs 1 or the leaderboard, the game starts an anonymous session with Unity Authentication, part of Unity Gaming Services. Unity assigns the device a <strong>random player ID</strong>; there is no account, password, email or name attached to it. If you clear the app's data, the device gets a new ID.</p>
+
+  <h3>3.2 Game progress (on your device only)</h3>
+  <p>Completed levels, cards, coins, the cats and houses you own, missions and your preferences (music, language) are stored <strong>only on your device</strong>. We don't keep a copy on our servers. If you uninstall the game or clear its data, this progress is lost.</p>
+
+  <h3>3.3 1 vs 1 with friends and ranked (Unity Lobby, Relay and Cloud Code)</h3>
+  <p>To play against another phone, the game creates a room with a <strong>code</strong> (to play with a friend) or looks for one (ranked), and the match runs through Unity's relay servers. During the match, moves and the match state are exchanged; your opponent sees your nickname and the cat you play with. To set up the connection, Unity's servers process your device's IP address. Match data is not kept once the match is over.</p>
+  <p>Your device stores the list of anonymous IDs of the players you have played with (your "friends"), which unlocks houses in the game.</p>
+
+  <h3>3.4 Leaderboard (Unity Leaderboards)</h3>
+  <p>In ranked 1 vs 1 you win or lose <strong>trophies</strong>, calculated on the server (Unity Cloud Code). Together with the score, the world leaderboard and your country's leaderboard show:</p>
+  <ul>
+    <li>Your <strong>nickname</strong>: by default "Gat" followed by four random digits; you can change it (2 to 16 characters).</li>
+    <li>Your <strong>country</strong>, as a two-letter ISO code (for example "AD" or "ES"). It is worked out <strong>only once</strong> from the device's regional settings —not from GPS location or the IP address— and then stays fixed. If it can't be determined, "ZZ" is used.</li>
+    <li>Your <strong>trophies</strong>.</li>
+  </ul>
+  <p>This information is <strong>visible to other players</strong> in the game. Nothing in it identifies you personally, except whatever you choose to write as your nickname: we recommend not using your real name.</p>
+
+  <h3>3.5 Ads (Google AdMob)</h3>
+  <p>The game shows <strong>rewarded ads</strong> from Google AdMob: you decide whether to watch them in exchange for an in-game reward (a card pack or extra cats). To serve them, Google may process your device's <strong>advertising ID</strong>, IP address and technical information about the device and the app, under its own privacy policy.</p>
+  <p>In the European Economic Area, the United Kingdom and Switzerland, <strong>Google's consent form (UMP)</strong> appears before the first ad, where you can accept or reject personalised ads. You can change your choice at any time in the game ("Com es juga" → "Privadesa dels anuncis"). If you reject personalisation, you will still see ads, but not based on your profile.</p>
+  <p>More information: <a href="https://policies.google.com/privacy" rel="noopener" target="_blank">Google Privacy Policy</a> · <a href="https://policies.google.com/technologies/partner-sites" rel="noopener" target="_blank">How Google uses information from sites or apps that use its services</a>.</p>
+
+  <h3>3.6 Inviting friends</h3>
+  <p>The "Convida per WhatsApp" button opens WhatsApp with a ready-made message; you choose who to send it to. The game does not read your contacts.</p>
+  <p>The game doesn't request any special system permission: it doesn't access your location, contacts, camera, microphone or files.</p>
+
+  <h2>4. Legal basis (GDPR)</h2>
+  <ul>
+    <li><strong>1 vs 1 and leaderboard:</strong> performance of the service you request by playing (Art. 6(1)(b) GDPR) and our legitimate interest in keeping the game working and fair (Art. 6(1)(f)).</li>
+    <li><strong>Personalised ads:</strong> your consent (Art. 6(1)(a)), which you give or withdraw in Google's form.</li>
+    <li><strong>Non-personalised ads:</strong> legitimate interest in funding a free game.</li>
+  </ul>
+
+  <h2>5. How long we keep your data</h2>
+  <ul>
+    <li><strong>Leaderboard (nickname, country and trophies):</strong> while your player ID remains active and until you ask us to delete it.</li>
+    <li><strong>1 vs 1 matches:</strong> not kept once the match is over.</li>
+    <li><strong>Ad data:</strong> according to Google's retention periods.</li>
+  </ul>
+
+  <h2>6. Who we share data with</h2>
+  <p>Only with the providers that make the game work, and solely for that purpose:</p>
+  <ul>
+    <li><strong>Unity Technologies</strong> (Unity Gaming Services: Authentication, Lobby, Relay, Leaderboards, Cloud Code) — anonymous identity, 1 vs 1, leaderboard.</li>
+    <li><strong>Google</strong> (AdMob and UMP) — ads and consent.</li>
+  </ul>
+  <p><strong>We don't sell data</strong> or share it with third parties for marketing. We would only disclose information if required by law or a competent authority.</p>
+
+  <h2>7. International transfers</h2>
+  <p>Unity and Google may process data on servers outside the European Union (for example, in the United States); in those cases they rely on the <strong>standard contractual clauses</strong> approved by the European Commission and the other safeguards provided by the GDPR.</p>
+
+  <h2>8. Your rights</h2>
+  <p>You have the right to access, rectify and erase your data, to object to or restrict its processing, and to receive it in a portable format. You can also lodge a complaint with the <a href="https://www.apda.ad" rel="noopener" target="_blank">Andorran Data Protection Agency</a> or the supervisory authority in your country.</p>
+  <div class="note">
+    <p>To exercise them, write to <a href="mailto:rauxa.antdefender@gmail.com">rauxa.antdefender@gmail.com</a> with the <strong>nickname</strong> you use on the leaderboard. Without it we can't find your data, because we have no other way to identify you. We will reply within one month.</p>
+  </div>
+  <p>If you uninstall the game or clear its data from Android settings, all data on the device is deleted. If you also want your leaderboard entry removed, ask us by email and we will do it within one month.</p>
+
+  <h2>9. Children</h2>
+  <p>Cat Tower is suitable for all ages. We don't ask for your age or collect data to identify children, and the game has no purchases. Ads are shown through Google AdMob in line with its content policies. If you are a parent or guardian and believe a child has given us personal data (for example, in a nickname), write to us and we will delete it.</p>
+
+  <h2>10. Changes to this policy</h2>
+  <p>If we change how we process data, we will update this page and the date at the top. When the change is significant, we will also mention it in the game.</p>
+</section>
+
+<!-- ═══════════════════════════════ ESPAÑOL ══════════════════════════════ -->
+<section class="lang-block" id="es" lang="es" data-title="Política de privacidad — Cat Tower">
+  <h1>Política de privacidad de Cat Tower</h1>
+  <p class="updated">Última actualización: 13 de noviembre de 2026</p>
+
+  <h2>1. Quiénes somos</h2>
+  <p><strong>Cat Tower</strong> es un juego para Android desarrollado y publicado por <strong>Rauxa Games</strong>, con sede en Andorra. Rauxa Games es el responsable del tratamiento de los datos que se describen en esta política.</p>
+  <ul>
+    <li>Contacto: <a href="mailto:rauxa.antdefender@gmail.com">rauxa.antdefender@gmail.com</a></li>
+    <li>Identificador de la aplicación en Google Play: <code>com.rauxagames.cattower</code></li>
+  </ul>
+
+  <h2>2. En dos palabras</h2>
+  <ul>
+    <li>Para jugar no hace falta crear ninguna cuenta ni darnos tu nombre, correo o teléfono.</li>
+    <li>El juego es gratuito y no tiene compras integradas. Se financia con anuncios recompensados: tú eliges si los ves.</li>
+    <li>Tu progreso (niveles, cartas, monedas) se guarda solo en tu móvil.</li>
+    <li>Para jugar al 1 contra 1 y salir en la clasificación usamos un identificador anónimo. En la clasificación se ve el apodo, el país (código de dos letras) y las copas.</li>
+    <li>No vendemos datos a nadie.</li>
+  </ul>
+
+  <h2>3. Qué datos tratamos y por qué</h2>
+
+  <h3>3.1 Identificador anónimo de jugador (Unity Authentication)</h3>
+  <p>Cuando usas el 1 contra 1 o la clasificación, el juego inicia una sesión anónima en Unity Authentication, un servicio de Unity Gaming Services. Unity asigna al dispositivo un <strong>código de jugador aleatorio</strong>; no hay cuenta, contraseña, correo ni nombre asociados. Si borras los datos de la aplicación, el dispositivo recibe un código nuevo.</p>
+
+  <h3>3.2 Progreso del juego (solo en el dispositivo)</h3>
+  <p>Los niveles superados, las cartas, las monedas, los gatos y las casas que tienes, las misiones y las preferencias (música, idioma) se guardan <strong>solo en tu dispositivo</strong>. No guardamos ninguna copia en nuestros servidores. Si desinstalas el juego o borras sus datos, este progreso se pierde.</p>
+
+  <h3>3.3 1 contra 1 con amigos y competitivo (Unity Lobby, Relay y Cloud Code)</h3>
+  <p>Para jugar contra otro móvil, el juego crea una sala con un <strong>código</strong> (para jugar con un amigo) o busca una (competitivo), y la partida pasa por los servidores de retransmisión de Unity. Durante la partida se intercambian las jugadas y el estado de la partida; el rival ve tu apodo y el gato con el que juegas. Para establecer la conexión, los servidores de Unity tratan la dirección IP del dispositivo. Los datos de la partida no se guardan una vez terminada.</p>
+  <p>En tu dispositivo se guarda la lista de identificadores anónimos de los jugadores con los que has jugado (los «amigos»), que sirve para desbloquear casas en el juego.</p>
+
+  <h3>3.4 Clasificación (Unity Leaderboards)</h3>
+  <p>En el 1 contra 1 competitivo ganas o pierdes <strong>copas</strong>, que calcula el servidor (Unity Cloud Code). Junto con la puntuación, en la clasificación mundial y en la de tu país se publica:</p>
+  <ul>
+    <li>El <strong>apodo</strong>: por defecto «Gat» y cuatro cifras al azar, y puedes cambiarlo (de 2 a 16 caracteres).</li>
+    <li>El <strong>país</strong>, como código ISO de dos letras (por ejemplo «AD» o «ES»). Se deduce <strong>una sola vez</strong> de la configuración regional del dispositivo —no de la ubicación GPS ni de la dirección IP— y después queda fijado. Si no se puede determinar, se usa «ZZ».</li>
+    <li>Las <strong>copas</strong>.</li>
+  </ul>
+  <p>Esta información es <strong>visible para el resto de jugadores</strong> dentro del juego. No aparece ningún dato que te identifique personalmente, salvo lo que decidas escribir en el apodo: te recomendamos no usar tu nombre real.</p>
+
+  <h3>3.5 Anuncios (Google AdMob)</h3>
+  <p>El juego muestra <strong>anuncios recompensados</strong> de Google AdMob: tú decides si los ves a cambio de una recompensa dentro del juego (un sobre de cartas o gatos de refuerzo). Para servirlos, Google puede tratar el <strong>identificador publicitario</strong> del dispositivo, la dirección IP e información técnica del dispositivo y de la aplicación, de acuerdo con su propia política de privacidad.</p>
+  <p>En el Espacio Económico Europeo, el Reino Unido y Suiza, antes del primer anuncio aparece el <strong>formulario de consentimiento de Google (UMP)</strong>, donde puedes aceptar o rechazar los anuncios personalizados. Puedes cambiar tu decisión en cualquier momento desde el juego («Com es juga» → «Privadesa dels anuncis»). Si rechazas la personalización, seguirás viendo anuncios, pero no basados en tu perfil.</p>
+  <p>Más información: <a href="https://policies.google.com/privacy" rel="noopener" target="_blank">Política de privacidad de Google</a> · <a href="https://policies.google.com/technologies/partner-sites" rel="noopener" target="_blank">Cómo utiliza Google la información de los sitios o aplicaciones que utilizan sus servicios</a>.</p>
+
+  <h3>3.6 Invitar a amigos</h3>
+  <p>El botón «Convida per WhatsApp» abre WhatsApp con un mensaje ya escrito; eres tú quien elige a quién se lo envías. El juego no lee tus contactos.</p>
+  <p>El juego no pide ningún permiso especial del sistema: no accede a la ubicación, los contactos, la cámara, el micrófono ni los archivos.</p>
+
+  <h2>4. Base jurídica (RGPD)</h2>
+  <ul>
+    <li><strong>1 contra 1 y clasificación:</strong> ejecución del servicio que nos pides al jugar (art. 6.1.b RGPD) y nuestro interés legítimo en mantener el juego funcional y justo (art. 6.1.f).</li>
+    <li><strong>Anuncios personalizados:</strong> tu consentimiento (art. 6.1.a), que das o retiras en el formulario de Google.</li>
+    <li><strong>Anuncios no personalizados:</strong> interés legítimo en financiar un juego gratuito.</li>
+  </ul>
+
+  <h2>5. Cuánto tiempo conservamos los datos</h2>
+  <ul>
+    <li><strong>Clasificación (apodo, país y copas):</strong> mientras tu código de jugador siga activo y no nos pidas su borrado.</li>
+    <li><strong>Partidas del 1 contra 1:</strong> no se conservan una vez terminadas.</li>
+    <li><strong>Datos de anuncios:</strong> según los plazos de Google.</li>
+  </ul>
+
+  <h2>6. Con quién compartimos los datos</h2>
+  <p>Solo con los proveedores que hacen funcionar el juego, y únicamente para esa finalidad:</p>
+  <ul>
+    <li><strong>Unity Technologies</strong> (Unity Gaming Services: Authentication, Lobby, Relay, Leaderboards, Cloud Code) — identidad anónima, 1 contra 1, clasificación.</li>
+    <li><strong>Google</strong> (AdMob y UMP) — anuncios y consentimiento.</li>
+  </ul>
+  <p><strong>No vendemos datos</strong> ni los cedemos a terceros con fines de marketing. Solo revelaríamos información si una ley o una autoridad competente nos obligara.</p>
+
+  <h2>7. Transferencias internacionales</h2>
+  <p>Unity y Google pueden tratar datos en servidores fuera de la Unión Europea (por ejemplo, en Estados Unidos); en esos casos se amparan en las <strong>cláusulas contractuales tipo</strong> aprobadas por la Comisión Europea y en las demás garantías que prevé el RGPD.</p>
+
+  <h2>8. Tus derechos</h2>
+  <p>Tienes derecho a acceder a tus datos, rectificarlos, pedir su supresión, oponerte al tratamiento o limitarlo, y a recibirlos en un formato portable. También puedes presentar una reclamación ante la <a href="https://www.apda.ad" rel="noopener" target="_blank">Agencia Andorrana de Protección de Datos</a> o la autoridad de control de tu país.</p>
+  <div class="note">
+    <p>Para ejercerlos, escribe a <a href="mailto:rauxa.antdefender@gmail.com">rauxa.antdefender@gmail.com</a> indicando el <strong>apodo</strong> que usas en la clasificación. Sin esta referencia no podemos localizar tus datos, porque no tenemos otra forma de identificarte. Responderemos en el plazo de un mes.</p>
+  </div>
+  <p>Si desinstalas el juego o borras sus datos desde los ajustes de Android, se eliminan todos los datos del dispositivo. Si quieres que también se elimine tu posición en la clasificación, pídelo por correo y lo haremos en el plazo de un mes.</p>
+
+  <h2>9. Menores</h2>
+  <p>Cat Tower es apto para todos los públicos. No pedimos la edad ni recogemos datos para identificar a menores, y el juego no tiene compras. Los anuncios se muestran mediante Google AdMob respetando sus políticas de contenido. Si eres padre, madre o tutor y crees que un menor nos ha facilitado datos personales (por ejemplo, en el apodo), escríbenos y los eliminaremos.</p>
+
+  <h2>10. Cambios en esta política</h2>
+  <p>Si cambiamos cómo tratamos los datos, actualizaremos esta página y la fecha de arriba. Cuando el cambio sea relevante, también lo indicaremos dentro del juego.</p>
+</section>
+
+</article>
+</main>
+
+<footer class="wrap">
+  <nav>
+    <a href="../../">Rauxa Games</a>
+    <a href="../">Cat Tower</a>
+  </nav>
+  <p>© 2026 Rauxa Games.</p>
+</footer>
+
+<script>
+(function () {
+  var LANGS = ['ca', 'en', 'es'];
+  var KEY = 'rauxagames.lang';
+  var buttons = document.querySelectorAll('.langbar button');
+  var blocks = document.querySelectorAll('.lang-block');
+
+  function readStored() {
+    try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+  }
+  function store(lang) {
+    try { window.localStorage.setItem(KEY, lang); } catch (e) { /* mode privat o bloquejat: ignorem */ }
+  }
+  function fromHash() {
+    var h = (window.location.hash || '').replace('#', '').toLowerCase();
+    return LANGS.indexOf(h) >= 0 ? h : null;
+  }
+  // Qualsevol codi d'idioma (també els 11 de la landing, que comparteix la clau) → ca / es / en.
+  function normalize(code) {
+    if (!code) return null;
+    var base = String(code).toLowerCase().split(/[-_]/)[0];
+    if (base === 'ca' || base === 'es') return base;
+    return 'en';
+  }
+  function fromBrowser() {
+    var list = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || ''];
+    for (var i = 0; i < list.length; i++) {
+      var base = String(list[i] || '').toLowerCase().split(/[-_]/)[0];
+      if (base === 'ca' || base === 'es' || base === 'en') return base;   // primer idioma conegut de la llista
+    }
+    return 'en';
+  }
+  function apply(lang, updateHash) {
+    lang = normalize(lang) || 'en';
+    var i;
+    for (i = 0; i < blocks.length; i++) {
+      var on = blocks[i].id === lang;
+      blocks[i].classList.toggle('active', on);
+      if (on) document.title = blocks[i].getAttribute('data-title') || document.title;
+    }
+    for (i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute('aria-pressed', buttons[i].getAttribute('data-lang') === lang ? 'true' : 'false');
+    }
+    document.documentElement.setAttribute('lang', lang);
+    if (updateHash && window.history && window.history.replaceState) {
+      try { window.history.replaceState(null, '', '#' + lang); } catch (e) { /* res */ }
+    }
+  }
+
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function () {
+      var lang = this.getAttribute('data-lang');
+      store(lang);
+      apply(lang, true);
+    });
+  }
+  window.addEventListener('hashchange', function () {
+    var h = fromHash();
+    if (h) { store(h); apply(h, false); }
+  });
+
+  // Prioritat: #hash a l'URL (enllaç directe) → idioma desat → idioma del navegador (ca/es; la resta → en).
+  apply(fromHash() || normalize(readStored()) || fromBrowser(), false);
+})();
+</script>
+</body>
+</html>
