@@ -129,7 +129,7 @@ def game_ld(game, desc):
     play = play_base(game)
     if game == "antdefender":
         out = {"@type": ["VideoGame", "MobileApplication"], "@id": url + "#game", "name": "AntDefender",
-               "alternateName": "AntDefender: Ant Tower Defense", "description": desc, "url": url,
+               "alternateName": ["Ant Defender", "AntDefender: Ant Tower Defense"], "description": desc, "url": url,
                "image": SITE + "img/og-image.jpg",
                "screenshot": [SITE + "img/shot-combat.webp", SITE + "img/shot-base.webp", SITE + "img/shot-heroes.webp"],
                "genre": ["Tower defense", "Action", "Strategy"], "playMode": "SinglePlayer"}
