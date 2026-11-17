@@ -57,7 +57,7 @@
    "@id": "https://rauxagames.github.io/#org",
    "name": "Rauxa Games",
    "url": "https://rauxagames.github.io/",
-   "logo": "https://rauxagames.github.io/img/icon-192.png",
+   "logo": "https://rauxagames.github.io/img/rauxa-512.png",
    "email": "rauxa.antdefender@gmail.com",
    "address": {
     "@type": "PostalAddress",
@@ -198,7 +198,8 @@
   a:hover { text-decoration-thickness: 2px; }
   .wrap { width: 100%; max-width: 960px; margin: 0 auto; padding: 0 16px; }
   header { padding: 28px 0 8px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-  .brand { font-weight: 700; letter-spacing: .02em; text-decoration: none; color: var(--text); }
+  .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .02em; text-decoration: none; color: var(--text); }
+  .brand img { width: 32px; height: 32px; border-radius: 8px; flex: none; }
   .lang-pick select {
     font: inherit; font-size: .9rem;
     color: var(--text); background: var(--surface);
@@ -297,7 +298,7 @@
 </head>
 <body>
 <header class="wrap">
-  <a class="brand" href="../../ja/" data-home-link>Rauxa Games</a>
+  <a class="brand" href="../../ja/" data-home-link><img src="../../img/rauxa-64.png" width="32" height="32" alt="">Rauxa Games</a>
   <label class="lang-pick">
     <span class="sr-only" data-i18n="langLabel">言語</span>
     <select id="lang-select">

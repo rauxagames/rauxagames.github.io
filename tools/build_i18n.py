@@ -119,7 +119,7 @@ def fmt(text, attrs, d):
 
 def org():
     return {"@type": "Organization", "@id": SITE + "#org", "name": "Rauxa Games", "url": SITE,
-            "logo": SITE + "img/icon-192.png", "email": EMAIL,
+            "logo": SITE + "img/rauxa-512.png", "email": EMAIL,
             "address": {"@type": "PostalAddress", "addressCountry": "AD"}}
 
 
@@ -169,7 +169,10 @@ def seo_block(page, lang, fixed, d, prefix):
     url = page_url(page, lang if fixed else None)
     title, desc = d["title"], d["metaDesc"]
     img = SITE + PAGES[page]["og"]
-    icon = "img/cattower/icon-192.png" if page == "cattower" else "img/icon-192.png"
+    # icona d'iPhone i favicon: el logo de l'estudi a la portada, la icona de cada joc a la seva pàgina
+    icon, favicon = {"estudi": ("img/rauxa-192.png", "img/rauxa-favicon-32.png"),
+                     "cattower": ("img/cattower/icon-192.png", "img/cattower/favicon-32.png")}.get(
+                         page, ("img/icon-192.png", "img/favicon-32.png"))
     L = []
     L.append("<title>%s</title>" % esc_t(title))
     L.append('<meta name="description" content="%s">' % esc_a(desc))
@@ -177,7 +180,7 @@ def seo_block(page, lang, fixed, d, prefix):
     for l in LANGS:
         L.append('<link rel="alternate" hreflang="%s" href="%s">' % (l, page_url(page, l)))
     L.append('<link rel="alternate" hreflang="x-default" href="%s">' % page_url(page, None))
-    L.append('<link rel="icon" type="image/png" sizes="32x32" href="%simg/favicon-32.png">' % prefix)
+    L.append('<link rel="icon" type="image/png" sizes="32x32" href="%s%s">' % (prefix, favicon))
     L.append('<link rel="apple-touch-icon" href="%s%s">' % (prefix, icon))
     L.append('<meta name="theme-color" content="#b8541c">')
     L.append('<meta property="og:type" content="website">')
