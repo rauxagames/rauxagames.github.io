@@ -293,6 +293,18 @@
   footer .lang-links a { margin: 0; text-decoration: none; }
   .lang-links a:hover, .lang-links a[aria-current] { text-decoration: underline; }
   .lang-links a[aria-current] { color: var(--text); }
+  /* Tràiler de YouTube: miniatura + enllaç (funciona sense JS); en clicar es carrega el reproductor (youtube-nocookie) */
+  .video { margin: 32px 0 0; }
+  .yt-wrap { max-width: 720px; margin: 0 auto; position: relative; aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden; background: #000; box-shadow: var(--shadow); }
+  .yt, .yt-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+  .yt img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .yt-btn { position: absolute; left: 50%; top: 50%; width: 76px; height: 76px; margin: -38px 0 0 -38px; border-radius: 50%;
+            background: var(--accent); box-shadow: 0 4px 16px rgba(0,0,0,.45); transition: transform .15s; }
+  .yt-btn::after { content: ""; position: absolute; left: 29px; top: 22px; border-style: solid; border-width: 16px 0 16px 26px;
+                   border-color: transparent transparent transparent var(--accent-text); }
+  .yt:hover .yt-btn, .yt:focus-visible .yt-btn { transform: scale(1.08); }
+  .yt:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+  .yt-wrap.playing .yt { display: none; }
 </style>
 <noscript><style>.worlds { display: none; } .lang-pick { display: none; }</style></noscript>
 </head>
@@ -340,6 +352,16 @@
     <img src="../../img/shot-base.webp" width="540" height="960" loading="lazy" alt="La base : construis et améliore les bâtiments du nid" data-i18n-alt="shotBaseAlt">
     <img src="../../img/shot-heroes.webp" width="540" height="960" loading="lazy" alt="Choix de la championne" data-i18n-alt="shotHeroesAlt">
   </div>
+
+  <section class="video" id="trailer">
+    <h2 data-i18n="videoTitle">Bande-annonce</h2>
+    <div class="yt-wrap">
+      <a class="yt" href="https://www.youtube.com/watch?v=Ub354DRakXk" data-yt="Ub354DRakXk" data-i18n-yt="videoId" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/Ub354DRakXk/maxresdefault.jpg" width="1280" height="720" loading="lazy" alt="Regarder la bande-annonce de AntDefender" data-i18n-alt="videoAlt">
+        <span class="yt-btn" aria-hidden="true"></span>
+      </a>
+    </div>
+  </section>
 
   <section class="features">
     <h2 data-i18n="featuresTitle">Comment on joue</h2>
@@ -509,6 +531,9 @@
   // oficial del joc (LocalizationManager.cs, claus levelpick.lore.1..10).
   var I18N = {
     ca: {
+      videoId: "q4M2Px-41HQ",
+      videoTitle: "Tràiler",
+      videoAlt: "Mira el tràiler de AntDefender",
       title: "AntDefender: tower defense de formigues gratuït per a Android",
       metaDesc: "Tower defense de formigues per a Android: construeix ballestes i torres corrent, amb un sol dit. 200 nivells, 10 mons i 4 herois. Gratuït i sense compres integrades.",
       h1Tag: "Tower defense de formigues per a Android",
@@ -564,6 +589,9 @@
       l10: "Llums que parpellegen i màquines que zumzegen. Ningú no sap qui les va construir, però encara funcionen."
     },
     en: {
+      videoId: "61kDvcJkQuw",
+      videoTitle: "Trailer",
+      videoAlt: "Watch the AntDefender trailer",
       title: "AntDefender: Ant Tower Defense game for Android (Free)",
       metaDesc: "Ant tower defense for Android: build ballistas and towers on the run, with one finger. 200 levels, 10 worlds and 4 heroes. Free, with no in-app purchases.",
       h1Tag: "Ant tower defense for Android",
@@ -619,6 +647,9 @@
       l10: "Blinking lights and humming machines. Nobody knows who built them, but they still work."
     },
     es: {
+      videoId: "qC4G0dnPpdo",
+      videoTitle: "Tráiler",
+      videoAlt: "Mira el tráiler de AntDefender",
       title: "AntDefender: tower defense de hormigas gratis para Android",
       metaDesc: "Tower defense de hormigas para Android: construye ballestas y torres corriendo, con un solo dedo. 200 niveles, 10 mundos y 4 héroes. Gratis y sin compras integradas.",
       h1Tag: "Tower defense de hormigas para Android",
@@ -674,6 +705,9 @@
       l10: "Luces que parpadean y máquinas que zumban. Nadie sabe quién las construyó, pero aún funcionan."
     },
     fr: {
+      videoId: "Ub354DRakXk",
+      videoTitle: "Bande-annonce",
+      videoAlt: "Regarder la bande-annonce de AntDefender",
       title: "AntDefender : tower defense de fourmis gratuit sur Android",
       metaDesc: "Tower defense de fourmis sur Android : construis balistes et tours en courant, d'un seul doigt. 200 niveaux, 10 mondes et 4 héros. Gratuit et sans achats intégrés.",
       h1Tag: "Tower defense de fourmis sur Android",
@@ -729,6 +763,9 @@
       l10: "Des lumières qui clignotent et des machines qui bourdonnent. Personne ne sait qui les a construites, mais elles fonctionnent encore."
     },
     de: {
+      videoId: "fBxDtvim3Hw",
+      videoTitle: "Trailer",
+      videoAlt: "Den AntDefender-Trailer ansehen",
       title: "AntDefender: Ameisen-Tower-Defense kostenlos für Android",
       metaDesc: "Ameisen-Tower-Defense für Android: Baue Ballisten und Türme im Laufen, mit einem Finger. 200 Level, 10 Welten und 4 Heldinnen. Kostenlos und ohne In-App-Käufe.",
       h1Tag: "Ameisen-Tower-Defense für Android",
@@ -784,6 +821,9 @@
       l10: "Blinkende Lichter und summende Maschinen. Niemand weiß, wer sie gebaut hat, aber sie laufen noch."
     },
     pt: {
+      videoId: "6FwfJFzUmLQ",
+      videoTitle: "Trailer",
+      videoAlt: "Ver o trailer de AntDefender",
       title: "AntDefender: tower defense de formigas grátis para Android",
       metaDesc: "Tower defense de formigas para Android: constrói balistas e torres a correr, com um só dedo. 200 níveis, 10 mundos e 4 heróis. Gratuito e sem compras integradas.",
       h1Tag: "Tower defense de formigas para Android",
@@ -839,6 +879,9 @@
       l10: "Luzes que piscam e máquinas que zumbem. Ninguém sabe quem as construiu, mas ainda funcionam."
     },
     ru: {
+      videoId: "DPoFOJB40es",
+      videoTitle: "Трейлер",
+      videoAlt: "Смотреть трейлер AntDefender",
       title: "AntDefender: tower defense с муравьями для Android, бесплатно",
       metaDesc: "Tower defense с муравьями для Android: строй баллисты и башни на бегу одним пальцем. 200 уровней, 10 миров и 4 героя. Бесплатно и без внутриигровых покупок.",
       h1Tag: "Tower defense с муравьями для Android",
@@ -894,6 +937,9 @@
       l10: "Мигающие огни и гудящие машины. Никто не знает, кто их построил, но они всё ещё работают."
     },
     ja: {
+      videoId: "wJ6tjrbjB7c",
+      videoTitle: "トレーラー",
+      videoAlt: "AntDefender のトレーラーを見る",
       title: "AntDefender：アリのタワーディフェンス（Android・無料）",
       metaDesc: "Android向けアリのタワーディフェンス。走りながらバリスタやタワーを建設、指1本で遊べる。10のワールドに200ステージ、4人のヒーロー。無料、アプリ内課金なし。",
       h1Tag: "Android向けアリのタワーディフェンス",
@@ -949,6 +995,9 @@
       l10: "点滅する光と、うなりを上げる機械。誰が造ったのか知る者はいないが、今も動いている。"
     },
     zh: {
+      videoId: "n8eZ582pG1c",
+      videoTitle: "预告片",
+      videoAlt: "观看 AntDefender 预告片",
       title: "AntDefender：蚂蚁塔防（免费 Android 游戏）",
       metaDesc: "Android 蚂蚁塔防游戏：边跑边建造弩炮和塔楼，单指操作。10 个世界，200 个关卡，4 位英雄。免费，无内购。",
       h1Tag: "Android 蚂蚁塔防游戏",
@@ -1004,6 +1053,9 @@
       l10: "闪烁的灯光和嗡嗡作响的机器。没人知道是谁造的，但它们仍在运转。"
     },
     hi: {
+      videoId: "f9kd4B5U8M8",
+      videoTitle: "ट्रेलर",
+      videoAlt: "AntDefender का ट्रेलर देखें",
       title: "AntDefender: चींटियों का टावर डिफेंस — Android पर मुफ़्त",
       metaDesc: "Android के लिए चींटियों का टावर डिफेंस: दौड़ते-दौड़ते बैलिस्टा और टावर बनाओ, एक उँगली से खेलो। 10 दुनियाओं में 200 लेवल और 4 नायक। मुफ़्त और कोई इन-ऐप खरीदारी नहीं।",
       h1Tag: "Android के लिए चींटियों का टावर डिफेंस",
@@ -1059,6 +1111,9 @@
       l10: "टिमटिमाती रोशनियाँ और गुनगुनाती मशीनें। कोई नहीं जानता इन्हें किसने बनाया, पर ये अब भी चलती हैं।"
     },
     ar: {
+      videoId: "aXhdQbERWGw",
+      videoTitle: "العرض الدعائي",
+      videoAlt: "شاهد العرض الدعائي للعبة AntDefender",
       title: "AntDefender: النمل والأبراج — لعبة دفاع عن الأبراج مجانية لأندرويد",
       metaDesc: "لعبة دفاع عن الأبراج مع النمل لأندرويد: ابنِ المنجنيقات والأبراج وأنت تركض بإصبع واحد. 200 مستوى في 10 عوالم و4 أبطال. مجانية وبدون مشتريات داخل التطبيق.",
       h1Tag: "لعبة دفاع عن الأبراج مع النمل لأندرويد",
@@ -1157,6 +1212,17 @@
       .replace('{b}', el.getAttribute('data-b') || '');
   }
 
+  // Tràiler: posa el vídeo de l'idioma (enllaç + miniatura) i, si s'estava reproduint un altre, el treu
+  function setYt(a, id) {
+    if (!id || a.getAttribute('data-yt') === id) return;
+    a.setAttribute('data-yt', id);
+    a.setAttribute('href', 'https://www.youtube.com/watch?v=' + id);
+    var img = a.querySelector('img');
+    if (img) img.src = 'https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg';
+    var wrap = a.parentNode, f = wrap.querySelector('iframe');
+    if (f) { wrap.removeChild(f); wrap.classList.remove('playing'); }
+  }
+
   function apply(lang, updateHash) {
     lang = valid(lang) || 'en';
     var dict = I18N[lang];
@@ -1175,6 +1241,8 @@
       if (dict[ka] !== undefined) nodes[i].setAttribute('alt', fmt(dict[ka], nodes[i], dict));
     }
 
+    var yts = document.querySelectorAll('[data-i18n-yt]');
+    for (i = 0; i < yts.length; i++) setYt(yts[i], dict[yts[i].getAttribute('data-i18n-yt')]);
     document.title = dict.title;
     var desc = document.querySelector('meta[name="description"]');
     if (desc) desc.setAttribute('content', dict.metaDesc);
@@ -1209,6 +1277,26 @@
 
   // Pàgina d'idioma: el seu idioma. Arrel: #hash → idioma desat → idioma del navegador → anglès.
   apply(FIXED || fromHash() || valid(readStored()) || fromBrowser() || 'en', false);
+
+  // Tràiler: el reproductor de YouTube només es carrega quan es clica (abans, cap petició a YouTube més enllà de la miniatura)
+  var ytLinks = document.querySelectorAll('[data-i18n-yt]');
+  for (var y = 0; y < ytLinks.length; y++) (function (a) {
+    var img = a.querySelector('img');
+    if (img) img.addEventListener('error', function () {   // vídeo sense miniatura HD → la de qualitat normal
+      if (img.src.indexOf('maxresdefault') >= 0) img.src = img.src.replace('maxresdefault', 'hqdefault');
+    });
+    a.addEventListener('click', function (e) {
+      if (e.ctrlKey || e.metaKey || e.shiftKey || e.button === 1) return;   // obrir a YouTube en una pestanya nova
+      e.preventDefault();
+      var wrap = a.parentNode, f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + a.getAttribute('data-yt') +
+        '?autoplay=1&rel=0&hl=' + (document.documentElement.getAttribute('lang') || 'en');
+      f.title = img ? img.alt : 'YouTube';
+      f.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen');
+      wrap.appendChild(f);
+      wrap.classList.add('playing');
+    });
+  })(ytLinks[y]);
 
   // ---- Galeria dels mons: amaga imatges que fallen, targetes buides i, si cal, la secció ----
   var section = document.getElementById('worlds');

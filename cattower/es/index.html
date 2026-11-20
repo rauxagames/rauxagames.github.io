@@ -290,6 +290,18 @@
   section.block { margin: 36px 0 0; }
   .shots.four { grid-template-columns: repeat(2, 1fr); max-width: 560px; }
   @media (min-width: 760px) { .shots.four { grid-template-columns: repeat(4, 1fr); max-width: 960px; } }
+  /* Tràiler de YouTube: miniatura + enllaç (funciona sense JS); en clicar es carrega el reproductor (youtube-nocookie) */
+  .video { margin: 32px 0 0; }
+  .yt-wrap { max-width: 720px; margin: 0 auto; position: relative; aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden; background: #000; box-shadow: var(--shadow); }
+  .yt, .yt-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+  .yt img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .yt-btn { position: absolute; left: 50%; top: 50%; width: 76px; height: 76px; margin: -38px 0 0 -38px; border-radius: 50%;
+            background: var(--accent); box-shadow: 0 4px 16px rgba(0,0,0,.45); transition: transform .15s; }
+  .yt-btn::after { content: ""; position: absolute; left: 29px; top: 22px; border-style: solid; border-width: 16px 0 16px 26px;
+                   border-color: transparent transparent transparent var(--accent-text); }
+  .yt:hover .yt-btn, .yt:focus-visible .yt-btn { transform: scale(1.08); }
+  .yt:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+  .yt-wrap.playing .yt { display: none; }
 </style>
 </head>
 <body>
@@ -337,6 +349,16 @@
     <img src="../../img/cattower/shot-mapa.webp" width="540" height="960" loading="lazy" alt="El mapa de niveles" data-i18n-alt="shotMapaAlt">
     <img src="../../img/cattower/shot-cartes.webp" width="540" height="960" loading="lazy" alt="Las cartas de gatos: fuerza, agilidad y velocidad" data-i18n-alt="shotCartesAlt">
   </div>
+
+  <section class="video" id="trailer">
+    <h2 data-i18n="videoTitle">Tráiler</h2>
+    <div class="yt-wrap">
+      <a class="yt" href="https://www.youtube.com/watch?v=Fd6-8mWYGvY" data-yt="Fd6-8mWYGvY" data-i18n-yt="videoId" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/Fd6-8mWYGvY/maxresdefault.jpg" width="1280" height="720" loading="lazy" alt="Mira el tráiler de Cat Tower" data-i18n-alt="videoAlt">
+        <span class="yt-btn" aria-hidden="true"></span>
+      </a>
+    </div>
+  </section>
 
   <section class="features">
     <h2 data-i18n="featuresTitle">Cómo se juega</h2>
@@ -387,6 +409,9 @@
   // Diccionari de textos (tools/build_i18n.py en fa les pàgines per idioma).
   var I18N = {
     ca: {
+      videoId: "q-bVlBz30cU",
+      videoTitle: "Tràiler",
+      videoAlt: "Mira el tràiler de Cat Tower",
       title: "Cat Tower: joc d'estratègia de gats per a Android",
       metaDesc: "Envia els teus gats a conquerir torres de caixes de cartró: dibuixa línies amb un dit, talla-les i fes-te teu tot el mapa. 48 nivells, 1 contra 1 amb amics i cartes de gats. Gratuït per a Android.",
       h1Tag: "Estratègia de gats per a Android",
@@ -418,6 +443,9 @@
       eyebrow: "Rauxa Games · Andorra"
     },
     en: {
+      videoId: "ECB0NGr6iC4",
+      videoTitle: "Trailer",
+      videoAlt: "Watch the Cat Tower trailer",
       title: "Cat Tower: cat strategy game for Android",
       metaDesc: "Send your cats to conquer towers of cardboard boxes: draw lines with one finger, cut them and take the whole map. 48 levels, 1 vs 1 with friends and cat cards. Free for Android.",
       h1Tag: "Cat strategy for Android",
@@ -449,6 +477,9 @@
       eyebrow: "Rauxa Games · Andorra"
     },
     es: {
+      videoId: "Fd6-8mWYGvY",
+      videoTitle: "Tráiler",
+      videoAlt: "Mira el tráiler de Cat Tower",
       title: "Cat Tower: juego de estrategia de gatos para Android",
       metaDesc: "Envía a tus gatos a conquistar torres de cajas de cartón: dibuja líneas con un dedo, córtalas y hazte con todo el mapa. 48 niveles, 1 contra 1 con amigos y cartas de gatos. Gratis para Android.",
       h1Tag: "Estrategia de gatos para Android",
@@ -480,6 +511,9 @@
       eyebrow: "Rauxa Games · Andorra"
     },
     fr: {
+      videoId: "YjZitNtlZrU",
+      videoTitle: "Bande-annonce",
+      videoAlt: "Regarder la bande-annonce de Cat Tower",
       title: "Cat Tower : jeu de stratégie avec des chats pour Android",
       metaDesc: "Envoie tes chats conquérir des tours de cartons : trace des lignes d'un doigt, coupe-les et prends toute la carte. 48 niveaux, 1 contre 1 entre amis et cartes de chats. Gratuit sur Android.",
       h1Tag: "Stratégie féline pour Android",
@@ -511,6 +545,9 @@
       eyebrow: "Rauxa Games · Andorre"
     },
     de: {
+      videoId: "BllfTLICw98",
+      videoTitle: "Trailer",
+      videoAlt: "Den Cat Tower-Trailer ansehen",
       title: "Cat Tower: Katzen-Strategiespiel für Android",
       metaDesc: "Schick deine Katzen los, um Türme aus Pappkartons zu erobern: Zieh Linien mit einem Finger, schneide sie durch und erobere die ganze Karte. 48 Level, 1 gegen 1 mit Freunden und Katzenkarten. Kostenlos für Android.",
       h1Tag: "Katzen-Strategie für Android",
@@ -542,6 +579,9 @@
       eyebrow: "Rauxa Games · Andorra"
     },
     pt: {
+      videoId: "o5kONlp_D-Q",
+      videoTitle: "Trailer",
+      videoAlt: "Ver o trailer de Cat Tower",
       title: "Cat Tower: jogo de estratégia com gatos para Android",
       metaDesc: "Envia os teus gatos para conquistar torres de caixas de cartão: desenha linhas com um dedo, corta-as e conquista o mapa inteiro. 48 níveis, 1 contra 1 com amigos e cartas de gatos. Grátis para Android.",
       h1Tag: "Estratégia com gatos para Android",
@@ -573,6 +613,9 @@
       eyebrow: "Rauxa Games · Andorra"
     },
     ru: {
+      videoId: "6_yGYP7Uqxw",
+      videoTitle: "Трейлер",
+      videoAlt: "Смотреть трейлер Cat Tower",
       title: "Cat Tower: стратегия с котами для Android",
       metaDesc: "Отправляй котов захватывать башни из картонных коробок: рисуй линии одним пальцем, разрезай их и захвати всю карту. 48 уровней, 1 на 1 с друзьями и карточки котов. Бесплатно для Android.",
       h1Tag: "Стратегия с котами для Android",
@@ -604,6 +647,9 @@
       eyebrow: "Rauxa Games · Андорра"
     },
     ja: {
+      videoId: "ByCRH5EhdZM",
+      videoTitle: "トレーラー",
+      videoAlt: "Cat Tower のトレーラーを見る",
       title: "Cat Tower：Android向け ねこ戦略ゲーム",
       metaDesc: "ねこたちを送り出して、段ボール箱のタワーを占領しよう。指一本で線を引き、切って、マップ全体を手に入れよう。48ステージ、友だちと1対1、ねこカード。Android向け無料ゲーム。",
       h1Tag: "Android向け ねこ戦略ゲーム",
@@ -635,6 +681,9 @@
       eyebrow: "Rauxa Games · アンドラ"
     },
     zh: {
+      videoId: "ydu-AjkiZNE",
+      videoTitle: "预告片",
+      videoAlt: "观看 Cat Tower 预告片",
       title: "Cat Tower：Android 猫咪策略游戏",
       metaDesc: "派你的猫咪去占领纸箱塔：用一根手指画线、剪断线条，拿下整张地图。48 个关卡、与好友 1 对 1、猫咪卡牌。Android 免费游戏。",
       h1Tag: "Android 猫咪策略游戏",
@@ -666,6 +715,9 @@
       eyebrow: "Rauxa Games · 安道尔"
     },
     hi: {
+      videoId: "wkJTZjj9Q3o",
+      videoTitle: "ट्रेलर",
+      videoAlt: "Cat Tower का ट्रेलर देखें",
       title: "Cat Tower: Android के लिए बिल्लियों वाला रणनीति गेम",
       metaDesc: "अपनी बिल्लियों को गत्ते के डिब्बों के टावर जीतने भेजें: एक उंगली से रेखाएँ खींचें, उन्हें काटें और पूरा नक्शा जीतें। 48 लेवल, दोस्तों के साथ 1 बनाम 1 और बिल्ली कार्ड। Android के लिए मुफ़्त।",
       h1Tag: "Android के लिए बिल्ली रणनीति",
@@ -697,6 +749,9 @@
       eyebrow: "Rauxa Games · अंडोरा"
     },
     ar: {
+      videoId: "GMVg3DqfT50",
+      videoTitle: "العرض الدعائي",
+      videoAlt: "شاهد العرض الدعائي للعبة Cat Tower",
       title: "Cat Tower: لعبة استراتيجية بالقطط لأندرويد",
       metaDesc: "أرسل قططك لاحتلال أبراج من صناديق الكرتون: ارسم خطوطاً بإصبع واحد، واقطعها، واستولِ على الخريطة كلها. 48 مستوى، ومواجهة 1 ضد 1 مع الأصدقاء، وبطاقات القطط. مجانية لأندرويد.",
       h1Tag: "استراتيجية القطط لأندرويد",
@@ -760,6 +815,17 @@
     return null;
   }
 
+  // Tràiler: posa el vídeo de l'idioma (enllaç + miniatura) i, si s'estava reproduint un altre, el treu
+  function setYt(a, id) {
+    if (!id || a.getAttribute('data-yt') === id) return;
+    a.setAttribute('data-yt', id);
+    a.setAttribute('href', 'https://www.youtube.com/watch?v=' + id);
+    var img = a.querySelector('img');
+    if (img) img.src = 'https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg';
+    var wrap = a.parentNode, f = wrap.querySelector('iframe');
+    if (f) { wrap.removeChild(f); wrap.classList.remove('playing'); }
+  }
+
   function apply(lang, updateHash) {
     lang = valid(lang) || 'en';
     var dict = I18N[lang], i;
@@ -776,6 +842,8 @@
       var ka = nodes[i].getAttribute('data-i18n-alt');
       if (dict[ka] !== undefined) nodes[i].setAttribute('alt', dict[ka]);
     }
+    var yts = document.querySelectorAll('[data-i18n-yt]');
+    for (i = 0; i < yts.length; i++) setYt(yts[i], dict[yts[i].getAttribute('data-i18n-yt')]);
     document.title = dict.title;
     var desc = document.querySelector('meta[name="description"]');
     if (desc) desc.setAttribute('content', dict.metaDesc);
@@ -809,6 +877,26 @@
     if (h) { store(h); apply(h, false); }
   });
   apply(FIXED || fromHash() || valid(readStored()) || fromBrowser() || 'en', false);
+
+  // Tràiler: el reproductor de YouTube només es carrega quan es clica (abans, cap petició a YouTube més enllà de la miniatura)
+  var ytLinks = document.querySelectorAll('[data-i18n-yt]');
+  for (var y = 0; y < ytLinks.length; y++) (function (a) {
+    var img = a.querySelector('img');
+    if (img) img.addEventListener('error', function () {   // vídeo sense miniatura HD → la de qualitat normal
+      if (img.src.indexOf('maxresdefault') >= 0) img.src = img.src.replace('maxresdefault', 'hqdefault');
+    });
+    a.addEventListener('click', function (e) {
+      if (e.ctrlKey || e.metaKey || e.shiftKey || e.button === 1) return;   // obrir a YouTube en una pestanya nova
+      e.preventDefault();
+      var wrap = a.parentNode, f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + a.getAttribute('data-yt') +
+        '?autoplay=1&rel=0&hl=' + (document.documentElement.getAttribute('lang') || 'en');
+      f.title = img ? img.alt : 'YouTube';
+      f.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen');
+      wrap.appendChild(f);
+      wrap.classList.add('playing');
+    });
+  })(ytLinks[y]);
 })();
 </script>
 <!-- LIGHTBOX: clicar una captura la mostra en gran (fletxes / lliscar per passar, Esc o clic fora per tancar) -->

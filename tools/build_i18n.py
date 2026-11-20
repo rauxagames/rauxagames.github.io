@@ -249,6 +249,11 @@ def render(src, page, lang, fixed, all_d):
         return re.sub(r'alt="[^"]*"', 'alt="%s"' % esc_a(fmt(d[key], tag, d)), tag, count=1)
     body = re.sub(r"<img\s[^>]*data-i18n-alt=\"\w+\"[^>]*>", alt, body)
 
+    def yt(m):   # tràiler: l'enllaç, la miniatura i data-yt porten el vídeo de l'idioma (clau d'I18N, p. ex. videoId)
+        vid = d[m.group(1)]
+        return re.sub(r'(watch\?v=|/vi/|data-yt=")[A-Za-z0-9_-]{11}', lambda mm: mm.group(1) + vid, m.group(0))
+    body = re.sub(r'<a\s[^>]*data-i18n-yt="(\w+)"[^>]*>.*?</a>', yt, body, flags=re.S)
+
     here = lang + "/" if fixed else ""
 
     def link(m):   # un <a ...> sencer amb algun dels atributs d'enllaç
