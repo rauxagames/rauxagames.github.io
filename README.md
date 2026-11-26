@@ -11,8 +11,13 @@ pt, ru, ja, zh, hi, ar — àrab en RTL). Es publica amb GitHub Pages (`main` / 
 | `/app-ads.txt` | AdMob (un sol compte per a tots els jocs) | a mà |
 
 **No moure mai `/privacy` ni `/app-ads.txt`**: són les adreces que té la fitxa de Google Play d'AntDefender (i la
-web del desenvolupador és l'arrel, `https://rauxagames.github.io`). Si algun dia es compra un domini, GitHub Pages
-redirigeix les adreces de `rauxagames.github.io` al domini nou.
+web del desenvolupador és l'arrel, `https://rauxagames.github.io`).
+
+**Domini propi (26-nov-2026):** la web es publica a `https://rauxagames.com` (domini de Rauxa Games LLC, registrat
+a Northwest; fitxer `CNAME` a l'arrel: NO esborrar-lo). GitHub Pages redirigeix totes les adreces de
+`rauxagames.github.io` al domini nou, així que les de la fitxa de Play segueixen funcionant. L'adreça base de les
+pàgines generades és `SITE` a `tools/build_i18n.py`. DNS a Northwest: quatre registres A de l'arrel cap a
+185.199.108.153 / .109.153 / .110.153 / .111.153 i un CNAME `www` → `rauxagames.github.io`.
 
 ## SEO: pàgines per idioma (generades)
 

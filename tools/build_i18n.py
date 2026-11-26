@@ -27,8 +27,8 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SITE = "https://rauxagames.github.io/"
-LASTMOD = "2026-11-13"
+SITE = "https://rauxagames.com/"
+LASTMOD = "2026-11-26"
 ROOT_LANG = "en"   # contingut estàtic de les pàgines x-default (coincideix amb el que veu Googlebot amb JS)
 EMAIL = "rauxa.antdefender@gmail.com"
 
